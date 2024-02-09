@@ -80,48 +80,6 @@
 										</div>
 									</a>
 								</article>
-								<a href="/modules.json" class="button primary" id="downloadButton">Download</a>
-    							<section class="latest-modules" id="modulesSection">
-           							 <!-- Modules will be dynamically added here -->
-      							  </section>
-
-       							 <script>
-									document.addEventListener('DOMContentLoaded', function () {
-										// Fetch the modules.json file
-										fetch('/modules.json')
-											.then(response => response.json())
-											.then(data => displayModules(data))
-											.catch(error => console.error('Error fetching modules.json:', error));
-							
-										function displayModules(modules) {
-											const modulesSection = document.getElementById('modulesSection');
-							
-											modules.forEach(module => {
-												const moduleBox = document.createElement('div');
-												moduleBox.className = 'module-box';
-							
-												const moduleTitle = document.createElement('h2');
-												moduleTitle.className = 'module-title';
-												moduleTitle.textContent = module.name;
-							
-												const moduleDescription = document.createElement('p');
-												moduleDescription.className = 'module-description';
-												moduleDescription.textContent = module.description;
-							
-												const downloadLink = document.createElement('a');
-												downloadLink.href = module.downloadLink;
-												downloadLink.textContent = 'Download Module';
-												downloadLink.className = 'button primary';
-												downloadLink.setAttribute('target', '_blank');
-							
-												moduleBox.appendChild(moduleTitle);
-												moduleBox.appendChild(moduleDescription);
-												moduleBox.appendChild(downloadLink);
-												modulesSection.appendChild(moduleBox);
-											});
-										}
-									});
-								</script>
 							</section>
 						</div>
 					</div>
