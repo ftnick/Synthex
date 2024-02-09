@@ -2,21 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="1;url=">
+    <meta http-equiv="refresh" content="0;url=">
     <title>Redirecting to download...</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        #status {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        #redirectBtn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
+    <div id="status">Redirecting...</div>
+
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const downloadLink = urlParams.get('downloadLink');
         const Link = urlParams.get('Link');
+        const statusElement = document.getElementById('status');
 
         if (downloadLink) {
             window.location.href = downloadLink;
         } else if (Link) {
             window.location.href = Link;
         } else {
-            console.error('Download link not provided.');
+            statusElement.innerHTML = '<span style="color: red;">Download link not provided.</span>';
+            showRedirectButton();
+        }
+
+        function showRedirectButton() {
+            const redirectBtn = document.createElement('button');
+            redirectBtn.id = 'redirectBtn';
+            redirectBtn.textContent = 'Click here to manually redirect';
+            redirectBtn.onclick = redirectToDefaultPage;
+            document.body.appendChild(redirectBtn);
+        }
+
+        function redirectToDefaultPage() {
+            window.location.href = '/'; // Replace with your default page URL
         }
     </script>
 </body>
