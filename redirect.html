@@ -7,13 +7,14 @@
 </head>
 <body>
     <script>
-        // Extract the download link from the query parameter
         const urlParams = new URLSearchParams(window.location.search);
         const downloadLink = urlParams.get('downloadLink');
+        const Link = urlParams.get('Link');
 
-        // If a download link is found, initiate the download
         if (downloadLink) {
             window.location.href = downloadLink;
+        } else if (Link) {
+            window.location.href = Link;
         } else {
             console.error('Download link not provided.');
         }
