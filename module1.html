@@ -37,6 +37,104 @@
 							<h1>Synthex-XP-Levels</h1>
 							<!-- <span class="image main"><img src="images/pic13.jpg" alt="" /></span> -->
 							<p>Synthex XP Levels is a free and dynamic Roblox module that effortlessly integrates an XP leveling system into your game.</p>
+							<p>How to download and require: </p>
+							<p>1. Download the module from the <a href="#module-download">roblox marketplace.</a></p>
+							<p>2. Import the script (with all child module scripts) into your game.</p>
+							<p>3. Place the parent script in a server storage service, eg. game.ServerStorage</game></p>
+							<p>4. Require the module in your game scripts using the following code:</p>
+							<div class="function-list">
+								<pre style="margin: 0;">
+									<code>
+local Levels = require(game:GetService("ServerStorage").Levels)
+									</code>
+								</pre>
+							</div>	
+							<p>5. Your done! Use the module corresponding to your needs, the module script and all child scripts are completely open-source.</p>
+							<p>Example Script:</p>
+							<div class="function-list">
+								<pre style="margin: 0;">
+									<code>
+local LM = require(game:GetService("ServerStorage").Levels)
+local UT = require(game:GetService("ServerStorage").UiTweens)
+local R = require(game:GetService("ServerStorage").Levels.Ranks)
+local ST = require(game:GetService("ServerStorage").SpawningTools)
+local overhead = require(game:GetService("ServerStorage").OverHead)
+local DataStore = require(game:GetService("ServerStorage").DataStore)
+
+local PermaBanStore = DataStore:ReturnDataStore("PermaBans")
+
+game:GetService("Players").PlayerAdded:Connect(function(AddedPlayer)
+	local Success1, Result1 = pcall(function()
+		return PermaBanStore:GetAsync(AddedPlayer.UserId)
+	end)
+	if Success1 then
+		if Result1 == true then
+			return AddedPlayer:Kick("You are permabanned.")
+		end
+	end
+
+	wait(1)
+
+	AddedPlayer.Character.Humanoid.WalkSpeed = 0
+
+	local StartingScreen = script.StartingScreen:Clone()
+	StartingScreen.Parent = AddedPlayer.PlayerGui
+	local RootGui = StartingScreen.Background
+	UT:FadeGuiObject(RootGui.Label, 1, 0, true)
+	RootGui.Label.Text = "Loading Player..."
+	LM:Init(AddedPlayer)
+	UT:FadeGuiObject(RootGui.Label, 1, 1, true).Completed:Wait()
+	RootGui.Label.Text = "Welcome!"
+	UT:FadeGuiObject(RootGui.Label, 1, 0, true)
+	UT:FadeGuiObject(RootGui.PlayButtom, 1, 0, true)
+	local Debounce = false
+	RootGui.PlayButtom.MouseButton1Click:Connect(function()
+		if Debounce == true then
+			return warn("Cannot press play more than once.")
+		end
+		Debounce = true
+		game:GetService("ReplicatedStorage"):FindFirstChild("CoreGuiChange"):FireClient(AddedPlayer, Enum.CoreGuiType.All, true)
+		game:GetService("ReplicatedStorage"):FindFirstChild("CoreGuiChange"):FireClient(AddedPlayer, Enum.CoreGuiType.PlayerList, false)
+		UT:FadeGuiObject(RootGui.Label, 1, 1)
+		UT:FadeGuiObject(RootGui.PlayButtom, 1, 1)
+		UT:FadeGuiObject(StartingScreen.Background, 1, 1)
+		RootGui.XPBackground.Visible = true
+		AddedPlayer.CharacterAdded:Connect(function(char)
+			char.Humanoid.WalkSpeed = 16
+			spawn(function()
+				for _, part in pairs(script.Head:GetChildren()) do
+					part:Clone().Parent = char.Head
+				end
+				for _, part in pairs(script.Torso:GetChildren()) do
+					part:Clone().Parent = char.Torso
+				end
+			end)
+			overhead:Add(char, AddedPlayer)
+			ST:GiveRankTools(AddedPlayer)
+			char:FindFirstChild("Humanoid").Died:Connect(function()
+				wait(1)
+				AddedPlayer:LoadCharacter()
+			end)
+		end)
+		AddedPlayer:LoadCharacter()
+		LM:UpdateData(AddedPlayer)
+		game:GetService("ReplicatedStorage"):FindFirstChild("EndIntro"):FireClient(AddedPlayer)
+		AddedPlayer.PlayerGui.Tutorial.Enabled = true
+	end)
+
+	while wait(5) do
+		LM:UpdateLocalData(AddedPlayer)
+	end
+end)
+
+game:GetService("Players").PlayerRemoving:Connect(function(RemovedPlayer)
+	LM:UpdateData(RemovedPlayer)
+end)
+									</code>
+								</pre>
+							</div>	
+							<br>
+							<p>Levels Module Script Functions: </p>
 							<div class="function-list">
 								<pre style="margin: 0;">
 									<code>
@@ -78,7 +176,7 @@ Levels down the player, decreasing level, max experience, and setting XP to the 
 									</code>
 								</pre>
 							</div>																		
-							<div class="module-download">
+							<div class="module-download" id="module-download">
 								<p><strong>Get the Synthex XP Levels module for Roblox:</strong></p>
 								<ul class="actions">
 									<li>
