@@ -2,7 +2,7 @@ const repoOwner = 'ftnick';
 const repoName = 'Synthex-Roblox';
 
 async function checkDeploymentStatus() {
-  const githubToken = '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'; // Replace with your GitHub token
+  const githubToken = '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'; // Replace with your GitHub token
 
   // Check if the GitHub token is provided
   if (!githubToken) {
