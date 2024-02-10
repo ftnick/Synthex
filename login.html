@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Login - Synthex</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+        header h1 {
+            padding: 20px; /* Adjust the padding value as needed */
+        }
+    </style>
+</head>
+<body class="is-preload">
+    <div id="wrapper">
+        <div id="main">
+            <div class="inner">
+                <header>
+                    <h1>Login to Synthex</h1>
+                </header>
+                <section class="tiles">
+                    <article class="style1">
+                        <div class="content">
+                            <form id="loginForm" action="javascript:void(0);" onsubmit="checkLogin()">
+                                <label for="username">Username:</label>
+                                <input type="text" id="username" name="username" required>
+                                <br>
+                                <label for="password">Password:</label>
+                                <input type="password" id="password" name="password" required>
+                                <br>
+                                <input type="submit" value="Login">
+                            </form>
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        // Store logins directly in the script (not suitable for production)
+        var logins = [
+            { "username": "user1", "password": "password1" },
+            { "username": "user2", "password": "password2" }
+        ];
+
+        function checkLogin() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // Check if the entered credentials match any in the logins array
+            const validLogin = logins.find(login => login.username === username && login.password === password);
+
+            if (validLogin) {
+                // Redirect to the main page if login is successful
+                window.location.href = "index.html";
+            } else {
+                // Display an error message or handle unsuccessful login
+                alert("Invalid username or password. Please try again.");
+            }
+        }
+    </script>
+</body>
+</html>
