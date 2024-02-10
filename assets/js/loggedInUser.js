@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         usernameLabel.textContent = username;
       } else {
         usernameLabel.textContent = "Unknown";
+        window.location.href = "login.html";
       }
     } else {
       console.error("Error: usernameLabel element not found.");
