@@ -18,7 +18,7 @@
           `https://api.github.com/repos/${repoOwner}/${repoName}/deployments?per_page=1`,
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer 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`,
               Accept: "application/vnd.github.v3+json",
             },
           }
@@ -48,7 +48,6 @@
           return "Pending";
         } else {
           // Deployment is finished, redirect to success.html
-          window.location.href = "login.html";
           return "Finished";
         }
       }
