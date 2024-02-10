@@ -4,80 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        #taskInput {
-            width: 70%;
-        }
-        #taskList {
-            margin-top: 20px;
-        }
-    </style>
 </head>
 <body>
-    <h1>Todo List</h1>
-    
-    <input type="text" id="taskInput" placeholder="Add a new task">
-    <button onclick="addTask()">Add Task</button>
 
-    <ul id="taskList"></ul>
+    <h1>Todo List</h1>
+
+    <ul id="todo-list">
+        <!-- Todo items will be dynamically added here -->
+    </ul>
+
+    <form id="add-todo-form">
+        <label for="new-todo">Add New Todo:</label>
+        <input type="text" id="new-todo" name="new-todo" required>
+        <button type="button" onclick="addTodo()">Add</button>
+    </form>
+
+    <p>View and update the todo list file on GitHub: <a href="https://github.com/your-username/your-repo/blob/main/todo.txt" target="_blank">todo.txt</a></p>
 
     <script>
-        function addTask() {
-            var taskInput = document.getElementById("taskInput");
-            var taskList = document.getElementById("taskList");
+        function addTodo() {
+            // Get the new todo text
+            var newTodoText = document.getElementById('new-todo').value;
 
-            if (taskInput.value.trim() !== "") {
-                var taskText = taskInput.value;
-                var listItem = document.createElement("li");
-                listItem.appendChild(document.createTextNode(taskText));
-                taskList.appendChild(listItem);
+            // Create a new list item
+            var listItem = document.createElement('li');
+            listItem.textContent = newTodoText;
 
-                // Save to TODO.txt
-                saveTasks();
+            // Append the new item to the todo list
+            document.getElementById('todo-list').appendChild(listItem);
 
-                // Clear input
-                taskInput.value = "";
-            }
+            // Clear the input field
+            document.getElementById('new-todo').value = '';
+
+            // Update the todo.txt file on GitHub using the GitHub API
+            updateGitHubFile(newTodoText);
         }
 
-        function saveTasks() {
-            var taskList = document.getElementById("taskList");
-            var tasks = [];
+        async function updateGitHubFile(newTodoText) {
+            // GitHub API details
+            const username = 'ftnick';
+            const repo = 'Synthex-Roblox';
+            const filePath = 'todo.txt';
+            const branch = 'main';
+            const accessToken = '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';
 
-            // Extract tasks from the list
-            for (var i = 0; i < taskList.children.length; i++) {
-                tasks.push(taskList.children[i].innerText);
-            }
+            // Fetch current content of the file
+            const currentContentResponse = await fetch(`https://api.github.com/repos/${username}/${repo}/contents/${filePath}?ref=${branch}`);
+            const currentContent = await currentContentResponse.json();
 
-            // Save tasks to TODO.txt
-            fetch("todo.txt", {
-                method: "PUT",
-                body: tasks.join("\n")
+            // Update content
+            const updatedContent = btoa(currentContent.content + '\n' + newTodoText);
+
+            // Make a PUT request to update the file
+            const updateResponse = await fetch(`https://api.github.com/repos/${username}/${repo}/contents/${filePath}`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    message: 'Update todo.txt',
+                    content: updatedContent,
+                    sha: currentContent.sha,
+                    branch: branch,
+                }),
             });
+
+            if (updateResponse.ok) {
+                alert('Todo updated successfully on GitHub!');
+            } else {
+                const errorResponse = await updateResponse.json();
+                alert(`Failed to update todo.txt on GitHub. Error: ${errorResponse.message}`);
+            }
         }
-
-        function loadTasks() {
-            var taskList = document.getElementById("taskList");
-
-            // Fetch tasks from TODO.txt
-            fetch("todo.txt")
-                .then(response => response.text())
-                .then(data => {
-                    var tasks = data.split("\n").filter(task => task.trim() !== "");
-                    tasks.forEach(taskText => {
-                        var listItem = document.createElement("li");
-                        listItem.appendChild(document.createTextNode(taskText));
-                        taskList.appendChild(listItem);
-                    });
-                });
-        }
-
-        // Load tasks on page load
-        window.onload = loadTasks;
     </script>
+
 </body>
 </html>
