@@ -61,11 +61,15 @@
             if (validLogin) {
                 // Redirect to the main page if login is successful
                 localStorage.setItem('isLoggedIn', true);
-                window.location.href = "index.html";
+                window.location.href = "https://ftnick.github.io/Synthex-Roblox/index.html";
             } else {
                 // Display an error message or handle unsuccessful login
                 alert("Invalid username or password. Please try again.");
             }
+        }
+
+       if (localStorage.getItem('isLoggedIn')) {
+            window.location.href = "https://ftnick.github.io/Synthex-Roblox/index.html";
         }
     </script>
 </body>
