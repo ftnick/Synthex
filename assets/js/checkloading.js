@@ -1,8 +1,9 @@
 const repoOwner = 'ftnick';
 const repoName = 'Synthex-Roblox';
+const workflowName = 'pages'; // Replace with the name of your GitHub Actions workflow
 
-async function checkDeploymentStatus() {
-  const githubToken = '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'; // Replace with your GitHub token
+async function findDeploymentJob() {
+  const githubToken = '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'; // Replace with your GitHub token
 
   // Check if the GitHub token is provided
   if (!githubToken) {
@@ -11,38 +12,55 @@ async function checkDeploymentStatus() {
   }
 
   try {
-    // Get the most recent deployment
-    const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/deployments?per_page=1`, {
+    // Get the most recent workflow run /workflows/${workflowName}
+    const workflowResponse = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/actions/runs?per_page=1`, {
       headers: {
         'Authorization': `Bearer ${githubToken}`,
         'Accept': 'application/vnd.github.v3+json'
       }
     });
 
-    console.log('Response:', response);
-
-    if (!response.ok) {
-      console.error(`Failed to fetch deployment information. Status: ${response.status}`);
-      return 'Failed to fetch deployment information';
+    if (!workflowResponse.ok) {
+      console.error(`Failed to fetch workflow run information. Status: ${workflowResponse.status}`);
+      return 'Failed to fetch workflow run information';
     }
 
-    const data = await response.json();
-    console.log('Data:', data);
+    const workflowData = await workflowResponse.json();
 
-    if (data.length === 0) {
-      console.error('No deployments found');
-      return 'No deployments found';
+    if (workflowData.workflow_runs.length === 0) {
+      console.error('No workflow runs found');
+      return 'No workflow runs found';
     }
 
-    const latestDeployment = data[0];
+    const latestRun = workflowData.workflow_runs[0];
 
-    // Check deployment status
-    if (latestDeployment.state === 'pending') {
-      return 'Pending Deploy';
-    } else if (latestDeployment.state === 'in_progress') {
+    // Get jobs for the latest run
+    const jobsResponse = await fetch(latestRun.jobs_url, {
+      headers: {
+        'Authorization': `Bearer ${githubToken}`,
+        'Accept': 'application/vnd.github.v3+json'
+      }
+    });
+
+    if (!jobsResponse.ok) {
+      console.error(`Failed to fetch job information. Status: ${jobsResponse.status}`);
+      return 'Failed to fetch job information';
+    }
+
+    const jobsData = await jobsResponse.json();
+
+    // Find the deployment job
+    const deploymentJob = jobsData.jobs.find(job => job.name === 'deploy');
+
+    // Check job status
+    if (!deploymentJob) {
+      return 'Deployment job not found';
+    } else if (deploymentJob.status === 'completed') {
+      return 'Deployment completed';
+    } else if (deploymentJob.status === 'in_progress') {
       return 'Deployment is currently running';
     } else {
-      return 'Deployment is not pending or in progress';
+      return `Deployment job status: ${deploymentJob.status}`;
     }
   } catch (error) {
     console.error('An error occurred:', error);
@@ -51,6 +69,6 @@ async function checkDeploymentStatus() {
 }
 
 // Example usage
-checkDeploymentStatus().then((result) => {
+findDeploymentJob().then((result) => {
   console.log(result);
 });
