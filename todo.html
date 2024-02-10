@@ -19,7 +19,7 @@
         <button type="button" onclick="addTodo()">Add</button>
     </form>
 
-    <p>View and update the todo list file on GitHub: <a href="https://github.com/your-username/your-repo/blob/main/todo.txt" target="_blank">todo.txt</a></p>
+    <p>View and update the todo list file on GitHub: <a href="https://github.com/ftnick/Synthex-Roblox/blob/main/todo.txt" target="_blank">todo.txt</a></p>
 
     <script>
         function addTodo() {
@@ -46,7 +46,7 @@
             const repo = 'Synthex-Roblox';
             const filePath = 'todo.txt';
             const branch = 'main';
-            const accessToken = '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';
+            const accessToken = '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';
 
             // Fetch current content of the file
             const currentContentResponse = await fetch(`https://api.github.com/repos/${username}/${repo}/contents/${filePath}?ref=${branch}`);
