@@ -1,39 +1,46 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Synthex</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--  <link rel="icon" href="images/logo.svg" type="image/x-icon"> -->
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
-		<!-- Wrapper -->
-			<div id="wrapper">
+  <head>
+    <title>Synthex</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!--  <link rel="icon" href="images/logo.svg" type="image/x-icon"> -->
+    <noscript
+      ><link rel="stylesheet" href="assets/css/noscript.css"
+    /></noscript>
+    <style>
+      #loggedInUser {
+        color: rgb(0, 0, 0);
+        margin-left: auto;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+    </style>
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Header -->
+      <header id="header">
+        <div class="inner">
+          <!-- Logo -->
+          <a href="index.html" class="logo">
+            <h1><span class="title">Synthex</span></h1>
+          </a>
 
-				<!-- Header -->
-					<header id="header">
-						<div class="inner">
+          <!-- Display username at the top right -->
+          <div id="loggedInUser" style="float: right; margin-top: 10px">
+            Logged in as: <span id="usernameLabel"></span>
+          </div>
+        </div>
+      </header>
 
-							<!-- Logo -->
-								<a href="index.html" class="logo">
-									<h1><span class="title">Synthex</span></h1>
-								</a>
-
-							<!-- Nav -->
-							<!-- Menu
-								<nav>
-									<ul>
-										<li><a href="#menu">Menu</a></li>
-									</ul>
-								</nav>
-							-->
-
-						</div>
-					</header>
-
-				<!-- Menu
+      <!-- Menu
 					<nav id="menu">
 						<h2>Menu</h2>
 						<ul>
@@ -43,84 +50,90 @@
 					</nav> 
 				-->
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
-							<header>
-								<p><strong>Modules:</strong></p>
-							</header>
-							<section class="tiles">
+      <!-- Main -->
+      <div id="main">
+        <div class="inner">
+          <header>
+            <p><strong>Modules:</strong></p>
+          </header>
+          <section class="tiles">
+            <article class="style1">
+              <span class="image">
+                <img src="images\pic02.jpg" alt="" />
+              </span>
+              <a href="module1.html">
+                <h2>Synthex XP Levels</h2>
+                <div class="content">
+                  <p>
+                    Synthex XP Levels is a free and dynamic Roblox module that
+                    effortlessly integrates an XP leveling system into your
+                    game.
+                  </p>
+                </div>
+              </a>
+            </article>
+          </section>
 
-								<article class="style1">
-									<span class="image">
-										<img src="images\pic02.jpg" alt="" />
-									</span>
-									<a href="module1.html">
-										<h2>Synthex XP Levels</h2>
-										<div class="content">
-											<p>Synthex XP Levels is a free and dynamic Roblox module that effortlessly integrates an XP leveling system into your game.</p>
-										</div>							
-									</a>
-								</article>
+          <br />
+          <br />
 
-							</section>
+          <header>
+            <p><strong>Clothing:</strong></p>
+          </header>
 
-							<br>
-							<br>
+          <section class="tiles">
+            <article class="style1">
+              <span class="image">
+                <img src="images\clothing_images\stayshirt.png" alt="" />
+              </span>
+              <a href="clothing1.html">
+                <h2>stay</h2>
+                <div class="content">
+                  <p>to ari</p>
+                </div>
+              </a>
+            </article>
 
-							<header>
-								<p><strong>Clothing:</strong></p>
-							</header>
+            <article class="style1">
+              <span class="image">
+                <img src="images\clothing_images\sorryshirt.png" alt="" />
+              </span>
+              <a href="clothing2.html">
+                <h2>sorry</h2>
+                <div class="content">
+                  <p>to myself</p>
+                </div>
+              </a>
+            </article>
+          </section>
+        </div>
+      </div>
 
-							<section class="tiles">
+      <!-- Footer -->
+      <footer id="footer">
+        <div class="inner">
+          <ul class="copyright">
+            <li>&copy; Synthex. All rights reserved</li>
+            <li>
+              Opensource:
+              <a
+                href="redirect.html?Link=https://github.com/ftnick/Synthex-Roblox"
+                >Synthex</a
+              >
+            </li>
+            <li><button id="logoutButton">Logout</button></li>
+          </ul>
+        </div>
+      </footer>
+    </div>
 
-								<article class="style1">
-									<span class="image">
-										<img src="images\clothing_images\stayshirt.png" alt="" />
-									</span>
-									<a href="clothing1.html">
-										<h2>stay</h2>
-										<div class="content">
-											<p>to ari</p>
-										</div>							
-									</a>
-								</article>
-
-								<article class="style1">
-									<span class="image">
-										<img src="images\clothing_images\sorryshirt.png" alt="" />
-									</span>
-									<a href="clothing2.html">
-										<h2>sorry</h2>
-										<div class="content">
-											<p>to myself</p>
-										</div>							
-									</a>
-								</article>
-
-							</section>
-						</div>
-					</div>
-
-				<!-- Footer -->
-				<footer id="footer">
-					<div class="inner">
-						<ul class="copyright">
-							<li>&copy; Synthex. All rights reserved</li>
-							<li>Opensource: <a href="redirect.html?Link=https://github.com/ftnick/Synthex-Roblox">Synthex</a></li>
-							<li><button id="logoutButton">Logout</button></li>
-						</ul>
-					</div>
-				</footer>
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script src="assets/js/logout.js"></script>
-	</body>
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/logout.js"></script>
+	<script src="assets/js/loggedinuser.js"></script>
+  </body>
 </html>
