@@ -33,6 +33,22 @@
     <p>Thank you for your patience.</p>
 
     <p>To get more detailed reports, go to our <a href="https://example.com/status-page">status page</a>.</p>
+
+    <footer id="footer">
+        <div class="inner">
+          <ul class="copyright">
+            <li><button id="update-log">Bypass Maintenance Lock (Site Developers Only)</button></li>
+            <script>
+                document.getElementById("update-log").onclick = function () {
+                    localStorage.setItem("isLoggedIn", "false");
+                    localStorage.setItem("username", "");
+                    window.location.href = "login.html";
+                };
+            </script>
+          </ul>
+        </div>
+    </footer>
+
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/browser.min.js"></script>
     <script src="assets/js/breakpoints.min.js"></script>
