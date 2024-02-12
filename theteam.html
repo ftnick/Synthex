@@ -12,14 +12,32 @@
       text-align: center;
     }
 
-    .team-member {
+    .title-section {
+      text-align: center;
+    }
+
+    .team-section {
       margin-bottom: 40px;
+      text-align: left;
+    }
+
+    .team-members-row {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    .team-member {
+      width: 30%;
+      margin-bottom: 20px;
+      text-align: center;
     }
 
     .team-member img {
       border-radius: 50%;
       max-width: 150px;
       height: auto;
+      margin-bottom: 10px;
     }
 
     .team-member h3 {
@@ -42,33 +60,99 @@
       </div>
       <nav>
         <ul>
-            <li><a href="https://ftnick.github.io/Synthex-Roblox/">Back to home</a></li>
+          <li><a href="https://ftnick.github.io/Synthex-Roblox/">Back to home</a></li>
         </ul>
-    </nav>
+      </nav>
     </header>
 
     <div id="main">
       <div class="inner">
-        <header>
-          <h2>The Team</h2>
-        </header>
-        <section class="team-member">
-          <img src="images/team/nickHeadshot.png" alt="Nick's Headshot">
-          <p><strong>Nick</strong></p>
-          <p>Lead Developer & Founder</p>
-          <p><a href="redirect.html?Link=https://www.roblox.com/users/885446584/profile">@repostnick</a></p>
+        <section class="team-section">
+          <div class="title-section">
+            <h3>Founder</h3>
+          </div>
+          <div class="team-members-row">
+            <div class="team-member">
+              <img src="images/team/nickHeadshot.png" alt="Nick's Account Headshot">
+              <p><strong>Nick</strong></p>
+              <p>Lead Developer & Founder</p>
+              <p><a href="redirect.html?Link=https://www.roblox.com/users/885446584/profile">@repostnick</a></p>
+            </div>
+          </div>
         </section>
 
-        <br>
-
-        <section class="team-member">
-          <img src="images/team/leeHeadshot.png" alt="Lee's Headshot">
-          <p><strong>Lee</strong></p>
-          <p>Developer & Co-Founder</p>
-          <p><a href="redirect.html?Link=https://www.roblox.com/users/1768434453/profile">@Gues7863</a></p>
+        <!-- Co-Founder Section -->
+        <section class="team-section">
+          <div class="title-section">
+            <h3>Co-Founder</h3>
+          </div>
+          <div class="team-members-row">
+            <div class="team-member">
+              <img src="images/team/leeHeadshot.png" alt="Lee's Account Headshot">
+              <p><strong>Lee</strong></p>
+              <p>Developer & Co-Founder</p>
+              <p><a href="redirect.html?Link=https://www.roblox.com/users/1768434453/profile">@Gues7863</a></p>
+            </div>
+          </div>
         </section>
 
-        <!-- Add more team members as needed -->
+        <!-- Developers Section -->
+        <section class="team-section">
+          <div class="title-section">
+            <h3>Developers</h3>
+          </div>
+          <div class="team-members-row">
+
+            <div class="team-member">
+              <img src="images/team/jakeHeadshot.png" alt="Jake's Account Headshot">
+              <p><strong>Jake</strong></p>
+              <p>Junior Developer</p>
+              <p><a href="redirect.html?Link=https://www.roblox.com/users/2531149957/profile">@N0rthernDeveloper</a></p>
+            </div>
+
+            <div class="team-member">
+              <img src="images/team/ryanHeadshot.png" alt="Ryan's Account Headshot">
+              <p><strong>Ryan</strong></p>
+              <p>Junior Developer</p>
+              <p><a href="redirect.html?Link=https://www.roblox.com/users/2284117685/profile">@RobloxGameStatistics</a></p>
+            </div>
+            <!-- Add more developers as needed -->
+          </div>
+        </section>
+
+        <section class="team-section">
+          <div class="title-section">
+            <h3>Testers</h3>
+          </div>
+          <div class="team-members-row">
+
+            <div class="team-member">
+              <img src="images/team/testers/one.png" alt="Account Headshot">
+              <p><strong>Luna</strong></p>
+              <p>Tester</p>
+            </div>
+
+            <div class="team-member">
+              <img src="images/team/testers/two.png" alt="Account Headshot">
+              <p><strong>Charles</strong></p>
+              <p>Tester</p>
+            </div>
+
+            <div class="team-member">
+              <img src="images/team/testers/three.png" alt="Account Headshot">
+              <p><strong>Joshu</strong></p>
+              <p>Tester</p>
+            </div>
+
+            <div class="team-member">
+              <img src="images/team/testers/four.png" alt="Account Headshot">
+              <p><strong>Oscar</strong></p>
+              <p>Tester</p>
+            </div>
+
+            <!-- Add more testers as needed -->
+          </div>
+        </section>
       </div>
     </div>
 
