@@ -35,12 +35,22 @@
           <ul>
             <li><strong>Email: </strong> <a href="mailto:robloxsynthex@gmail.com">robloxsynthex@gmail.com</a></li>
           </ul>
-          <ul>
-            <li><strong>Email: </strong> <a href="mailto:robloxsynthex@gmail.com">robloxsynthex@gmail.com</a></li>
-          </ul>
-          <p>
-            Our dedicated support team is committed to providing timely and helpful responses to address your concerns or inquiries.
-          </p>
+          <p>Our dedicated support team is committed to providing timely and helpful responses to address your concerns or inquiries.</p>
+        
+          <iframe id="supportForm" src="https://docs.google.com/forms/d/e/1FAIpQLSds9DlqpMBI4KXNcj4_3C6bsEBx4ggK2nuHNBpdIcnOKzVD-A/viewform?embedded=true" width="640" height="1018" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+          <script>
+            function toggleSupportForm() {
+              var form = document.getElementById("supportForm");
+              if (form.style.display === "none") {
+                form.style.display = "block";
+              } else {
+                form.style.display = "none";
+              }
+            }
+            var form = document.getElementById("supportForm");
+            form.style.display = "none";
+          </script>
+          <button id="toggleButton" onclick="toggleSupportForm()">Toggle Support Form</button>
         </section>
       </div>
     </div>
