@@ -27,13 +27,6 @@
         </div>
       </header>
 
-      <!-- Announcement -->
-      <section id="announcement" style="display: none;">
-        <div class="inner">
-          <p id="announcement-text"></p>
-        </div>
-      </section>
-
       <!-- Menu
 					<nav id="menu">
 						<h2>Menu</h2>
@@ -49,7 +42,102 @@
         <div class="inner">
           <header><h2><strong>Games:</strong></h2></header>
           <section class="tiles">
-            <!-- Your game articles here -->
+            <article class="style1">
+              <span class="image">
+                <img src="images\game_images\game1.png" alt="" />
+              </span>
+              <a href="tiles/game1.html">
+                <h2>Sandy National Park</h2>
+                <div class="content">
+                  <p>Embark on a adventure in Sandy National Park, a horror game set in a dark, mysterious forest. Take on the role of a park ranger as you navigate through the shadows, piecing together clues to unravel a chilling story and lore. </p>
+                </div>
+              </a>
+            </article>
+
+            <article class="style1">
+              <span class="image">
+                <img src="images\game_images\game2.png" alt="" />
+              </span>
+              <a href="tiles/game2.html">
+                <h2>containment</h2>
+                <div class="content">
+                  <p>Nuclear testing facillty</p>
+                  <br>
+                  <p>( Discontinued )</p>>
+                </div>
+              </a>
+            </article>
+
+            <article class="style1">
+              <span class="image">
+                <img src="images\game_images\game3.png" alt="" />
+              </span>
+              <a href="tiles/game3.html">
+                <h2>Some Space</h2>
+                <div class="content">
+                  <p>Dinner For All</p>
+                  <br>
+                  <p>( Discontinued )</p>>
+                </div>
+              </a>
+            </article>
+
+            <article class="style1">
+              <span class="image">
+                <img src="images\game_images\game4.png" alt="" />
+              </span>
+              <a href="tiles/game4.html">
+                <h2>Rent-A-Memory</h2>
+                <div class="content">
+                  <p>harsh decision game which is meant to respectfully visit the most sensitive responsibilities and challenges someone could face.</p>
+                  <br>
+                  <p>( Discontinued )</p>>
+                </div>
+              </a>
+            </article>
+
+            <article class="style1">
+              <span class="image">
+                <img src="images\game_images\game5.png" alt="" />
+              </span>
+              <a href="tiles/game5.html">
+                <h2>district</h2>
+                <div class="content">
+                  <p>currently in a demo stage</p>
+                  <br>
+                  <p>( Discontinued )</p>>
+                </div>
+              </a>
+            </article>
+
+            <article class="style1">
+              <span class="image">
+                <img src="images\game_images\game6.png" alt="" />
+              </span>
+              <a href="tiles/game6.html">
+                <h2>Forbidden Passions</h2>
+                <div class="content">
+                  <p>Genre: Psychological Horror <br> Mode: Single-player</p>
+                  <br>
+                  <p>( Discontinued )</p>>
+                </div>
+              </a>
+            </article>
+
+            <article class="style1">
+              <span class="image">
+                <img src="images\placeholder.png" alt="" />
+              </span>
+              <a href="placeholder.html">
+                <h2>Fragments</h2>
+                <div class="content">
+                  <p>interactive experience</p>
+                  <br>
+                  <p>( Discontinued )</p>>
+                </div>
+              </a>
+            </article>
+
           </section>
 
           <br />
@@ -57,7 +145,21 @@
 
           <header><h2><strong>Modules:</strong></h2></header>
           <section class="tiles">
-            <!-- Your module articles here -->
+            <article class="style1">
+              <span class="image">
+                <img src="images\pic02.jpg" alt="" />
+              </span>
+              <a href="tiles/module1.html">
+                <h2>Synthex XP Levels</h2>
+                <div class="content">
+                  <p>
+                    Synthex XP Levels is a free and dynamic Roblox module that
+                    effortlessly integrates an XP leveling system into your
+                    game.
+                  </p>
+                </div>
+              </a>
+            </article>
           </section>
 
           <br />
@@ -65,7 +167,29 @@
 
           <header><h2><strong>Clothing:</strong></h2></header>
           <section class="tiles">
-            <!-- Your clothing articles here -->
+            <article class="style1">
+              <span class="image">
+                <img src="images\clothing_images\stayshirt.png" alt="" />
+              </span>
+              <a href="tiles/clothing1.html">
+                <h2>stay</h2>
+                <div class="content">
+                  <p>to ari</p>
+                </div>
+              </a>
+            </article>
+
+            <article class="style1">
+              <span class="image">
+                <img src="images\clothing_images\sorryshirt.png" alt="" />
+              </span>
+              <a href="tiles/clothing2.html">
+                <h2>sorry</h2>
+                <div class="content">
+                  <p>to myself</p>
+                </div>
+              </a>
+            </article>
           </section>
         </div>
       </div>
@@ -90,29 +214,12 @@
     </div>
 
     <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+  <script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
 
-    <script src="https://synthexroblox.statuspage.io/embed/script.js"></script>
-
-    <script>
-      fetch('https://pastebin.com/raw/MvKdienH')
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Failed to fetch announcement: ' + response.statusText);
-          }
-          return response.text();
-        })
-        .then(text => {
-          const announcementSection = document.getElementById('announcement');
-          const announcementText = document.getElementById('announcement-text');
-          announcementText.textContent = text;
-          announcementSection.style.display = 'block';
-        })
-        .catch(error => console.error('Error fetching announcement:', error));
-    </script>
+  <script src="https://synthexroblox.statuspage.io/embed/script.js"></script>
   </body>
 </html>
