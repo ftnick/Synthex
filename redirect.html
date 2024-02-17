@@ -47,12 +47,12 @@
       const loadingElement = document.getElementById("LOADINGBAR");
 
       if (downloadLink) {
-        (statusElement.innerHTML = "Redirecting to ", downloadLink);
+        (statusElement.innerHTML = "Redirecting to " + downloadLink);
         setTimeout(function () {
             window.location.href = downloadLink;
         }, 2000);
       } else if (Link) {
-        (statusElement.innerHTML = "Redirecting to ", Link);
+        (statusElement.innerHTML = "Redirecting to " + Link);
         setTimeout(function () {
             window.location.href = Link;
         }, 2000);
