@@ -1,63 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url=">
-    <link type="image/png" sizes="96x96" rel="icon" href="images/Web/icons8-s-key-ios-17-96.png">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      type="image/png"
+      sizes="96x96"
+      rel="icon"
+      href="images/Web/icons8-s-key-ios-17-96.png"
+    />
+    <link rel="stylesheet" href="assets/css/redirect.css" />
     <title>Redirecting to download...</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-        }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh; /* Set the body height to 100% of the viewport height */
+        margin: 0;
+      }
 
-        #status {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
+      #redirectBtn {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
 
-        #redirectBtn {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+      .loader {
+        padding: 10px 20px;
+        font-size: 18px;
+        margin: 50px;
+        margin-bottom: 20px;
+      }
     </style>
-</head>
-<body>
-    <div id="status">Redirecting...</div>
+  </head>
+  <body>
+    <div class="loader">
+      <p id="status">Redirecting...</p>
+      <div class="loading" id="LOADINGBAR"></div>
+    </div>
 
     <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const downloadLink = urlParams.get('downloadLink');
-        const Link = urlParams.get('Link');
-        const statusElement = document.getElementById('status');
+      const urlParams = new URLSearchParams(window.location.search);
+      const downloadLink = urlParams.get("downloadLink");
+      const Link = urlParams.get("Link");
+      const statusElement = document.getElementById("status");
+      const loadingElement = document.getElementById("LOADINGBAR");
 
-        if (downloadLink) {
-            window.location.href = downloadLink;
-        } else if (Link) {
-            window.location.href = Link;
-        } else {
-            statusElement.innerHTML = '<span style="color: red;">Download link not provided.</span>';
-            showRedirectButton();
-        }
-
-        function showRedirectButton() {
-            const redirectBtn = document.createElement('button');
-            redirectBtn.id = 'redirectBtn';
-            redirectBtn.textContent = 'Click here to manually redirect';
-            redirectBtn.onclick = redirectToDefaultPage;
-            document.body.appendChild(redirectBtn);
-        }
-
-        function redirectToDefaultPage() {
-            window.location.href = '/'; // Replace with your default page URL
-        }
-
-
-        
+      if (downloadLink) {
+        statusElement.innerHTML = 'Redirecting to ', downloadLink
+        window.location.href = downloadLink;
+      } else if (Link) {
+        statusElement.innerHTML = 'Redirecting to ', Link
+        window.location.href = Link;
+      } else {
+        loadingElement.style.display = 'none';
+        statusElement.innerHTML =
+          '<span style="color: red;">Redirect link not provided, go<a href="https://ftnick.github.io/Synthex/"> back home.</a></span>';
+      }
     </script>
-
-
-</body>
+  </body>
 </html>
