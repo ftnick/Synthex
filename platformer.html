@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Synthex - Platformer Game</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link type="image/png" sizes="96x96" rel="icon" href="images/Web/icons8-s-key-ios-17-96.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css" />
+  <style>
+    /* Add your styles from the second HTML file here */
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: "Arial", sans-serif;
+      line-height: 1.6;
+    }
+
+    canvas {
+      display: block;
+    }
+
+    /* Add any additional styles or adjustments as needed */
+  </style>
+</head>
+<body class="is-preload">
+  <!-- Wrapper -->
+  <div id="wrapper">
+    <!-- Header -->
+    <header id="header">
+      <div class="inner">
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div id="main">
+      <div class="inner">
+        <!-- Include your announcement and other sections here -->
+
+        <!-- Platformer Game Section -->
+        <canvas id="gameCanvas"></canvas>
+
+        <script src="https://synthexroblox.statuspage.io/embed/script.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scroll/16.1.3/smooth-scroll.min.js"></script>
+        <script src="https://unpkg.com/@sal/scrollreveal"></script>
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            var scroll = new SmoothScroll('a[href*="#"]', {
+              speed: 800,
+              offset: 300,
+            });
+          });
+        </script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+        <script>
+          AOS.init();
+        </script>
+
+        <!-- Include your other scripts here -->
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer" class="animate__animated animate__fadeInUp">
+      <div class="inner">
+        <ul class="copyright">
+          <li>&copy; Synthex. All rights reserved</li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+
+    // Set canvas size
+    canvas.width = 800;
+    canvas.height = 400;
+
+    // Player properties
+    const player = {
+      x: 50,
+      y: canvas.height - 50,
+      width: 30,
+      height: 30,
+      color: "#00F",
+      speed: 2,
+      jumpPower: 20,
+      isJumping: false,
+      velocityY: 0,
+    };
+
+    // Platform properties
+    const platform = {
+      x: 0,
+      y: canvas.height - 20,
+      width: canvas.width,
+      height: 20,
+      color: "#333",
+    };
+
+    // Obstacle properties
+    const obstacles = [];
+    const obstacleWidth = 20;
+    const obstacleHeight = 20;
+
+    // Score
+    let score = 0;
+
+    // Camera properties
+    let cameraX = 0;
+
+    // Prediction line properties
+    const predictionLine = {
+      color: "#999",
+      length: 100,
+    };
+
+    function draw() {
+      // Clear canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Draw player
+      ctx.fillStyle = player.color;
+      ctx.fillRect(player.x - cameraX, player.y, player.width, player.height);
+
+      // Draw platform
+      ctx.fillStyle = platform.color;
+      ctx.fillRect(platform.x - cameraX, platform.y, platform.width, platform.height);
+
+      // Draw obstacles
+      ctx.fillStyle = "#F00"; // Red color for obstacles
+      for (const obstacle of obstacles) {
+        ctx.fillRect(obstacle.x - cameraX, obstacle.y, obstacleWidth, obstacleHeight);
+      }
+
+      // Draw score
+      ctx.fillStyle = "#000";
+      ctx.font = "20px Arial";
+      ctx.fillText("Score: " + score, 10, 30);
+
+      // Draw prediction line
+      drawPredictionLine();
+    }
+
+    function update() {
+      // Player movement
+      if (player.isJumping) {
+        player.y -= player.velocityY;
+        player.x += player.speed; // Move player forward during jump
+        player.velocityY -= 1;
+
+        if (player.y >= canvas.height - player.height) {
+          player.y = canvas.height - player.height;
+          player.isJumping = false;
+        }
+      }
+
+      // Check for collisions with platform
+      if (
+        player.x < platform.x + platform.width &&
+        player.x + player.width > platform.x &&
+        player.y + player.height > platform.y
+      ) {
+        player.isJumping = false;
+        player.y = platform.y - player.height;
+        player.velocityY = 0;
+      }
+
+      // Check for collisions with obstacles
+      for (const obstacle of obstacles) {
+        if (
+          player.x < obstacle.x + obstacleWidth &&
+          player.x + player.width > obstacle.x &&
+          player.y + player.height > obstacle.y
+        ) {
+          // Player touched obstacle, reset the game
+          console.warn("PLAYER DIED")
+          location.reload();
+        }
+      }
+
+      // Gravity
+      if (player.y < canvas.height - player.height) {
+        player.y += 2;
+      }
+
+      // Update obstacles
+      for (const obstacle of obstacles) {
+        obstacle.x -= 2; // Adjust the obstacle's speed
+      }
+
+      // Generate new obstacle every 10 seconds
+      if (Math.random() < 0.01) {
+        obstacles.push({
+          x: canvas.width + cameraX, // Adjust based on camera position
+          y: canvas.height - 20 - obstacleHeight,
+        });
+      }
+
+      // Remove off-screen obstacles
+      obstacles.filter(obstacle => obstacle.x + obstacleWidth > 0 - cameraX);
+
+      // Check for scoring (passed obstacles)
+      for (const obstacle of obstacles) {
+        if (obstacle.x + obstacleWidth < player.x && !obstacle.passed) {
+          obstacle.passed = true;
+          score++;
+        }
+      }
+
+      // Update camera position based on player's movement
+      cameraX = Math.max(player.x - canvas.width / 2, 0);
+    }
+
+    function gameLoop() {
+      update();
+      draw();
+
+      requestAnimationFrame(gameLoop);
+    }
+
+    canvas.addEventListener("touchstart", handleTouch);
+
+          function handleTouch() {
+            if (!player.isJumping) {
+              player.isJumping = true;
+              player.velocityY = player.jumpPower;
+            }
+          }
+
+    // Handle keyboard input
+    document.addEventListener("keydown", (e) => {
+      if (e.code === "Space" && !player.isJumping) {
+        player.isJumping = true;
+        player.velocityY = player.jumpPower;
+      }
+    });
+    
+
+    // Start the game loop
+    gameLoop();
+
+    function drawPredictionLine() {
+      ctx.strokeStyle = predictionLine.color;
+      ctx.beginPath();
+      ctx.moveTo(player.x - cameraX + player.width / 2, player.y + player.height);
+      ctx.lineTo(player.x - cameraX + player.width / 2, player.y + player.height + predictionLine.length);
+      ctx.stroke();
+    }
+  </script>
+</body>
+</html>
