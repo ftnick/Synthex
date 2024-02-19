@@ -223,11 +223,13 @@
 
         function showIncorrect() {
           var label = document.getElementById("messageLabelcloseable");
-          label.style.display = "block"; // Show the label
+          label.classList.remove("hidden"); // Remove the 'hidden' class
+          label.style.display = "inline"; // Show the label
         }
 
         function closeIncorrect() {
           var label = document.getElementById("messageLabelcloseable");
+          label.classList.add("hidden");
           label.style.display = "none"; // Hide the label
         }
 
