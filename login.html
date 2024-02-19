@@ -258,12 +258,12 @@
 
           if (userTable.hasOwnProperty(username)) {
             if (userTable[username] === password) {
-              return true; // Username and password match
               showCorrect();
+              return true; // Username and password match
             }
           }
-          return false; // Username or password does not match
           showIncorrect();
+          return false; // Username or password does not matc
         }
 
         var userLoggedIn = getLocalStorage("user_logged_in");
@@ -298,7 +298,7 @@
               } else {
                 setTimeout(function () {
                   showIncorrect();
-                }, 1000);
+                }, 500);
               }
             }
           });
