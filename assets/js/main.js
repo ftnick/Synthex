@@ -4,182 +4,157 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
-(function($) {
+function setLocalStorage(name, value) {
+  localStorage.setItem(name, value);
+}
 
-	var	$window = $(window),
-		$body = $('body');
+function getLocalStorage(name) {
+  return localStorage.getItem(name);
+}
 
-	// Breakpoints.
-		breakpoints({
-			xlarge:   [ '1281px',  '1680px' ],
-			large:    [ '981px',   '1280px' ],
-			medium:   [ '737px',   '980px'  ],
-			small:    [ '481px',   '736px'  ],
-			xsmall:   [ '361px',   '480px'  ],
-			xxsmall:  [ null,      '360px'  ]
-		});
+var userLoggedIn = getLocalStorage("user_logged_in");
 
-	// Play initial animations on page load.
-		$window.on('load', function() {
-			window.setTimeout(function() {
-				$body.removeClass('is-preload');
-			}, 100);
-		});
+if (userLoggedIn) {
+	console.log("Logged in.")
+} else {
+	console.warn("Not logged in.")
+	var RedirectLink = window.location.href
+	window.location.href = "login.html?redirectLink=" + RedirectLink;
+}
+(function ($) {
+  var $window = $(window),
+    $body = $("body");
 
-	// Touch?
-		if (browser.mobile)
-			$body.addClass('is-touch');
+  // Breakpoints.
+  breakpoints({
+    xlarge: ["1281px", "1680px"],
+    large: ["981px", "1280px"],
+    medium: ["737px", "980px"],
+    small: ["481px", "736px"],
+    xsmall: ["361px", "480px"],
+    xxsmall: [null, "360px"],
+  });
 
-	// Forms.
-		var $form = $('form');
+  // Play initial animations on page load.
+  $window.on("load", function () {
+    window.setTimeout(function () {
+      $body.removeClass("is-preload");
+    }, 100);
+  });
 
-		// Auto-resizing textareas.
-			$form.find('textarea').each(function() {
+  // Touch?
+  if (browser.mobile) $body.addClass("is-touch");
 
-				var $this = $(this),
-					$wrapper = $('<div class="textarea-wrapper"></div>'),
-					$submits = $this.find('input[type="submit"]');
+  // Forms.
+  var $form = $("form");
 
-				$this
-					.wrap($wrapper)
-					.attr('rows', 1)
-					.css('overflow', 'hidden')
-					.css('resize', 'none')
-					.on('keydown', function(event) {
+  // Auto-resizing textareas.
+  $form.find("textarea").each(function () {
+    var $this = $(this),
+      $wrapper = $('<div class="textarea-wrapper"></div>'),
+      $submits = $this.find('input[type="submit"]');
 
-						if (event.keyCode == 13
-						&&	event.ctrlKey) {
+    $this
+      .wrap($wrapper)
+      .attr("rows", 1)
+      .css("overflow", "hidden")
+      .css("resize", "none")
+      .on("keydown", function (event) {
+        if (event.keyCode == 13 && event.ctrlKey) {
+          event.preventDefault();
+          event.stopPropagation();
 
-							event.preventDefault();
-							event.stopPropagation();
+          $(this).blur();
+        }
+      })
+      .on("blur focus", function () {
+        $this.val($.trim($this.val()));
+      })
+      .on("input blur focus --init", function () {
+        $wrapper.css("height", $this.height());
 
-							$(this).blur();
+        $this
+          .css("height", "auto")
+          .css("height", $this.prop("scrollHeight") + "px");
+      })
+      .on("keyup", function (event) {
+        if (event.keyCode == 9) $this.select();
+      })
+      .triggerHandler("--init");
 
-						}
+    // Fix.
+    if (browser.name == "ie" || browser.mobile)
+      $this.css("max-height", "10em").css("overflow-y", "auto");
+  });
 
-					})
-					.on('blur focus', function() {
-						$this.val($.trim($this.val()));
-					})
-					.on('input blur focus --init', function() {
+  // Menu.
+  var $menu = $("#menu");
 
-						$wrapper
-							.css('height', $this.height());
+  $menu.wrapInner('<div class="inner"></div>');
 
-						$this
-							.css('height', 'auto')
-							.css('height', $this.prop('scrollHeight') + 'px');
+  $menu._locked = false;
 
-					})
-					.on('keyup', function(event) {
+  $menu._lock = function () {
+    if ($menu._locked) return false;
 
-						if (event.keyCode == 9)
-							$this
-								.select();
+    $menu._locked = true;
 
-					})
-					.triggerHandler('--init');
+    window.setTimeout(function () {
+      $menu._locked = false;
+    }, 350);
 
-				// Fix.
-					if (browser.name == 'ie'
-					||	browser.mobile)
-						$this
-							.css('max-height', '10em')
-							.css('overflow-y', 'auto');
+    return true;
+  };
 
-			});
+  $menu._show = function () {
+    if ($menu._lock()) $body.addClass("is-menu-visible");
+  };
 
-	// Menu.
-		var $menu = $('#menu');
+  $menu._hide = function () {
+    if ($menu._lock()) $body.removeClass("is-menu-visible");
+  };
 
-		$menu.wrapInner('<div class="inner"></div>');
+  $menu._toggle = function () {
+    if ($menu._lock()) $body.toggleClass("is-menu-visible");
+  };
 
-		$menu._locked = false;
+  $menu
+    .appendTo($body)
+    .on("click", function (event) {
+      event.stopPropagation();
+    })
+    .on("click", "a", function (event) {
+      var href = $(this).attr("href");
 
-		$menu._lock = function() {
+      event.preventDefault();
+      event.stopPropagation();
 
-			if ($menu._locked)
-				return false;
+      // Hide.
+      $menu._hide();
 
-			$menu._locked = true;
+      // Redirect.
+      if (href == "#menu") return;
 
-			window.setTimeout(function() {
-				$menu._locked = false;
-			}, 350);
+      window.setTimeout(function () {
+        window.location.href = href;
+      }, 350);
+    })
+    .append('<a class="close" href="#menu">Close</a>');
 
-			return true;
+  $body
+    .on("click", 'a[href="#menu"]', function (event) {
+      event.stopPropagation();
+      event.preventDefault();
 
-		};
-
-		$menu._show = function() {
-
-			if ($menu._lock())
-				$body.addClass('is-menu-visible');
-
-		};
-
-		$menu._hide = function() {
-
-			if ($menu._lock())
-				$body.removeClass('is-menu-visible');
-
-		};
-
-		$menu._toggle = function() {
-
-			if ($menu._lock())
-				$body.toggleClass('is-menu-visible');
-
-		};
-
-		$menu
-			.appendTo($body)
-			.on('click', function(event) {
-				event.stopPropagation();
-			})
-			.on('click', 'a', function(event) {
-
-				var href = $(this).attr('href');
-
-				event.preventDefault();
-				event.stopPropagation();
-
-				// Hide.
-					$menu._hide();
-
-				// Redirect.
-					if (href == '#menu')
-						return;
-
-					window.setTimeout(function() {
-						window.location.href = href;
-					}, 350);
-
-			})
-			.append('<a class="close" href="#menu">Close</a>');
-
-		$body
-			.on('click', 'a[href="#menu"]', function(event) {
-
-				event.stopPropagation();
-				event.preventDefault();
-
-				// Toggle.
-					$menu._toggle();
-
-			})
-			.on('click', function(event) {
-
-				// Hide.
-					$menu._hide();
-
-			})
-			.on('keydown', function(event) {
-
-				// Hide on escape.
-					if (event.keyCode == 27)
-						$menu._hide();
-
-			});
-
+      // Toggle.
+      $menu._toggle();
+    })
+    .on("click", function (event) {
+      // Hide.
+      $menu._hide();
+    })
+    .on("keydown", function (event) {
+      // Hide on escape.
+      if (event.keyCode == 27) $menu._hide();
+    });
 })(jQuery);
