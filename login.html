@@ -210,13 +210,107 @@
               /><br />
               <input type="submit" value="Login" />
             </form>
-            <p class="small">Don't have an account? To request website access, direct message a site developer.</p>
+            <p class="small">
+              Don't have an account? To request website access, direct message a
+              site developer.
+            </p>
           </div>
         </div>
       </header>
-
-    
-      
     </div>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      var Link = urlParams.get("redirectLink");
+
+      if (!Link) {
+        var Link = "https://ftnick.github.io/Synthex/";
+      }
+
+      function showCorrect() {
+        var label = document.getElementById("messageLabelcloseable");
+        label.classList.remove("hidden"); // Remove the 'hidden' class
+        label.style.display = "inline"; // Show the label
+
+        var label2 = document.getElementById("errorID");
+        label2.classList.remove("error");
+        label2.classList.add("valid");
+
+        var alertText = document.querySelector(".alertText");
+        alertText.innerHTML = "Correct Username And Password, Please Wait...";
+      }
+
+      function showIncorrect() {
+        var label = document.getElementById("messageLabelcloseable");
+        label.classList.remove("hidden"); // Remove the 'hidden' class
+        label.style.display = "inline"; // Show the label
+      }
+
+      function closeIncorrect() {
+        var label = document.getElementById("messageLabelcloseable");
+        label.classList.add("hidden");
+        label.style.display = "none"; // Hide the label
+      }
+
+      function setLocalStorage(name, value) {
+        localStorage.setItem(name, value);
+      }
+
+      function getLocalStorage(name) {
+        return localStorage.getItem(name);
+      }
+
+      function authenticateUser(username, password) {
+        const userTable = {
+          ftnick: "Nickcool",
+          PublicAccount: "PublicUser",
+        };
+
+        if (userTable.hasOwnProperty(username)) {
+          if (userTable[username] === password) {
+            showCorrect();
+            return true; // Username and password match
+          }
+        }
+        showIncorrect();
+        return false; // Username or password does not matc
+      }
+
+      var userLoggedIn = getLocalStorage("user_logged_in");
+      if (userLoggedIn) {
+        window.location.href = Link;
+      }
+
+      document
+        .getElementById("login-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the default form submission
+
+          // Check if the user is already logged in by looking for the presence of the localStorage item
+          var userLoggedIn = getLocalStorage("user_logged_in");
+
+          if (userLoggedIn) {
+            window.location.href = Link;
+          } else {
+            // If the user is not logged in, proceed with the login process
+
+            // Retrieve username and password from the form
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            var userAuthenticated = authenticateUser(username, password);
+
+            if (userAuthenticated) {
+              setTimeout(function () {
+                setLocalStorage("user_logged_in", username);
+                window.location.href = Link;
+              }, 2000);
+            } else {
+              setTimeout(function () {
+                showIncorrect();
+              }, 500);
+            }
+          }
+        });
+    </script>
   </body>
 </html>
