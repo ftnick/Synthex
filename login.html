@@ -146,14 +146,6 @@
         font-weight: 400;
       }
 
-      .alertCheckbox {
-        display: none;
-      }
-
-      :checked + .alert {
-        display: none;
-      }
-
       .alertText {
         display: table;
         margin: 0 auto;
@@ -187,9 +179,8 @@
           <!-- Login Form -->
           <div id="login-form">
             <label id="messageLabelcloseable" class="hidden">
-              <input type="checkbox" class="alertCheckbox" autocomplete="off" />
               <div class="alert error">
-                <span class="alertClose">X</span>
+                <span class="alertClose" onclick="closeIncorrect()">X</span>
                 <span class="alertText"
                   >Incorrect Username Or Password, Try Again<br class="clear"
                 /></span>
