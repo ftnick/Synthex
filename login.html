@@ -168,6 +168,12 @@
         border: 1px solid #edd;
         color: #a66;
       }
+
+      .valid {
+        background-color: rgb(238, 255, 238);
+        border: 1px solid rgb(221, 238, 221);
+        color: rgb(102, 170, 105);
+      }
     </style>
   </head>
   <body class="is-preload">
@@ -179,7 +185,7 @@
           <!-- Login Form -->
           <div id="login-form">
             <label id="messageLabelcloseable" class="hidden">
-              <div class="alert error">
+              <div id="errorID" class="alert error">
                 <span class="alertClose" onclick="closeIncorrect()">X</span>
                 <span class="alertText"
                   >Incorrect Username Or Password, Try Again<br class="clear"
@@ -212,10 +218,22 @@
           var Link = "https://ftnick.github.io/Synthex/";
         }
 
+        function showCorrect() {
+          var label = document.getElementById("messageLabelcloseable");
+          label.classList.remove("hidden"); // Remove the 'hidden' class
+          label.style.display = "inline"; // Show the label
+
+          var label2 = document.getElementById("errorID");
+          label2.classList.remove("error");
+          label2.classList.add("valid");
+
+          var alertText = document.querySelector(".alertText");
+          alertText.innerHTML = "Correct Username And Password, Please Wait...";
+        }
+
         function showIncorrect() {
           var label = document.getElementById("messageLabelcloseable");
           label.classList.remove("hidden"); // Remove the 'hidden' class
-          console.log(label.classList.toString());
           label.style.display = "inline"; // Show the label
         }
 
@@ -241,7 +259,7 @@
           if (userTable.hasOwnProperty(username)) {
             if (userTable[username] === password) {
               return true; // Username and password match
-              closeIncorrect();
+              showCorrect();
             }
           }
           return false; // Username or password does not match
@@ -273,10 +291,14 @@
               var userAuthenticated = authenticateUser(username, password);
 
               if (userAuthenticated) {
-                setLocalStorage("user_logged_in", "true");
-                window.location.href = Link;
+                setTimeout(function () {
+                  setLocalStorage("user_logged_in", "true");
+                  window.location.href = Link;
+                }, 2000);
               } else {
-                showIncorrect();
+                setTimeout(function () {
+                  showIncorrect();
+                }, 1000);
               }
             }
           });
