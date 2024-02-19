@@ -253,7 +253,8 @@
 
         function authenticateUser(username, password) {
           const userTable = {
-            ftnick: "Nickisdabest1",
+            ftnick: "Nickcool",
+            PublicAccount: "PublicUser",
           };
 
           if (userTable.hasOwnProperty(username)) {
@@ -292,7 +293,7 @@
 
               if (userAuthenticated) {
                 setTimeout(function () {
-                  setLocalStorage("user_logged_in", "true");
+                  setLocalStorage("user_logged_in", username);
                   window.location.href = Link;
                 }, 2000);
               } else {
