@@ -196,7 +196,7 @@
               </div>
             </label>
             <h2>Login</h2>
-            <h3>With Your Synthex Account</h3>
+            <p><strong>With Your Synthex Account</strong></p>
             <form id="login-form2" action="#" method="post">
               <label for="username">Username:</label>
               <input type="text" id="username" name="username" required /><br />
@@ -223,7 +223,7 @@
 
         function showIncorrect() {
           var label = document.getElementById("messageLabel");
-          label.style.display = "inline"; // Show the label
+          label.style.display = "block"; // Show the label
         }
 
         function closeIncorrect() {
@@ -282,8 +282,7 @@
                 setLocalStorage("user_logged_in", "true");
                 window.location.href = Link;
               } else {
-                // If login fails, you can display an error message to the user
-                alert("Invalid username or password. Please try again.");
+                showIncorrect();
               }
             }
           });
