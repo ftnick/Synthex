@@ -186,7 +186,7 @@
         <div class="inner">
           <!-- Login Form -->
           <div id="login-form">
-            <label id="messageLabel" class="hidden">
+            <label id="messageLabelcloseable" class="hidden">
               <input type="checkbox" class="alertCheckbox" autocomplete="off" />
               <div class="alert error">
                 <span class="alertClose">X</span>
@@ -222,12 +222,12 @@
         }
 
         function showIncorrect() {
-          var label = document.getElementById("messageLabel");
+          var label = document.getElementById("messageLabelcloseable");
           label.style.display = "inline"; // Show the label
         }
 
         function closeIncorrect() {
-          var label = document.getElementById("messageLabel");
+          var label = document.getElementById("messageLabelcloseable");
           label.style.display = "none"; // Hide the label
         }
 
