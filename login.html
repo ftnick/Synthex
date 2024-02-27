@@ -1,316 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Synthex - Login</title>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, user-scalable=no"
-    />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link
-      type="image/png"
-      sizes="96x96"
-      rel="icon"
-      href="images/Web/icons8-s-key-ios-17-96.png"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
-    />
-    <noscript
-      ><link rel="stylesheet" href="assets/css/noscript.css"
-    /></noscript>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css"
-    />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synthex - Discontinued</title>
     <style>
-      .hidden {
-        display: none; /* Initially hide the label */
-      }
-      body {
-        font-family: "Arial", sans-serif;
-        line-height: 1.6;
-        margin: 0;
-        overflow: hidden;
-        color: #fff; /* Set text color to white */
-      }
-
-      /* Update the background style to only apply to the header */
-      #header {
-        position: relative;
-        text-align: center;
-        overflow: hidden; /* Hide overflow */
-        background: url("images/background.jpeg") center/cover no-repeat;
-        height: 100vh; /* Set full viewport height */ /* Use background shorthand */
-      }
-
-      #header::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: inherit;
-        z-index: -1;
-      }
-
-      #header .inner {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 2;
-      }
-
-      #header h1 {
-        font-size: 3em;
-        color: #fff;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional text shadow for better visibility */
-      }
-
-      #header .inner form {
-        color: #fff;
-      }
-
-      #header .inner input[type="text"],
-      #header .inner input[type="password"],
-      #header .inner input[type="submit"] {
-        background-color: rgba(255, 255, 255, 0.2);
-        border: none;
-        padding: 10px 15px; /* Adjust button padding */
-        margin: 5px;
-        color: #fff;
-        border-radius: 5px;
-        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        width: 100%; /* Make inputs fill the container */
-        box-sizing: border-box; /* Include padding and border in the element's total width and height */
-      }
-
-      #header .inner input[type="submit"] {
-        align-content: center;
-        background-color: #fff;
-        color: #000;
-        width: auto; /* Adjust button width */
-        padding: 10px 15px; /* Maintain padding */
-        line-height: normal; /* Reset line-height */
-        vertical-align: middle; /* Align text vertically */
-      }
-
-      #header .inner input[type="text"]:focus,
-      #header .inner input[type="password"]:focus {
-        background-color: rgba(255, 255, 255, 0.3);
-      }
-
-      /* Additional CSS */
-      #login-form {
-        max-width: 400px;
-        margin: 0 auto; /* Center the form horizontally */
-        padding: 20px; /* Add padding for better visual separation */
-        border-radius: 10px; /* Add border radius for rounded corners */
-        background-color: rgba(0, 0, 0, 0.5);
-      }
-
-      #login-form2 {
-        max-width: 400px;
-        margin: 0 auto; /* Center the form horizontally */
-        padding: 20px; /* Add padding for better visual separation */
-        border-radius: 10px; /* Add border radius for rounded corners */
-      }
-
-      #login-form h2 {
-        color: #fff;
-        margin-bottom: 20px; /* Add some space below the heading */
-      }
-
-      .alert {
-        position: relative;
-        top: 10;
-        left: 0;
-        width: auto;
-        height: auto;
-        padding: 10px;
-        margin: 10px;
-        line-height: 1.8;
-        border-radius: 5px;
-        cursor: hand;
-        cursor: pointer;
-        font-family: sans-serif;
-        font-weight: 400;
-      }
-
-      .alertText {
-        display: table;
-        margin: 0 auto;
-        text-align: center;
-        font-size: 16px;
-      }
-
-      .alertClose {
-        float: right;
-        padding-top: 5px;
-        font-size: 10px;
-      }
-
-      .clear {
-        clear: both;
-      }
-
-      .error {
-        background-color: #fee;
-        border: 1px solid #edd;
-        color: #a66;
-      }
-
-      .valid {
-        background-color: rgb(238, 255, 238);
-        border: 1px solid rgb(221, 238, 221);
-        color: rgb(102, 170, 105);
-      }
-
-      .small {
-        font-size: 12px;
-      }
-    </style>
-  </head>
-  <body class="is-preload">
-    <!-- Wrapper -->
-    <div id="wrapper">
-      <!-- Header -->
-      <header id="header">
-        <div class="inner">
-          <!-- Login Form -->
-          <div id="login-form">
-            <label id="messageLabelcloseable" class="hidden">
-              <div id="errorID" class="alert error">
-                <span class="alertClose" onclick="closeIncorrect()">X</span>
-                <span class="alertText"
-                  >Incorrect Username Or Password, Try Again<br class="clear"
-                /></span>
-              </div>
-            </label>
-            <h2>Login</h2>
-            <p><strong>With Your Synthex Account</strong></p>
-            <form id="login-form2" action="#" method="post">
-              <label for="username">Username:</label>
-              <input type="text" id="username" name="username" required /><br />
-              <label for="password">Password:</label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                required
-              /><br />
-              <input type="submit" value="Login" />
-            </form>
-            <p class="small">
-              Don't have an account? To request website access, direct message a
-              site developer.
-            </p>
-          </div>
-        </div>
-      </header>
-    </div>
-    <script>
-      const urlParams = new URLSearchParams(window.location.search);
-      var Link = urlParams.get("redirectLink");
-
-      if (!Link) {
-        var Link = "https://ftnick.github.io/Synthex/";
-      }
-
-      function showCorrect() {
-        var label = document.getElementById("messageLabelcloseable");
-        label.classList.remove("hidden"); // Remove the 'hidden' class
-        label.style.display = "inline"; // Show the label
-
-        var label2 = document.getElementById("errorID");
-        label2.classList.remove("error");
-        label2.classList.add("valid");
-
-        var alertText = document.querySelector(".alertText");
-        alertText.innerHTML = "Correct Username And Password, Please Wait...";
-      }
-
-      function showIncorrect() {
-        var label = document.getElementById("messageLabelcloseable");
-        label.classList.remove("hidden"); // Remove the 'hidden' class
-        label.style.display = "inline"; // Show the label
-      }
-
-      function closeIncorrect() {
-        var label = document.getElementById("messageLabelcloseable");
-        label.classList.add("hidden");
-        label.style.display = "none"; // Hide the label
-      }
-
-      function setLocalStorage(name, value) {
-        localStorage.setItem(name, value);
-      }
-
-      function getLocalStorage(name) {
-        return localStorage.getItem(name);
-      }
-
-      function authenticateUser(username, password) {
-        const userTable = {
-          ftnick: "Nickcool",
-          PublicAccount: "PublicUser",
-        };
-
-        if (userTable.hasOwnProperty(username)) {
-          if (userTable[username] === password) {
-            showCorrect();
-            return true; // Username and password match
-          }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            text-align: center;
+            padding: 50px;
         }
-        showIncorrect();
-        return false; // Username or password does not matc
-      }
-
-      var userLoggedIn = getLocalStorage("user_logged_in");
-      if (userLoggedIn) {
-        window.location.href = Link;
-      }
-
-      document
-        .getElementById("login-form")
-        .addEventListener("submit", function (event) {
-          event.preventDefault(); // Prevent the default form submission
-
-          // Check if the user is already logged in by looking for the presence of the localStorage item
-          var userLoggedIn = getLocalStorage("user_logged_in");
-
-          if (userLoggedIn) {
-            window.location.href = Link;
-          } else {
-            // If the user is not logged in, proceed with the login process
-
-            // Retrieve username and password from the form
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
-
-            var userAuthenticated = authenticateUser(username, password);
-
-            if (userAuthenticated) {
-              setTimeout(function () {
-                setLocalStorage("user_logged_in", username);
-                window.location.href = Link;
-              }, 2000);
-            } else {
-              setTimeout(function () {
-                showIncorrect();
-              }, 500);
-            }
-          }
-        });
-    </script>
-  </body>
+        h1 {
+            margin-bottom: 20px;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        .logo {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <img class="logo" src="images/logo.svg" alt="Synthex Logo">
+    <h1>Sorry, Synthex is no longer available.</h1>
+    <p>We regret to inform you that the Synthex website has been discontinued.</p>
+    <p>We appreciate your support over the past 2 years.</p>
+</body>
 </html>
