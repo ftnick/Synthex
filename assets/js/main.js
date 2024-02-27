@@ -19,7 +19,7 @@ if (userLoggedIn) {
 } else {
 	console.warn("Not logged in.")
 	var RedirectLink = window.location.href
-	window.location.href = "login.html?redirectLink=" + RedirectLink;
+	window.location.href = "login?redirectLink=" + RedirectLink;
 }
 (function ($) {
   var $window = $(window),
