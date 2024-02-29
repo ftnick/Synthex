@@ -275,7 +275,7 @@
         return false; // Username or password does not matc
       }
 
-      var userLoggedIn = getLocalStorage("user_logged_in");
+      var userLoggedIn = true //getLocalStorage("user_logged_in");
       if (userLoggedIn) {
         window.location.href = Link;
       }
