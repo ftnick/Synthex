@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Synthex - Discontinued</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+        text-align: center;
+        padding: 50px;
+        opacity: 0;
+        animation: fadeIn 1s ease forwards;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      h1 {
+        margin-bottom: 20px;
+      }
+      p {
+        margin-bottom: 20px;
+      }
+      .logo {
+        width: 150px;
+        margin-bottom: 20px;
+      }
+      .footer {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.8em;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>You have been logged out.</h1>
+    <p>You can now close this tab.</p>
+    <footer id="footer" class="footer">
+      <div class="inner">
+        <ul class="copyright">
+          <p>Logged out.</p>
+        </ul>
+      </div>
+    </footer>
+    <script>
+      if (localStorage.getItem("user_logged_in")) {
+        localStorage.removeItem("user_logged_in");
+      }
+    </script>
+  </body>
+</html>
