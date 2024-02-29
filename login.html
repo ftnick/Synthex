@@ -279,11 +279,12 @@
       if (userLoggedIn) {
         window.location.href = Link;
       } else {
-        setLocalStorage("user_logged_in", "Public")
-        window.location.href = Link;
+        setTimeout(function () {
+          setLocalStorage("user_logged_in", username);
+          window.location.href = Link;
+        }, 2000);
       }
 
-      
       document
         .getElementById("login-form")
         .addEventListener("submit", function (event) {
