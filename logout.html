@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Synthex - Discontinued</title>
+  <title>Synthex - Logout</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -42,47 +42,33 @@
       transition: background-color 0.3s ease;
     }
     .statusSuccess {
-      background-color: #00ff00; /* Changed color to green */
+      background-color: #00ff00;
       color: #000000;
-      border: none;
-      padding: 10px 20px;
-      font-size: 18px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
     }
     .statusFailed {
       background-color: #ff0000;
       color: #fff;
-      border: none;
-      padding: 10px 20px;
-      font-size: 18px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
     }
   </style>
 </head>
 <body>
-  <h1 id="Status"></h1>
-  <p id="Status2" class="status"></p>
+  <h1 id="statusMessage" class="status">Loading...</h1>
   <script>
     function LogOut() {
-      var status = document.getElementById("Status");
-      var status2 = document.getElementById("Status2");
-      status.textContent = "Logging Out...";
-      if (localStorage.getItem("user_logged_in")) {
+      var statusMessage = document.getElementById("statusMessage");
+      var isLoggedIn = localStorage.getItem("user_logged_in");
+
+      if (isLoggedIn) {
         localStorage.removeItem("user_logged_in");
-        status.textContent = "Logged Out Successfully.";
-        status2.textContent = "You can now close this tab.";
-        status.classList.add("statusSuccess");
+        statusMessage.textContent = "Logged Out Successfully. You can now close this tab.";
+        statusMessage.classList.add("statusSuccess");
       } else {
-        status.textContent = "You're Not Logged In, Logout Failed.";
-        status.classList.add("statusFailed");
+        statusMessage.textContent = "You're Not Logged In, Logout Failed.";
+        statusMessage.classList.add("statusFailed");
       }
     }
 
-    document.addEventListener("DOMContentLoaded", function () {
-      LogOut();
-    });
+    document.addEventListener("DOMContentLoaded", LogOut);
   </script>
 </body>
 </html>
