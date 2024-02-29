@@ -280,8 +280,8 @@
         window.location.href = Link;
       } else {
         setTimeout(function () {
-          if (!username) {
-            var username = "Public"
+          if (!username || username == "[object HTMLInputElement]") {
+            username = "Public";
           }
           setLocalStorage("user_logged_in", username);
           window.location.href = Link;
