@@ -12,7 +12,7 @@ function getLocalStorage(name) {
   return localStorage.getItem(name);
 }
 
-var userLoggedIn = true //getLocalStorage("user_logged_in");
+var userLoggedIn = getLocalStorage("user_logged_in");
 
 if (userLoggedIn) {
 	console.log("Logged in.")
