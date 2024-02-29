@@ -36,9 +36,13 @@
         line-height: 1.6;
       }
       #main {
-        margin-top: 40px;
-        text-align: center;
-      }
+  margin-top: 40px;
+  text-align: center;
+  display: flex; /* Add flexbox */
+  flex-direction: column; /* Stack elements vertically */
+  align-items: flex-end; /* Align items to the end (right side) */
+  position: relative; /* Ensure positioning context for absolute positioning */
+}
       .announcement {
         background-color: #ffd700;
         padding: 20px;
@@ -178,6 +182,7 @@
         margin-bottom: 10px; /* Add margin to separate loader and text */
       }
 
+
       @keyframes spin {
         0% {
           transform: rotate(0deg);
@@ -204,19 +209,12 @@
       <!-- Main Content -->
       <div id="main">
         <div class="inner">
-          <p id="loggedInUser"></p>
-<!-- 
+
           <div class="announcement">
             <h2>Important Update</h2>
-            <p>
-              Dear users, we'd like to inform you that the website is undergoing
-              a format change. Starting from Saturday, 17 February 2024, all
-              assets will be organized and sorted into their respective home
-              pages, accessible through the
-              <a href="#AssetPages">AssetPages</a> section.
-            </p>
-          </div>
- -->
+            <p>The website is currently undergoing fixes and maintenance. If you encounter any bugs, please report them in <a href="support">support</a>.</p>
+        </div>        
+
           <br />
 
           <!-- About Us Section -->
@@ -288,10 +286,12 @@
           <ul class="copyright">
             <li>&copy; Synthex. All rights reserved</li>
             <li><a href="support">Contact Us</a></li>
+            <p id="loggedInUser"></p>
           </ul>
         </div>
       </footer>
     </div>
+
 
     <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
@@ -306,7 +306,7 @@
         var loggedInUser = localStorage.getItem("user_logged_in");
         var loggedInUserElement = document.getElementById("loggedInUser");
         if (loggedInUser) {
-          loggedInUserElement.textContent = "You are currently logged in as " + loggedInUser + ".";
+          loggedInUserElement.textContent = "You are currently logged in as '" + loggedInUser + "'.";
         } else {
           loggedInUserElement.textContent = "You are not currently logged in.";
         }
