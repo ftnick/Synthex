@@ -1,61 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Synthex - Discontinued</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f0f0f0;
-        color: #333;
-        text-align: center;
-        padding: 50px;
-        opacity: 0;
-        animation: fadeIn 1s ease forwards;
-      }
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-      h1 {
-        margin-bottom: 20px;
-      }
-      p {
-        margin-bottom: 20px;
-      }
-      .logo {
-        width: 150px;
-        margin-bottom: 20px;
-      }
-      .footer {
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 0.8em;
-        color: #666;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>You have been logged out.</h1>
-    <p>You can now close this tab.</p>
-    <footer id="footer" class="footer">
-      <div class="inner">
-        <ul class="copyright">
-          <p>Logged out.</p>
-        </ul>
-      </div>
-    </footer>
-    <script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Synthex - Discontinued</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+      text-align: center;
+      padding: 50px;
+      opacity: 1;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-size: 32px;
+    }
+    p {
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+    .logo {
+      width: 150px;
+      margin-bottom: 20px;
+    }
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.8em;
+      color: #666;
+    }
+    .status {
+      color: #000000;
+      border: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .statusSuccess {
+      background-color: #00ff00; /* Changed color to green */
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .statusFailed {
+      background-color: #ff0000;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="Status"></h1>
+  <p id="Status2" class="status"></p>
+  <script>
+    function LogOut() {
+      var status = document.getElementById("Status");
+      var status2 = document.getElementById("Status2");
+      status.textContent = "Logging Out...";
       if (localStorage.getItem("user_logged_in")) {
         localStorage.removeItem("user_logged_in");
+        status.textContent = "Logged Out Successfully.";
+        status2.textContent = "You can now close this tab.";
+        status.classList.add("statusSuccess");
+      } else {
+        status.textContent = "You're Not Logged In, Logout Failed.";
+        status.classList.add("statusFailed");
       }
-    </script>
-  </body>
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      LogOut();
+    });
+  </script>
+</body>
 </html>
