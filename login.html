@@ -280,6 +280,9 @@
         window.location.href = Link;
       } else {
         setTimeout(function () {
+          if (!username) {
+            var username = "Public"
+          }
           setLocalStorage("user_logged_in", username);
           window.location.href = Link;
         }, 2000);
