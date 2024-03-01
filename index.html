@@ -36,13 +36,13 @@
         line-height: 1.6;
       }
       #main {
-  margin-top: 40px;
-  text-align: center;
-  display: flex; /* Add flexbox */
-  flex-direction: column; /* Stack elements vertically */
-  align-items: flex-end; /* Align items to the end (right side) */
-  position: relative; /* Ensure positioning context for absolute positioning */
-}
+        margin-top: 40px;
+        text-align: center;
+        display: flex; /* Add flexbox */
+        flex-direction: column; /* Stack elements vertically */
+        align-items: flex-end; /* Align items to the end (right side) */
+        position: relative; /* Ensure positioning context for absolute positioning */
+      }
       .announcement {
         background-color: #ffd700;
         padding: 20px;
@@ -182,6 +182,46 @@
         margin-bottom: 10px; /* Add margin to separate loader and text */
       }
 
+      .projects-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .project {
+        text-align: center;
+        width: 300px; /* Fixed width for each project */
+        height: 400px; /* Fixed height for each project */
+        margin: 15px;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .changeList {
+        list-style-type: square;
+        padding-left: 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.1s ease;
+      }
+
+      .changeList.show {
+        max-height: 1000px; /* Adjust the max-height as needed */
+      }
+
+      .changeList li {
+        margin-left: 400px;
+        text-align: left; /* Ensure text alignment to the left */
+      }
+
+      .changelogEntry {
+        text-align: center; /* Ensure text alignment to the left */
+      }
 
       @keyframes spin {
         0% {
@@ -209,11 +249,14 @@
       <!-- Main Content -->
       <div id="main">
         <div class="inner">
-
           <div class="announcement">
             <h2>Important Update</h2>
-            <p>The website is currently undergoing fixes and maintenance. If you encounter any bugs, please report them in <a href="support">support</a>.</p>
-        </div>        
+            <p>
+              The website is currently undergoing fixes and maintenance. If you
+              encounter any bugs, please report them in
+              <a href="support">support</a>.
+            </p>
+          </div>
 
           <br />
 
@@ -222,23 +265,12 @@
             <header>
               <h2><strong>About Us:</strong></h2>
             </header>
-            <p>
-              We are dedicated to delivering a wide range of utilities and assets including games, modules/scripts, programs, open-source code, online calculators, and more.
+            <p class="subtitle">
+              We are dedicated to delivering a wide range of utilities and
+              assets including games, modules/scripts, programs, open-source
+              code and more.
+             <strong> <a href="theteam">Meet Our Team!</a> </strong>
             </p>
-          </section>
-
-          <br />
-
-          <!-- Links Section -->
-          <section data-aos="fade-up">
-            <header>
-              <h2><strong>Links:</strong></h2>
-            </header>
-            <ul>
-              <a href="theteam" class="hvr-float-shadow">Meet the Team</a>
-              <br />
-              <a href="changelog" class="hvr-float-shadow">Update Log</a>
-            </ul>
           </section>
 
           <br />
@@ -248,15 +280,39 @@
             <header id="AssetPages">
               <h2><strong>PAGES:</strong></h2>
             </header>
+            <p class="subtitle">
+              Please note that some assets may be corrupted or no longer
+              functional. If you encounter any issues,
+              <a href="support">contact us</a>.
+            </p>
             <ul>
-              <a href="robloxhome" class="hvr-float-shadow"
-                >Roblox Assets</a
-              >
+              <p>
+                <strong
+                  ><a href="robloxhome" class="hvr-float-shadow"
+                    >Roblox Assets</a
+                  ></strong
+                >
+                <br />
+                <i
+                  >Roblox assets are a collection of resources hosted on the
+                  Roblox platform.</i
+                >
+              </p>
               <br />
-              <a href="pythonhome" class="hvr-float-shadow"
-                >Python Assets</a
-              >
-              <br>
+              <p>
+                <strong
+                  ><a href="pythonhome" class="hvr-float-shadow"
+                    >Python Assets</a
+                  ></strong
+                >
+                <br />
+                <i
+                  >Python assets feature a collection of scripts, modules, and
+                  tools designed to assist you in your python development
+                  journey.</i
+                >
+              </p>
+              <br />
             </ul>
           </section>
 
@@ -267,13 +323,22 @@
             <header>
               <h2><strong>Upcoming Projects:</strong></h2>
             </header>
-            <p>
+            <p class="subtitle">
               Stay tuned for our exciting upcoming projects. We are constantly
               working on new and innovative ideas to enhance your experience.
             </p>
-            <a href="upcomingprojects" class="hvr-float-shadow"
-                >Upcoming Projects</a
-              >
+
+            <div class="projects-container">
+              <!-- Project 1 -->
+              <div class="project" data-aos="fade-up">
+                <h3>Echos</h3>
+                <p><strong>Game Genre:</strong> 2D Horror Game</p>
+                <p><strong>Release Date:</strong> Coming soon around March.</p>
+                <a href="upcominggames/project1">
+                  <h3>View Preview</h3>
+                </a>
+              </div>
+            </div>
           </section>
         </div>
       </div>
@@ -287,11 +352,12 @@
             <li>&copy; Synthex. All rights reserved</li>
             <li><a href="support">Contact Us</a></li>
             <p id="loggedInUser"></p>
+            <div id="lastUpdated"></div>
+            <a href="changelog">View The Changelog</a>
           </ul>
         </div>
       </footer>
     </div>
-
 
     <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
@@ -306,7 +372,8 @@
         var loggedInUser = localStorage.getItem("user_logged_in");
         var loggedInUserElement = document.getElementById("loggedInUser");
         if (loggedInUser) {
-          loggedInUserElement.textContent = "You are currently logged in as '" + loggedInUser + "'.";
+          loggedInUserElement.textContent =
+            "You are currently logged in as '" + loggedInUser + "'.";
         } else {
           loggedInUserElement.textContent = "You are not currently logged in.";
         }
@@ -322,6 +389,29 @@
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <script>
+      function toggleChangelog(entry) {
+        var changeList = entry.querySelector(".changeList");
+        changeList.classList.toggle("show");
+      }
+
+      var options = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+      };
+      var lastUpdated = new Date(document.lastModified).toLocaleString(
+        "en-US",
+        options
+      );
+      document.getElementById("lastUpdated").innerText =
+        "Last updated: " + lastUpdated;
+    </script>
 
     <script>
       AOS.init();
