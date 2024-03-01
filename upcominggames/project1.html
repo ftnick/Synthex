@@ -64,10 +64,10 @@
           <div class="asset-play" id="asset-play">
             <ul class="actions">
               <li>
-                <a href="../placeholder" class="button primary"> Watch Trailer </a>
+                <a id="PlaceholderRedirect" href="../placeholder" class="button primary"> Watch Trailer </a>
               </li>
               <li>
-                <a href="../placeholder" class="button"> Play Now </a>
+                <a id="PlaceholderRedirect2" href="../placeholder" class="button"> Play Now </a>
               </li>
             </ul>
           </div>
@@ -85,6 +85,16 @@
     </div>
 
     <!-- Scripts -->
+    <script>
+      var currentUrl = window.location.href;
+      var linkElement = document.getElementById("PlaceholderRedirect");
+      linkElement.href = "placeholder?from=" + currentUrl;
+    </script>
+    <script>
+      var currentUrl = window.location.href;
+      var linkElement = document.getElementById("PlaceholderRedirect2");
+      linkElement.href = "placeholder?from=" + currentUrl;
+    </script>
 
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/browser.min.js"></script>

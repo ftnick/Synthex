@@ -124,7 +124,7 @@
               <span class="image">
                 <img src="images\placeholder.png" alt="" />
               </span>
-              <a href="placeholder">
+              <a id="PlaceholderRedirect" href="#">
                 <h2>Fragments</h2>
                 <div class="content">
                   <p>interactive experience</p>
@@ -215,5 +215,10 @@
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
+  <script>
+    var currentUrl = window.location.href;
+    var linkElement = document.getElementById("PlaceholderRedirect");
+    linkElement.href = "placeholder?from=" + currentUrl;
+  </script>
   </body>
 </html>

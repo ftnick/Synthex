@@ -1,29 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link type="image/png" sizes="96x96" rel="icon" href="images/Web/icons8-s-key-ios-17-96.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      type="image/png"
+      sizes="96x96"
+      rel="icon"
+      href="images/Web/icons8-s-key-ios-17-96.png"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Placeholder</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-            margin: 50px;
-        }
+      body {
+        font-family: "Arial", sans-serif;
+        text-align: center;
+        margin: 50px;
+      }
 
-        h1 {
-            color: #333;
-        }
+      h1 {
+        color: #333;
+      }
 
-        p {
-            color: #666;
-        }
+      p {
+        color: #666;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Placeholder</h1>
     <p>Sorry this page doesn't exist yet, come back later</p>
-    <p>Return to <a href="/Synthex">Synthex Home</a></p>
-</body>
+    <p>Return to <a id="URL" href="/Synthex">Synthex Home</a></p>
+
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      var redirectLink = urlParams.get("from");
+      if (!redirectLink) {
+        redirectLink = "/"
+      }
+      var Change = document.getElementById("URL")
+      Change.href = redirectLink
+      console.log(Change.textContent)
+      Change.textContent = redirectLink
+    </script>
+  </body>
 </html>
