@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head> 
+  <head>
     <meta charset="UTF-8" />
     <link
       type="image/png"
@@ -9,34 +9,60 @@
       href="images/Web/icons8-s-key-ios-17-96.png"
     />
     <link rel="stylesheet" href="assets/css/redirect.css" />
-    <title>Redirecting to download...</title>
+    <title>Redirecting to Download...</title>
     <style>
       body {
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 100vh; /* Set the body height to 100% of the viewport height */
+        height: 100vh;
         margin: 0;
+        background-color: #ffffff;
+        font-family: "Arial", sans-serif;
       }
 
-      #redirectBtn {
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
+      #redirectContainer {
+        text-align: center;
+      }
+
+      .loader-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
       }
 
       .loader {
-        padding: 10px 20px;
+        border: 4px solid #000000;
+        border-top: 4px solid #ffffff;
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+        animation: spin 1s linear infinite;
+      }
+
+      .hide {
+        display: none;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      #status {
         font-size: 18px;
-        margin: 50px;
-        margin-bottom: 20px;
+        color: #333;
       }
     </style>
   </head>
   <body>
-    <div class="loader">
+    <div id="redirectContainer">
       <p id="status">Redirecting...</p>
-      <div class="loading" id="LOADINGBAR"></div>
+      <div class="loader-container">
+        <div class="loader" id="loader"></div>
+      </div>
     </div>
 
     <script>
@@ -44,22 +70,22 @@
       const downloadLink = urlParams.get("downloadLink");
       const Link = urlParams.get("Link");
       const statusElement = document.getElementById("status");
-      const loadingElement = document.getElementById("LOADINGBAR");
+      const loaderElement = document.getElementById("loader")
 
       if (downloadLink) {
-        (statusElement.innerHTML = `Redirecting to ${downloadLink} download`);
-        setTimeout(function () {
-            window.location.href = downloadLink;
+        statusElement.innerHTML = `Redirecting to ${downloadLink} download`;
+        setTimeout(() => {
+          window.location.href = downloadLink;
         }, 2000);
       } else if (Link) {
-        (statusElement.innerHTML = `Redirecting to ${Link}`);
-        setTimeout(function () {
-            window.location.href = Link;
+        statusElement.innerHTML = `Redirecting to ${Link}`;
+        setTimeout(() => {
+          window.location.href = Link;
         }, 2000);
       } else {
-        loadingElement.style.display = "none";
+        loaderElement.classList.add("hide")
         statusElement.innerHTML =
-          '<span style="color: red;">Redirect link not provided, go<a href="https://ftnick.github.io/Synthex/"> back home.</a></span>';
+          '<span style="color: red;">Redirect link not provided, go <a href="https://ftnick.github.io/Synthex/">back home</a>.</span>';
       }
     </script>
   </body>
