@@ -20,7 +20,7 @@ if (userLoggedIn) {
 } else {
 	console.warn("Not logged in.")
 	var RedirectLink = window.location.href
-	window.location.href = "login?redirectLink=" + RedirectLink;
+	window.location.href = "https://ftnick.github.io/Synthex/login?redirectLink=" + RedirectLink;
 }
 (function ($) {
   var $window = $(window),
