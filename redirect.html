@@ -76,12 +76,12 @@
         statusElement.innerHTML = `Redirecting to ${downloadLink} download`;
         setTimeout(() => {
           window.location.href = downloadLink;
-        }, 2000);
+        }, 1000);
       } else if (Link) {
         statusElement.innerHTML = `Redirecting to ${Link}`;
         setTimeout(() => {
           window.location.href = Link;
-        }, 2000);
+        }, 1000);
       } else {
         loaderElement.classList.add("hide")
         statusElement.innerHTML =
