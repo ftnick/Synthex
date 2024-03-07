@@ -1,143 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <title>Update Status</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f7f7f7;
-      text-align: center;
-    }
-    #statusMessage {
-      margin-top: 50px;
-      font-size: 24px;
-    }
-    #updateDetails {
-      margin-top: 20px;
-      font-size: 16px;
-    }
-    #underMessage {
-      margin-top: 20px;
-      font-size: 14px;
-      color: #666;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: left;
-    }
-    th {
-      background-color: #f2f2f2;
-    }
-  </style>
-</head>
-<body>
-  <h1 id="statusMessage">Please be patient as we search for the most recent update...</h1>
-  <div id="updateDetails">Loading...</div>
-  <div id="underMessage">Loading...</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <title>Update Status</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f7f7f7;
+        text-align: center;
+      }
+      #statusMessage {
+        margin-top: 50px;
+        font-size: 24px;
+      }
+      #updateDetails {
+        margin-top: 20px;
+        font-size: 16px;
+      }
+      #underMessage {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #666;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="statusMessage">
+      Please be patient as we search for the most recent update...
+    </h1>
+    <div id="updateDetails">Loading...</div>
+    <div id="underMessage">Loading...</div>
 
-  <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    var redirectLink = urlParams.get("redirectLink");
-    function RedirectBack() {
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      var redirectLink = urlParams.get("redirectLink");
+      function RedirectBack() {
         if (!redirectLink) {
-            redirectLink = "https://ftnick.github.io/Synthex"
+          redirectLink = "https://ftnick.github.io/Synthex";
         }
-        window.location.href = redirectLink
-    }
+        window.location.href = redirectLink;
+      }
 
-    function checkUpdateStatus() {
-      setTimeout(() => {
-        fetch(`https://api.github.com/repos/ftnick/Synthex/commits/main/check-runs`, {
-          headers: {
-            Accept: "application/vnd.github.v3+json",
-          },
-        })
-        .then((response) => response.json())
-        .then((data) => {
-          const statusMessage = document.getElementById("statusMessage");
-          const updateDetails = document.getElementById("updateDetails");
-          const underMessage = document.getElementById("underMessage")
+      function checkUpdateStatus() {
+        setTimeout(() => {
+          fetch(
+            `https://api.github.com/repos/ftnick/Synthex/commits/main/check-runs`,
+            {
+              headers: {
+                Accept: "application/vnd.github.v3+json",
+              },
+            }
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              const statusMessage = document.getElementById("statusMessage");
+              const updateDetails = document.getElementById("updateDetails");
+              const underMessage = document.getElementById("underMessage");
 
-          const deployChecks = data.check_runs.filter(check => check.name === 'deploy');
+              const mostRecentCheck = data.check_runs[0];
 
-          if (deployChecks.length === 0) {
-            statusMessage.innerText = "No deploy found.";
-            setTimeout(() => {
-                    RedirectBack();
-                  }, 3000);
-          } else {
-            const mostRecentCheck = deployChecks[0];
-
-            if (mostRecentCheck.status === "in_progress") {
-              statusMessage.innerText = "Update in progress...";
-              updateDetails.innerHTML = `
+              if (mostRecentCheck.status === "in_progress") {
+                statusMessage.innerText = "Update in progress...";
+                updateDetails.innerHTML = `
               <h2>Status: ${mostRecentCheck.status}</h2>
               <h2>Started At: ${mostRecentCheck.started_at}</h2>
               <h2>Completed At: ${mostRecentCheck.completed_at}</h2>
-              `
-            } else if (mostRecentCheck.status === "completed") {
-              if (mostRecentCheck.conclusion === "success") {
-                statusMessage.innerText = "Update completed successfully!";
-                fetch(`https://api.github.com/repos/ftnick/Synthex/commits/main`, {
-                  headers: {
-                    Accept: "application/vnd.github.v3+json",
-                  },
-                })
-                .then((response) => response.json())
-                .then((commitData) => {
-                  const files = commitData.files;
-                  let filesTable = "<h2>Edited Files:</h2><table><tr><th>Filename</th><th>Status</th><th>Additions</th><th>Deletions</th><th>Changes</th></tr>";
-                  files.forEach((file) => {
-                    filesTable += `<tr><td>${file.filename}</td><td>${file.status}</td><td>${file.additions}</td><td>${file.deletions}</td><td>${file.changes}</td></tr>`;
-                  });
-                  filesTable += "</table>";
-                  updateDetails.innerHTML = filesTable;
+              `;
+              } else if (mostRecentCheck.status === "completed") {
+                if (mostRecentCheck.conclusion === "success") {
+                  statusMessage.innerText = "Update completed successfully!";
+                  fetch(
+                    `https://api.github.com/repos/ftnick/Synthex/commits/main`,
+                    {
+                      headers: {
+                        Accept: "application/vnd.github.v3+json",
+                      },
+                    }
+                  )
+                    .then((response) => response.json())
+                    .then((commitData) => {
+                      const files = commitData.files;
+                      let filesTable =
+                        "<h2>Edited Files:</h2><table><tr><th>Filename</th><th>Status</th><th>Additions</th><th>Deletions</th><th>Changes</th></tr>";
+                      files.forEach((file) => {
+                        filesTable += `<tr><td>${file.filename}</td><td>${file.status}</td><td>${file.additions}</td><td>${file.deletions}</td><td>${file.changes}</td></tr>`;
+                      });
+                      filesTable += "</table>";
+                      updateDetails.innerHTML = filesTable;
 
-                  underMessage.innerHTML = "<br><br>Redirecting back."
+                      underMessage.innerHTML = "<br><br>Redirecting back.";
 
+                      setTimeout(() => {
+                        RedirectBack();
+                      }, 3000);
+                    })
+                    .catch((error) => {
+                      console.error("Error:", error);
+                    });
+                } else {
+                  statusMessage.innerText = "Update failed, Redirecting back.";
                   setTimeout(() => {
                     RedirectBack();
                   }, 3000);
-                })
-                .catch((error) => {
-                  console.error("Error:", error);
-                });
+                }
               } else {
-                statusMessage.innerText = "Update failed, Redirecting back.";
+                statusMessage.innerText =
+                  "Unable to determine update status, Redirecting back.";
                 setTimeout(() => {
-                    RedirectBack();
-                  }, 3000);
+                  RedirectBack();
+                }, 3000);
               }
-            } else {
-              statusMessage.innerText = "Unable to determine update status, Redirecting back.";
-              setTimeout(() => {
-                RedirectBack();
-                  }, 3000);
-            }
-          }
 
-          // Check again after 2 seconds if the update is still in progress or failed
-          if (mostRecentCheck.status === "in_progress" || mostRecentCheck.status === "completed") {
-            checkUpdateStatus();
-          }
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
-      }, 2000); // Check every 2 seconds
-    }
+              // Check again after 2 seconds if the update is still in progress or failed
+              if (
+                mostRecentCheck.status === "in_progress" ||
+                mostRecentCheck.status === "completed"
+              ) {
+                checkUpdateStatus();
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        }, 2000); // Check every 2 seconds
+      }
 
-    checkUpdateStatus();
-  </script>
-</body>
+      checkUpdateStatus();
+    </script>
+  </body>
 </html>
