@@ -249,14 +249,7 @@
       <!-- Main Content -->
       <div id="main">
         <div class="inner">
-          <div class="announcement">
-            <h2>Important Update</h2>
-            <p>
-              The website is currently undergoing fixes and maintenance. If you
-              encounter any bugs, please report them in
-              <a href="support">support</a>.
-            </p>
-          </div>
+          <div id="announcementContainer"></div>
 
           <br />
 
@@ -392,7 +385,36 @@
       });
     </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+      // Fetching settings from JSON file
+      fetch('https://raw.githubusercontent.com/ftnick/Synthex/main/settings.json')
+        .then(response => response.json())
+        .then(data => {
+          // Checking if Announcement is true in settings
+          if (data.Announcement === true) {
+            // Creating announcement element
+            const announcementContainer = document.getElementById('announcementContainer');
+            const announcementDiv = document.createElement('div');
+            announcementDiv.classList.add('announcement');
+            
+            // Creating announcement heading
+            const heading = document.createElement('h2');
+            heading.textContent = 'Important Update';
+            announcementDiv.appendChild(heading);
+            
+            // Creating announcement paragraph
+            const paragraph = document.createElement('p');
+            paragraph.innerHTML = data.AnnouncementText;
+            announcementDiv.appendChild(paragraph);
+            
+            // Appending announcement to container
+            announcementContainer.appendChild(announcementDiv);
+          }
+        })
+        .catch(error => console.error('Error fetching settings:', error));
+    </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
     <script>
       function toggleChangelog(entry) {
