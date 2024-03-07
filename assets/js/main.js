@@ -4,6 +4,27 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+function runUpdateCheckScript() {
+  fetch(
+    `https://api.github.com/repos/ftnick/Synthex/commits/main/check-runs`,
+    {
+      headers: {
+        Accept: "application/vnd.github.v3+json",
+      },
+    }
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      const mostRecentCheck = data.check_runs[0];
+      if (mostRecentCheck.status === "in_progress") {
+        const OrigRef = window.location.href;
+        window.location.href = "update.html?redirectLink=" + OrigRef;
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
 
 function setLocalStorage(name, value) {
   localStorage.setItem(name, value);
@@ -16,12 +37,16 @@ function getLocalStorage(name) {
 var userLoggedIn = getLocalStorage("user_logged_in");
 
 if (userLoggedIn) {
-	console.log("Logged in.")
+  console.log("Logged in.");
 } else {
-	console.warn("Not logged in.")
-	var RedirectLink = window.location.href
-	window.location.href = "https://ftnick.github.io/Synthex/login?redirectLink=" + RedirectLink;
+  console.warn("Not logged in.");
+  var RedirectLink = window.location.href;
+  window.location.href =
+    "https://ftnick.github.io/Synthex/login?redirectLink=" + RedirectLink;
 }
+
+runUpdateCheckScript();
+
 (function ($) {
   var $window = $(window),
     $body = $("body");
