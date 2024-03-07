@@ -5,6 +5,7 @@
 */
 
 function runUpdateCheckScript() {
+  console.log("Ran function (main.js)")
   fetch(
     `https://api.github.com/repos/ftnick/Synthex/commits/main/check-runs`,
     {
