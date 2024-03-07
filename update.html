@@ -62,6 +62,7 @@
       }
 
       function checkUpdateStatus() {
+        console.log("Ran function.")
         setTimeout(() => {
           fetch(
             `https://api.github.com/repos/ftnick/Synthex/commits/main/check-runs`,
@@ -73,6 +74,8 @@
           )
             .then((response) => response.json())
             .then((data) => {
+              console.log("Data: " + data)
+
               const statusMessage = document.getElementById("statusMessage");
               const updateDetails = document.getElementById("updateDetails");
               const underMessage = document.getElementById("underMessage");
@@ -133,8 +136,7 @@
 
               // Check again after 2 seconds if the update is still in progress or failed
               if (
-                mostRecentCheck.status === "in_progress" ||
-                mostRecentCheck.status === "completed"
+                mostRecentCheck.status === "in_progress"
               ) {
                 checkUpdateStatus();
               }
