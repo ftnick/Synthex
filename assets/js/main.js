@@ -5,6 +5,11 @@
 */
 
 
+
+
+window.location.href = "discontinued"
+
+
 function setLocalStorage(name, value) {
   localStorage.setItem(name, value);
 }
