@@ -387,34 +387,38 @@
 
     <script>
       // Fetching settings from JSON file
-      fetch('https://raw.githubusercontent.com/ftnick/Synthex/main/settings.json')
-        .then(response => response.json())
-        .then(data => {
+      fetch(
+        "https://raw.githubusercontent.com/ftnick/Synthex/main/settings.json"
+      )
+        .then((response) => response.json())
+        .then((data) => {
           // Checking if Announcement is true in settings
           if (data.Announcement === true) {
             // Creating announcement element
-            const announcementContainer = document.getElementById('announcementContainer');
-            const announcementDiv = document.createElement('div');
-            announcementDiv.classList.add('announcement');
-            
+            const announcementContainer = document.getElementById(
+              "announcementContainer"
+            );
+            const announcementDiv = document.createElement("div");
+            announcementDiv.classList.add("announcement");
+
             // Creating announcement heading
-            const heading = document.createElement('h2');
-            heading.textContent = 'Important Update';
+            const heading = document.createElement("h2");
+            heading.textContent = "Important Update";
             announcementDiv.appendChild(heading);
-            
+
             // Creating announcement paragraph
-            const paragraph = document.createElement('p');
+            const paragraph = document.createElement("p");
             paragraph.innerHTML = data.AnnouncementText;
             announcementDiv.appendChild(paragraph);
-            
+
             // Appending announcement to container
             announcementContainer.appendChild(announcementDiv);
           }
         })
-        .catch(error => console.error('Error fetching settings:', error));
+        .catch((error) => console.error("Error fetching settings:", error));
     </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
     <script>
       function toggleChangelog(entry) {
@@ -441,6 +445,22 @@
 
     <script>
       AOS.init();
+    </script>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("/service-worker.js")
+          .then((registration) => {
+            console.log(
+              "Service Worker registered with scope:",
+              registration.scope
+            );
+          })
+          .catch((error) => {
+            console.error("Service Worker registration failed:", error);
+          });
+      }
     </script>
   </body>
 </html>
