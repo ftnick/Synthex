@@ -3,235 +3,16 @@
   <head>
     <title>Synthex - Home</title>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, user-scalable=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
-    <link
-      type="image/png"
-      sizes="96x96"
-      rel="icon"
-      href="images/Web/icons8-s-key-ios-17-96.png"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
-    />
-    <noscript
-      ><link rel="stylesheet" href="assets/css/noscript.css"
-    /></noscript>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
+    <link type="image/png" sizes="96x96" rel="icon" href="images/Web/icons8-s-key-ios-17-96.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css"/>
+    <link rel="stylesheet" href="assets/css/index.css" />
+
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css"/></noscript>
     <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css"
-    />
-    <style>
-      body {
-        font-family: "Arial", sans-serif;
-        line-height: 1.6;
-      }
-      #main {
-        margin-top: 40px;
-        text-align: center;
-        display: flex; /* Add flexbox */
-        flex-direction: column; /* Stack elements vertically */
-        align-items: flex-end; /* Align items to the end (right side) */
-        position: relative; /* Ensure positioning context for absolute positioning */
-      }
-      .announcement {
-        background-color: #ffd700;
-        padding: 20px;
-        border-radius: 10px;
-        margin-bottom: 40px; /* Adjust margin for space between announcement and next section */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        text-align: center;
-      }
-
-      .announcement h2 {
-        color: #000000;
-        margin-bottom: 15px;
-        text-align: center;
-      }
-
-      .announcement p {
-        color: #000000;
-        margin-bottom: 0;
-        text-align: center;
-      }
-      section {
-        margin-bottom: 40px;
-        text-align: center;
-      }
-      section header h2 {
-        color: #333;
-        margin-bottom: 10px;
-        text-align: center;
-      }
-      section p {
-        color: #666;
-        text-align: center;
-      }
-      ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      ul li {
-        margin-bottom: 8px;
-      }
-      footer {
-        background-color: #333;
-        color: #fff;
-        padding: 20px;
-        text-align: center;
-      }
-
-      #header {
-        text-align: center;
-      }
-
-      section header {
-        text-align: center;
-      }
-
-      section {
-        margin-bottom: 40px;
-      }
-
-      section ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      section ul li {
-        margin-bottom: 8px;
-      }
-
-      #header {
-        background: url("images/background.jpeg") center/cover no-repeat; /* Replace 'path/to/your/image.jpg' with the actual path to your image */
-        height: 400px; /* Set a suitable height for the header */
-        position: relative;
-      }
-
-      #header::before {
-        content: "";
-        position: absolute;
-        top: 95%; /* Adjust this value to control the starting point of the fading effect */
-        left: 0;
-        width: 100%;
-        height: 5%; /* Adjust this value to control the height of the fading effect */
-        background: linear-gradient(
-          to bottom,
-          rgba(255, 255, 255, 0),
-          rgba(255, 255, 255, 1)
-        );
-        z-index: 1;
-      }
-
-      #header .inner {
-        position: absolute;
-        top: 60%; /* Adjust this value to lower or raise the text */
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 2;
-      }
-
-      #header h1 {
-        font-size: 3em;
-        color: #fff;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional text shadow for better visibility */
-      }
-
-      #loading-screen {
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgb(0, 0, 0);
-        z-index: 1000;
-        color: #000000;
-      }
-
-      #loading-content {
-        text-align: center;
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      #loading-content .loader {
-        border: 8px solid #9d9d9d;
-        border-top: 8px solid #ffffff;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        animation: spin 1s linear infinite;
-        margin-bottom: 10px; /* Add margin to separate loader and text */
-      }
-
-      .projects-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: row;
-        flex-wrap: wrap;
-      }
-
-      .project {
-        text-align: center;
-        width: 300px; /* Fixed width for each project */
-        height: 400px; /* Fixed height for each project */
-        margin: 15px;
-        padding: 15px;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        background-color: #fff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
-
-      .changeList {
-        list-style-type: square;
-        padding-left: 20px;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.1s ease;
-      }
-
-      .changeList.show {
-        max-height: 1000px; /* Adjust the max-height as needed */
-      }
-
-      .changeList li {
-        margin-left: 400px;
-        text-align: left; /* Ensure text alignment to the left */
-      }
-
-      .changelogEntry {
-        text-align: center; /* Ensure text alignment to the left */
-      }
-
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-    </style>
   </head>
   <body class="is-preload">
     <!-- Wrapper -->
@@ -263,7 +44,7 @@
               assets including games, modules/scripts, programs, open-source
               code and more.
               <br />
-              <strong> <a href="theteam">Meet Our Team!</a> </strong>
+              <strong> <a href="theteam" class="hvr-float-shadow">Meet Our Team!</a> </strong>
             </p>
           </section>
 
@@ -301,9 +82,7 @@
                 >
                 <br />
                 <i
-                  >Python assets feature a collection of scripts, modules, and
-                  tools designed to assist you in your python development
-                  journey.</i
+                  >Python assets are a collection of resources focused on the python programming language.</i
                 >
               </p>
               <br />
@@ -323,17 +102,16 @@
             </p>
 
             <div class="projects-container">
-              <h3>None</h3>
-              <!-- Project 1
+
               <div class="project" data-aos="fade-up">
-                <h3>Echos</h3>
-                <p><strong>Game Genre:</strong> 2D Horror Game</p>
-                <p><strong>Release Date:</strong> Coming soon around March.</p>
-                <a href="upcominggames/project1">
-                  <h3>View Preview</h3>
-                </a>
+                <h3>Roblox RP Module</h3>
+                <p><strong>Description:</strong> This module will focus on a few game mechanics such as paychecks, leveling, ranks and much more.<br>The module will be coded in Lua on the roblox platform.</p>
+                <p><strong>Development Start Date:</strong> Saturday, 9 March 2024</p>
+                <p><strong>Release Date:</strong> Unknown</p>
+                <br>
+                <h3><a href="">View Now</a></h3>
               </div>
-               -->
+
             </div>
           </section>
         </div>
