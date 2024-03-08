@@ -11,7 +11,15 @@
       href="images/Web/icons8-s-key-ios-17-96.png"
     />
     <link rel="stylesheet" href="assets/css/main.css" />
-    <!-- Add any other necessary stylesheets or meta tags -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css"
+    />
     <style>
       /* Additional CSS for styling */
       #main {
@@ -20,6 +28,10 @@
 
       .title-section {
         text-align: center;
+      }
+
+      h3 {
+        font-size: 25px;
       }
 
       .team-section {
@@ -55,7 +67,6 @@
         margin: 5px 0;
       }
 
-      /* Add this CSS for fade-in animation */
       .fade-in {
         opacity: 0;
         transform: translateY(20px);
@@ -102,7 +113,7 @@
           <section class="team-section fade-in">
             <!-- Founder Section -->
             <div class="title-section">
-              <h3>Founder</h3>
+              <h3>Founders</h3>
             </div>
             <div class="team-members-row">
               <div class="team-member">
@@ -113,13 +124,20 @@
                 <p><strong>Nick</strong></p>
                 <p>Lead Developer & Founder</p>
               </div>
+              <div class="team-member">
+                <img
+                  src="images/team/xenHeadshot.png"
+                  alt="Xen's Account Headshot"
+                />
+                <p><strong>Xenia</strong></p>
+                <p>Co-Founder</p>
+              </div>
             </div>
           </section>
 
-          <!-- Co-Founder Section -->
           <section class="team-section fade-in">
             <div class="title-section">
-              <h3>Co-Founder</h3>
+              <h3>HR Developers</h3>
             </div>
             <div class="team-members-row">
               <div class="team-member">
@@ -128,8 +146,8 @@
                   alt="Lee's Account Headshot"
                 />
                 <p><strong>Lee</strong></p>
-                <p>Developer & Co-Founder</p>
-                <!--  <p><a href="redirect?Link=https://www.roblox.com/users/1768434453/profile">@Gues7863</a></p> -->
+                <p>Supervising Developer</p>
+
               </div>
             </div>
           </section>
@@ -147,7 +165,6 @@
                 />
                 <p><strong>Jake</strong></p>
                 <p>Junior Developer</p>
-                <!-- <p><a href="redirect?Link=https://www.roblox.com/users/2531149957/profile">@N0rthernDeveloper</a></p> -->
               </div>
 
               <div class="team-member">
@@ -157,11 +174,50 @@
                 />
                 <p><strong>Ryan</strong></p>
                 <p>Junior Developer</p>
-                <!--  <p><a href="redirect?Link=https://www.roblox.com/users/2284117685/profile">@RobloxGameStatistics</a></p>-->
+                
               </div>
-              <!-- Add more developers as needed -->
+
             </div>
           </section>
+
+
+          <section id="SpecialThanks" class="team-section fade-in">
+            <div class="title-section">
+              <h3>Special Thanks</h3>
+            </div>
+            <div class="team-members-row">
+              <div class="team-member">
+                <p><strong>Sam F.</strong></p>
+                <p>Roblox Game Audio Designer</p>
+              </div>
+              <div class="team-member">
+                <p><strong>Iris C.</strong></p>
+                <p>Javascript Helper</p>
+              </div>
+              <div class="team-member">
+                <p><strong>Noah D.</strong></p>
+                <p>Contributor</p>
+              </div>
+              <div class="team-member">
+                <p><strong>Kathy</strong></p>
+                <p>Contributor</p>
+              </div>
+              <div class="team-member">
+                <p><strong>Gracie</strong></p>
+                <p>Contributor</p>
+              </div>
+              <div class="team-member">
+                <p><strong>Zoe K.</strong></p>
+                <p>Contributor</p>
+              </div>
+              <div class="team-member">
+                <p><strong>Aiden C.</strong></p>
+                <p>Contributor</p>
+              </div>
+            </div>
+          </section>
+
+
         </div>
       </div>
 
@@ -202,6 +258,15 @@
       // Select all elements with the 'fade-in' class and observe them
       document.querySelectorAll(".fade-in").forEach((element) => {
         observer.observe(element);
+      });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scroll/16.1.3/smooth-scroll.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var scroll = new SmoothScroll('a[href*="#"]', {
+          speed: 800,
+          offset: 100,
+        });
       });
     </script>
   </body>
