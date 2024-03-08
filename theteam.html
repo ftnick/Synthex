@@ -1,176 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Team - Synthex</title>
-  <link type="image/png" sizes="96x96" rel="icon" href="images/Web/icons8-s-key-ios-17-96.png">
-  <link rel="stylesheet" href="assets/css/main.css">
-  <!-- Add any other necessary stylesheets or meta tags -->
-  <style>
-    /* Additional CSS for styling */
-    #main {
-      text-align: center;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Team - Synthex</title>
+    <link
+      type="image/png"
+      sizes="96x96"
+      rel="icon"
+      href="images/Web/icons8-s-key-ios-17-96.png"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!-- Add any other necessary stylesheets or meta tags -->
+    <style>
+      /* Additional CSS for styling */
+      #main {
+        text-align: center;
+      }
 
-    .title-section {
-      text-align: center;
-    }
+      .title-section {
+        text-align: center;
+      }
 
-    .team-section {
-      margin-bottom: 40px;
-      text-align: left;
-    }
+      .team-section {
+        margin-bottom: 40px;
+        text-align: left;
+      }
 
-    .team-members-row {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-    }
+      .team-members-row {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
 
-    .team-member {
-      width: 30%;
-      margin-bottom: 20px;
-      text-align: center;
-    }
+      .team-member {
+        width: 100%; /* Adjust width for smaller screens */
+        max-width: 300px; /* Set a maximum width for larger screens */
+        margin-bottom: 20px;
+        text-align: center;
+      }
 
-    .team-member img {
-      border-radius: 50%;
-      max-width: 150px;
-      height: auto;
-      margin-bottom: 10px;
-    }
+      .team-member img {
+        border-radius: 50%;
+        max-width: 100%; /* Make the image responsive */
+        height: auto;
+        margin-bottom: 10px;
+      }
 
-    .team-member h3 {
-      margin-top: 10px;
-    }
+      .team-member h3 {
+        margin-top: 10px;
+      }
 
-    .team-member p {
-      margin: 5px 0;
-    }
+      .team-member p {
+        margin: 5px 0;
+      }
 
-    /* Add this CSS for fade-in animation */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-    }
+      /* Add this CSS for fade-in animation */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      }
 
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
-</head>
-<body class="is-preload">
-  <div id="wrapper">
-    <header id="header">
-      <div class="inner">
-        <div id="main">
-          <h1><span class="title">Synthex</span></h1>
-          <p><strong>Current Synthex Team</strong></p>
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Media queries for responsiveness */
+      @media screen and (min-width: 768px) {
+        .team-member {
+          width: 45%; /* Adjust width for larger screens */
+        }
+      }
+
+      @media screen and (min-width: 1200px) {
+        .team-member {
+          width: 30%; /* Adjust width for extra-large screens */
+        }
+      }
+    </style>
+  </head>
+  <body class="is-preload">
+    <div id="wrapper">
+      <header id="header">
+        <div class="inner">
+          <div id="main">
+            <h1><span class="title">Synthex</span></h1>
+            <p><strong>Current Synthex Team</strong></p>
+          </div>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="/Synthex">Back to home</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <div id="main">
+        <div class="inner">
+          <section class="team-section fade-in">
+            <!-- Founder Section -->
+            <div class="title-section">
+              <h3>Founder</h3>
+            </div>
+            <div class="team-members-row">
+              <div class="team-member">
+                <img
+                  src="images/team/nickHeadshot.png"
+                  alt="Nick's Account Headshot"
+                />
+                <p><strong>Nick</strong></p>
+                <p>Lead Developer & Founder</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Co-Founder Section -->
+          <section class="team-section fade-in">
+            <div class="title-section">
+              <h3>Co-Founder</h3>
+            </div>
+            <div class="team-members-row">
+              <div class="team-member">
+                <img
+                  src="images/team/leeHeadshot.png"
+                  alt="Lee's Account Headshot"
+                />
+                <p><strong>Lee</strong></p>
+                <p>Developer & Co-Founder</p>
+                <!--  <p><a href="redirect?Link=https://www.roblox.com/users/1768434453/profile">@Gues7863</a></p> -->
+              </div>
+            </div>
+          </section>
+
+          <!-- Developers Section -->
+          <section class="team-section fade-in">
+            <div class="title-section">
+              <h3>Developers</h3>
+            </div>
+            <div class="team-members-row">
+              <div class="team-member">
+                <img
+                  src="images/team/jakeHeadshot.png"
+                  alt="Jake's Account Headshot"
+                />
+                <p><strong>Jake</strong></p>
+                <p>Junior Developer</p>
+                <!-- <p><a href="redirect?Link=https://www.roblox.com/users/2531149957/profile">@N0rthernDeveloper</a></p> -->
+              </div>
+
+              <div class="team-member">
+                <img
+                  src="images/team/ryanHeadshot.png"
+                  alt="Ryan's Account Headshot"
+                />
+                <p><strong>Ryan</strong></p>
+                <p>Junior Developer</p>
+                <!--  <p><a href="redirect?Link=https://www.roblox.com/users/2284117685/profile">@RobloxGameStatistics</a></p>-->
+              </div>
+              <!-- Add more developers as needed -->
+            </div>
+          </section>
         </div>
       </div>
-      <nav>
-        <ul>
-          <li><a href="/Synthex">Back to home</a></li>
-        </ul>
-      </nav>
-    </header>
 
-    <div id="main">
-      <div class="inner">
-        <section class="team-section fade-in">
-          <!-- Founder Section -->
-          <div class="title-section">
-            <h3>Founder</h3>
-          </div>
-          <div class="team-members-row">
-            <div class="team-member">
-              <img src="images/team/nickHeadshot.png" alt="Nick's Account Headshot">
-              <p><strong>Nick</strong></p>
-              <p>Lead Developer & Founder</p>
-            </div>
-          </div>
-        </section>
+      <footer id="footer">
+        <div class="inner">
+          <ul class="copyright">
+            <li>&copy; Synthex. All rights reserved</li>
 
-        <!-- Co-Founder Section -->
-        <section class="team-section fade-in">
-          <div class="title-section">
-            <h3>Co-Founder</h3>
-          </div>
-          <div class="team-members-row">
-            <div class="team-member">
-              <img src="images/team/leeHeadshot.png" alt="Lee's Account Headshot">
-              <p><strong>Lee</strong></p>
-              <p>Developer & Co-Founder</p>
-             <!--  <p><a href="redirect?Link=https://www.roblox.com/users/1768434453/profile">@Gues7863</a></p> -->
-            </div>
-          </div>
-        </section>
-
-        <!-- Developers Section -->
-        <section class="team-section fade-in">
-          <div class="title-section">
-            <h3>Developers</h3>
-          </div>
-          <div class="team-members-row">
-
-            <div class="team-member">
-              <img src="images/team/jakeHeadshot.png" alt="Jake's Account Headshot">
-              <p><strong>Jake</strong></p>
-              <p>Junior Developer</p>
-              <!-- <p><a href="redirect?Link=https://www.roblox.com/users/2531149957/profile">@N0rthernDeveloper</a></p> -->
-            </div>
-
-            <div class="team-member">
-              <img src="images/team/ryanHeadshot.png" alt="Ryan's Account Headshot">
-              <p><strong>Ryan</strong></p>
-              <p>Junior Developer</p>
-             <!--  <p><a href="redirect?Link=https://www.roblox.com/users/2284117685/profile">@RobloxGameStatistics</a></p>-->
-            </div>
-            <!-- Add more developers as needed -->
-          </div>
-        </section>
-      </div>
+            <!-- Add any other footer information or links as needed -->
+          </ul>
+        </div>
+      </footer>
     </div>
 
-    <footer id="footer">
-      <div class="inner">
-        <ul class="copyright">
-          <li>&copy; Synthex. All rights reserved</li>
-          
-          <!-- Add any other footer information or links as needed -->
-        </ul>
-      </div>
-    </footer>
-  </div>
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
 
-  <!-- Scripts -->
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/browser.min.js"></script>
-  <script src="assets/js/breakpoints.min.js"></script>
-  <script src="assets/js/util.js"></script>
-  <script src="assets/js/main.js"></script>
+    <script>
+      // Function to handle intersection observer events
+      function handleIntersection(entries, observer) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }
 
-  <script>
-    // Function to handle intersection observer events
-    function handleIntersection(entries, observer) {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
+      // Set up the Intersection Observer
+      const observer = new IntersectionObserver(handleIntersection, {
+        threshold: 0.5,
       });
-    }
 
-    // Set up the Intersection Observer
-    const observer = new IntersectionObserver(handleIntersection, { threshold: 0.5 });
-
-    // Select all elements with the 'fade-in' class and observe them
-    document.querySelectorAll('.fade-in').forEach((element) => {
-      observer.observe(element);
-    });
-  </script>
-</body>
+      // Select all elements with the 'fade-in' class and observe them
+      document.querySelectorAll(".fade-in").forEach((element) => {
+        observer.observe(element);
+      });
+    </script>
+  </body>
 </html>
