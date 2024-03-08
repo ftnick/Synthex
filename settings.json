@@ -1,4 +1,4 @@
 {
-    "Announcement": false,
-    "AnnouncementText": ""
+    "Announcement": true,
+    "AnnouncementText": "We're aware of mobile image issue and are currently investigating. Thank you for your patience as we work to resolve it."
   }
