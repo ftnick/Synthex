@@ -88,7 +88,6 @@
       <div class="inner">
         <ul class="copyright">
           <li>&copy; Synthex. All rights reserved</li>
-          <div id="lastUpdated"></div>
         </ul>
       </div>
     </footer>
@@ -104,10 +103,6 @@
       var changeList = entry.querySelector('.changeList');
       changeList.classList.toggle('show');
     }
-
-    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
-    var lastUpdated = new Date(document.lastModified).toLocaleString('en-US', options);
-    document.getElementById('lastUpdated').innerText = 'Last updated: ' + lastUpdated;
   </script>
 </body>
 </html>
