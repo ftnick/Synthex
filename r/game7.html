@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>T-Life Changelog</title>
+  <link type="image/png" sizes="96x96" rel="icon" href="../images/Web/icons8-s-key-ios-17-96.png">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <noscript><link rel="stylesheet" href="../assets/css/noscript.css"></noscript>
+  <style>
+    /* Additional styles for changelog */
+#changelogContainer {
+  margin: 20px;
+}
+
+.changelogEntry {
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.versionTitle {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.versionTitle .releaseDate {
+  font-size: smaller;
+}
+
+.data {
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+.changeList {
+  list-style-type: square;
+  margin-left: 20px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.1s ease; /* Updated transition duration */
+}
+
+.changeList.show {
+  max-height: 1000px; /* Set to a large value to allow full expansion */
+  transition: max-height 0.1s ease; /* Updated transition duration */
+}
+
+  </style>
+</head>
+<body class="is-preload">
+  <div id="wrapper">
+    <header id="header">
+      <div class="inner">
+        <a href="index" class="logo">
+          <h1><span class="title">T-Life</span></h1>
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/Synthex">Back to home</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="main">
+      <div class="inner">
+        <div id="changelogContainer">
+          <h1>Changelog</h1>
+          <p><strong>Click on a version to view its corresponding changelog.</strong></p>
+
+          <div class="changelogEntry" onclick="toggleChangelog(this)">
+            <div class="versionTitle">
+              Version 1.0.0 - <span class="releaseDate"><i>-</i></span>
+            </div>
+            <ul class="changeList">
+              <li>> Replaced default github 404 with new custom 404.</li>
+              <li>+ Added sitemap.</li>
+              <li>+ Added <a href="theteam#SpecialThanks">Special Thanks</a> section to <a href="theteam">theteam</a> page.</li>
+              <li>> Fixed image bug on the <a href="theteam">theteam</a> page, and improved mobile support.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <footer id="footer">
+      <div class="inner">
+        <ul class="copyright">
+          <li>&copy; Synthex. All rights reserved</li>
+          <div id="lastUpdated"></div>
+        </ul>
+      </div>
+    </footer>
+  </div>
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    function toggleChangelog(entry) {
+      var changeList = entry.querySelector('.changeList');
+      changeList.classList.toggle('show');
+    }
+
+    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
+    var lastUpdated = new Date(document.lastModified).toLocaleString('en-US', options);
+    document.getElementById('lastUpdated').innerText = 'Last updated: ' + lastUpdated;
+  </script>
+</body>
+</html>
