@@ -1,0 +1,31 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+.gallery-container {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 20px 0;
+    transition: transform 1s ease; /* Smooth transition */
+}
+.project-image {
+    display: inline-block;
+    margin-right: 20px; /* Adjust as needed */
+}
+.project {
+    position: relative;
+    display: inline-block;
+    margin-right: 20px; /* Adjust as needed */
+}
+.project-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; /* Adjust text color as needed */
+    font-size: 16px; /* Adjust font size as needed */
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 10px; /* Adjust padding as needed */
+}
