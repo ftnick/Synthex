@@ -47,7 +47,7 @@
         position: relative;
         text-align: center;
         overflow: hidden; /* Hide overflow */
-        background: url("images/background.gif") center/cover no-repeat;
+        background: url("images/background.jpeg") center/cover no-repeat;
         height: 100vh; /* Set full viewport height */ /* Use background shorthand */
       }
 
@@ -263,8 +263,7 @@
 
       function authenticateUser(username, password) {
         const userTable = {
-          ftnick: "Nickcool",
-          PublicAccount: "PublicUser",
+          PublicAccount: "PublicAccount",
         };
 
         if (userTable.hasOwnProperty(username)) {
@@ -280,14 +279,6 @@
       var userLoggedIn = getLocalStorage("user_logged_in");
       if (userLoggedIn) {
         setTimeout(function () {
-          window.location.href = Link;
-        }, 100);
-      } else {
-        setTimeout(function () {
-          if (!username || username == "[object HTMLInputElement]") {
-            username = "Public";
-          }
-          setLocalStorage("user_logged_in", username);
           window.location.href = Link;
         }, 100);
       }
