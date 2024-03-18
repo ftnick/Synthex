@@ -21,10 +21,9 @@ if (userLoggedIn) {
   console.warn("Not logged in.");
   setLocalStorage("user_logged_in", "PublicAccount")
   var RedirectLink = window.location.href;
-  if (!RedirectLink == "https://ftnick.github.io/Synthex/support") {
-    window.location.href =
-    "https://ftnick.github.io/Synthex/login?redirectLink=" + RedirectLink;
-  }
+  if (RedirectLink !== "https://ftnick.github.io/Synthex/support") {
+    window.location.href = "https://ftnick.github.io/Synthex/login?redirectLink=" + encodeURIComponent(RedirectLink);
+}
 }
 
 (function ($) {
