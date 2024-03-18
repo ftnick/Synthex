@@ -188,11 +188,11 @@
         <div class="inner">
           <!-- Login Form -->
           <div id="login-form">
-            <label id="messageLabelcloseable" class="hidden">
+            <label id="messageLabelcloseable" > <!-- class="hidden" -->
               <div id="errorID" class="alert error">
                 <span class="alertClose" onclick="closeIncorrect()">X</span>
                 <span class="alertText"
-                  >Incorrect Username Or Password, Try Again<br class="clear"
+                  >You should automatically be logged in by visiting this page, if your not redirected back, please go back to the homepage or clear your browser cache. <br> For addition support visit our <a href="support">support page</a>.<br class="clear"
                 /></span>
               </div>
             </label>
@@ -280,7 +280,7 @@
       if (userLoggedIn) {
         setTimeout(function () {
           window.location.href = Link;
-        }, 100);
+        }, 2000);
       }
 
       document
