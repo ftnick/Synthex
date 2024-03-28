@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Synthex Core Download</title>
+    <style>
+      .changeList {
+        list-style-type: square;
+        margin-left: 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.1s ease; /* Updated transition duration */
+      }
+
+      .changeList.show {
+        max-height: 1000px; /* Set to a large value to allow full expansion */
+        transition: max-height 0.1s ease; /* Updated transition duration */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Synthex Core</h1>
+
+    <h2>Version Information</h2>
+    <p>Current Version: 0.0.1</p>
+    <p>Release Date: March 29, 2024</p>
+    <p>File Size: Approximately 18 KB</p>
+
+    <h2>Download</h2>
+    <p>You can download the latest version of the application below:</p>
+    <a href="SynthexCore.exe" download>Download Application</a>
+
+    <h2>Notices</h2>
+    <p>
+      Synthex is an unverified developer so certain anti-viruses may delete or
+      prevent you from launching the application.
+    </p>
+
+    <p>A login is required to access Synthex assets, to sign up visit <a href="https://ftnick.github.io/Synthex/signup">our signup page</a>.</p>
+
+    <h2>Changelog</h2>
+    <p><strong>Click on a version to view its corresponding changelog.</strong></p>
+
+    <div class="changelogEntry" onclick="toggleChangelog(this)">
+      <div class="versionTitle">
+        Version 0.0.1 -
+        <span class="releaseDate"><i>Friday, 29 March 2024</i></span>
+      </div>
+      <ul class="changeList">
+        <li>Started developement.</li>
+        <li>Added AI predication methods, coming soon.</li>
+      </ul>
+    </div>
+
+    <script>
+      function toggleChangelog(entry) {
+        var changeList = entry.querySelector(".changeList");
+        changeList.classList.toggle("show");
+      }
+
+      var options = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+      };
+      var lastUpdated = new Date(document.lastModified).toLocaleString(
+        "en-US",
+        options
+      );
+      document.getElementById("lastUpdated").innerText =
+        "Last updated: " + lastUpdated;
+    </script>
+  </body>
+</html>
