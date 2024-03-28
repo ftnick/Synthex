@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Synthex - Sign Up</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    /* Add your CSS styles here */
+    .fade-in {
+      animation: fadeInAnimation 0.5s ease-in-out forwards;
+    }
+    
+    @keyframes fadeInAnimation {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    #signup-info > div {
+      display: none;
+    }
+
+    #signup-info > div.active {
+      display: block;
+    }
+  </style>
+</head>
+<body class="is-preload">
+  <!-- Wrapper -->
+  <div id="wrapper">
+    <!-- Header -->
+    <header id="header">
+      <div class="inner">
+        <!-- Signup Information -->
+        <div id="signup-info">
+          <h2>Sign Up</h2>
+          <!-- Part 1: Introduction -->
+          <div id="part1" class="active fade-in">
+            <p>Welcome to Synthex! To create a Synthex account, follow these steps:</p>
+            <ol>
+              <li>Review the requirements.</li>
+              <li>Review the agreements.</li>
+              <li>Contact us requesting an account.</li>
+            </ol>
+          </div>
+          <!-- Part 2: Requirements -->
+          <div id="part2" class="fade-in">
+            <h3>Requirements:</h3>
+            <ul>
+              <li>You must have a valid Discord account.</li>
+              <li>You must not have been recently blacklisted from Synthex services.</li>
+            </ul>
+          </div>
+          <!-- Part 3: Agreements -->
+          <div id="part3" class="fade-in">
+            <h3>Agreements:</h3>
+            <b>If you fail to uphold these agreements you will be permanently blacklisted from our services.</b>
+            <p></p>
+            <ul>
+                <li>You agree not to abuse or unlawfully use our services</li>
+                <li>You agree not to leak or resell Synthex applications and assets.</li>
+                <li>You agree that our administrators have the permission to terminate your account based on suspicion or reports.</li>
+              </ul>
+          </div>
+
+          <div id="part4" class="fade-in">
+            <h3>Contact Information:</h3>
+            <p>Now if you wish to obtain a Synthex login, the process is straightforward and streamlined.</p>
+            <p>Simply complete the required information on our official Google Form and contact @ftnick on Discord to initiate the verification process.</p>
+            <p>Please proceed by filling out the <a href="#">Google Form</a> and reaching out to <a href="https://discord.com/users/701632642822701057">@ftnick</a> on Discord for further assistance.</p>
+          </div>          
+        </div>
+        <!-- Navigation Buttons -->
+        <div id="navigation-buttons">
+          <button id="next-button" onclick="nextPart()">Next</button>
+        </div>
+      </div>
+    </header>
+  </div>
+  <script>
+    let currentPart = 1;
+
+    function nextPart() {
+      document.getElementById('part' + currentPart).classList.remove('active');
+      currentPart++;
+
+      // Change button text on last part
+      if (currentPart === 3) {
+        document.getElementById('next-button').innerText = 'Finish';
+      }
+
+      // Hide button on last part
+      if (currentPart === 4) {
+        document.getElementById('navigation-buttons').style.display = 'none';
+      }
+
+      document.getElementById('part' + currentPart).classList.add('active', 'fade-in');
+    }
+  </script>
+</body>
+</html>
