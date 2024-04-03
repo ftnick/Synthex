@@ -34,3 +34,7 @@
     margin-bottom: 10px;
     font-size: 16px;
 }
+
+.job-tile ul li {
+    font-size: 16px; /* Adjust the font size as needed */
+}
