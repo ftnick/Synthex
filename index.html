@@ -72,6 +72,22 @@
 
           <br />
 
+          <!-- Job Openings Section -->
+          <section data-aos="fade-up">
+            <header>
+              <h2><strong>Job Openings:</strong></h2>
+            </header>
+            <p class="subtitle">
+              Are you passionate about development or possess exceptional skills? We invite you to join our dynamic team!
+              <br />
+              <strong>
+                <a href="hiring" class="hvr-float-shadow">Discover our available positions!</a>
+              </strong>
+            </p>
+          </section>
+
+          <br />
+
           <!-- Assets Section -->
           <section data-aos="fade-up">
             <header id="AssetPages">
@@ -121,7 +137,7 @@
                   use. <br />
                   <b
                     >Note: This section has member locked assets, to sign up
-                    visit <a href="signup">the signup page</a>.</b
+                    <a href="support">contact us</a>.</b
                   ></i
                 >
               </p>
@@ -243,36 +259,36 @@
               // If the key "AlreadyAnnounced" exists in localStorage, skip
               console.log("Announcement already shown...");
             } else {
-            // Creating announcement element
-            const announcementContainer = document.createElement("div");
-            announcementContainer.classList.add("announcement-container");
+              // Creating announcement element
+              const announcementContainer = document.createElement("div");
+              announcementContainer.classList.add("announcement-container");
 
-            const announcementDiv = document.createElement("div");
-            announcementDiv.classList.add("announcement");
+              const announcementDiv = document.createElement("div");
+              announcementDiv.classList.add("announcement");
 
-            // Creating announcement heading
-            const heading = document.createElement("h2");
-            heading.textContent = "Important Update";
-            announcementDiv.appendChild(heading);
+              // Creating announcement heading
+              const heading = document.createElement("h2");
+              heading.textContent = "Important Update";
+              announcementDiv.appendChild(heading);
 
-            // Creating announcement paragraph
-            const paragraph = document.createElement("p");
-            paragraph.innerHTML = data.AnnouncementText;
-            announcementDiv.appendChild(paragraph);
+              // Creating announcement paragraph
+              const paragraph = document.createElement("p");
+              paragraph.innerHTML = data.AnnouncementText;
+              announcementDiv.appendChild(paragraph);
 
-            // Creating close button
-            const closeButton = document.createElement("button");
-            closeButton.textContent = "Close";
-            closeButton.addEventListener("click", () => {
-              announcementContainer.remove();
-            });
-            announcementDiv.appendChild(closeButton);
+              // Creating close button
+              const closeButton = document.createElement("button");
+              closeButton.textContent = "Close";
+              closeButton.addEventListener("click", () => {
+                announcementContainer.remove();
+              });
+              announcementDiv.appendChild(closeButton);
 
-            // Appending announcement to container
-            announcementContainer.appendChild(announcementDiv);
-            document.body.appendChild(announcementContainer);
+              // Appending announcement to container
+              announcementContainer.appendChild(announcementDiv);
+              document.body.appendChild(announcementContainer);
 
-            localStorage.setItem("AlreadyAnnounced", true);
+              localStorage.setItem("AlreadyAnnounced", true);
             }
           }
         })
