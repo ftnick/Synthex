@@ -1,4 +1,4 @@
 {
-    "Announcement": false,
-    "AnnouncementText": ""
+    "Announcement": true,
+    "AnnouncementText": "Synthex Core servers are down, if you require external info, contact us."
   }

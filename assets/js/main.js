@@ -4,28 +4,6 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
-
-function setLocalStorage(name, value) {
-  localStorage.setItem(name, value);
-}
-
-function getLocalStorage(name) {
-  return localStorage.getItem(name);
-}
-
-var userLoggedIn = getLocalStorage("user_logged_in");
-
-if (userLoggedIn) {
-  console.log("Logged in.");
-} else {
-  console.warn("Not logged in.");
-  setLocalStorage("user_logged_in", "PublicAccount")
-  var RedirectLink = window.location.href;
-  if (RedirectLink !== "https://ftnick.github.io/Synthex/support") {
-    window.location.href = "https://ftnick.github.io/Synthex/login?redirectLink=" + encodeURIComponent(RedirectLink);
-}
-}
-
 (function ($) {
   var $window = $(window),
     $body = $("body");

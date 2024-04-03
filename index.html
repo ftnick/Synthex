@@ -156,7 +156,6 @@
             <li>Synthex is owned and operated by Inverted Gaming Studios.</li>
             <li><a href="support">Contact Us</a></li>
             <br> <br>
-            <a id="loggedInUser"></a>
             <div id="lastUpdated"></div>
             <a href="changelog">View The Changelog</a>
           </ul>
@@ -170,21 +169,8 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="https://synthexroblox.statuspage.io/embed/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scroll/16.1.3/smooth-scroll.min.js"></script>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var loggedInUser = localStorage.getItem("user_logged_in");
-        var loggedInUserElement = document.getElementById("loggedInUser");
-        if (loggedInUser) {
-          loggedInUserElement.textContent =
-            "You are currently logged in as '" + loggedInUser + "'.";
-        } else {
-          loggedInUserElement.textContent = "You are not currently logged in.";
-        }
-      });
-    </script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         var scroll = new SmoothScroll('a[href*="#"]', {
