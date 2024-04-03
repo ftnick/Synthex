@@ -255,7 +255,7 @@
         .then((data) => {
           // Checking if Announcement is true in settings
           if (data.Announcement === true) {
-            if (localStorage.getItem("AlreadyAnnounced")) {
+            if (localStorage.getItem("AlreadyAnnounced") == data.AnnouncementText) {
               // If the key "AlreadyAnnounced" exists in localStorage, skip
               console.log("Announcement already shown...");
             } else {
@@ -288,7 +288,7 @@
               announcementContainer.appendChild(announcementDiv);
               document.body.appendChild(announcementContainer);
 
-              localStorage.setItem("AlreadyAnnounced", true);
+              localStorage.setItem("AlreadyAnnounced", data.AnnouncementText);
             }
           }
         })
