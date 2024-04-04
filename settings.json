@@ -1,4 +1,4 @@
 {
-    "Announcement": false,
-    "AnnouncementText": ""
+    "Announcement": true,
+    "AnnouncementText": "Test, Please ignore and close."
   }
