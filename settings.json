@@ -1,4 +1,5 @@
 {
     "Announcement": true,
-    "AnnouncementText": "Test, Please ignore and close. --+"
+    "AnnouncementTitle": "Test",
+    "AnnouncementText": "Please ignore and close. <a href='#'>--+<a/>"
   }
