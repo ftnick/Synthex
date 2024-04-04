@@ -1,5 +1,5 @@
 {
     "Announcement": true,
-    "AnnouncementTitle": "Test",
-    "AnnouncementText": "Please ignore and close. <a href='#'>--+<a/>"
+    "AnnouncementTitle": "Notice",
+    "AnnouncementText": "Make sure to check out our <a href='https://ftnick.github.io/Synthex/changelog'>changelog<a/> for updates!"
   }
