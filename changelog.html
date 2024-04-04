@@ -1,217 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <title>Synthex Changelog</title>
-  <link type="image/png" sizes="96x96" rel="icon" href="images/Web/icons8-s-key-ios-17-96.png">
-  <link rel="stylesheet" href="assets/css/main.css">
-  <noscript><link rel="stylesheet" href="assets/css/noscript.css"></noscript>
-  <style>
-    /* Additional styles for changelog */
-#changelogContainer {
-  margin: 20px;
-}
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <title>Synthex Changelog</title>
+    <link
+      type="image/png"
+      sizes="96x96"
+      rel="icon"
+      href="images/Web/icons8-s-key-ios-17-96.png"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="assets/css/noscript.css"
+    /></noscript>
+    <style>
+      /* Additional styles for changelog */
+      #changelogContainer {
+        margin: 20px;
+      }
 
-.changelogEntry {
-  margin-bottom: 20px;
-  cursor: pointer;
-}
+      .changelogEntry {
+        margin-bottom: 20px;
+        cursor: pointer;
+      }
 
-.versionTitle {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
+      .versionTitle {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
 
-.versionTitle .releaseDate {
-  font-size: smaller;
-}
+      .versionTitle .releaseDate {
+        font-size: smaller;
+      }
 
-.data {
-  font-size: 22px;
-  margin-bottom: 5px;
-}
+      .data {
+        font-size: 22px;
+        margin-bottom: 5px;
+      }
 
-.changeList {
-  list-style-type: square;
-  margin-left: 20px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.1s ease; /* Updated transition duration */
-}
+      .changeList {
+        list-style-type: square;
+        margin-left: 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.1s ease; /* Updated transition duration */
+      }
 
-.changeList.show {
-  max-height: 1000px; /* Set to a large value to allow full expansion */
-  transition: max-height 0.1s ease; /* Updated transition duration */
-}
+      .changeList.show {
+        max-height: 1000px; /* Set to a large value to allow full expansion */
+        transition: max-height 0.1s ease; /* Updated transition duration */
+      }
+    </style>
+  </head>
+  <body class="is-preload">
+    <div id="wrapper">
+      <header id="header">
+        <div class="inner">
+          <a href="index" class="logo">
+            <h1><span class="title">Synthex</span></h1>
+          </a>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="/Synthex">Back to home</a></li>
+          </ul>
+        </nav>
+      </header>
 
-  </style>
-</head>
-<body class="is-preload">
-  <div id="wrapper">
-    <header id="header">
-      <div class="inner">
-        <a href="index" class="logo">
-          <h1><span class="title">Synthex</span></h1>
-        </a>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="/Synthex">Back to home</a></li>
-        </ul>
-      </nav>
-    </header>
+      <div id="main">
+        <div class="inner">
+          <div id="changelogContainer">
+            <h1>Changelog</h1>
+            <input
+              type="text"
+              id="versionSearch"
+              onkeyup="searchVersions()"
+              placeholder="Search for version.."
+            />
+            <i
+              ><p>
+                Note: Any changelog entries below Version 2.0.1 are unformatted
+                and are confusing. <br />
+                If you need help or have a question, please
+                <a href="support">contact us</a>.
+              </p></i
+            >
+            <p>
+              <strong
+                >Click on a version to view its corresponding changelog.</strong
+              >
+            </p>
 
-    <div id="main">
-      <div class="inner">
-        <div id="changelogContainer">
-          <h1>Changelog</h1>
-          <p><strong>Click on a version to view its corresponding changelog.</strong></p>
-
-          <div class="changelogEntry" onclick="toggleChangelog(this)">
-            <div class="versionTitle">
-              Version 2.0.7_Experimental - <span class="releaseDate"><i>Thursday, 4 April 2024</i></span>
+            <div class="changelogEntry" onclick="toggleChangelog(this)">
+              <div class="versionTitle">
+                Version 2.0.8_Experimental -
+                <span class="releaseDate"><i>Thursday, 4 April 2024</i></span>
+              </div>
+              <ul class="changeList">
+                <li>+ Added a version search bar to the changelog page.</li>
+                <li>> Revamped changelog page</li>
+                <li>
+                  > Changed format of job tiles on the
+                  <a href="hiring">hiring page</a>.
+                </li>
+                <p>
+                  <strong
+                    >Release Note: This version is experimental, please
+                    <a href="support">report</a> all bugs and unsual website
+                    behaviours.</strong
+                  >
+                </p>
+              </ul>
             </div>
-            <ul class="changeList">
-              <li>> Changed announcement code to only show new announcements once closed.</li>
-              <li>> Fixed mobile bugs on the <a href="hiring">hiring page</a>.</li>
-              <li>- Completely removed login, signup and logout pages, to signup directly <a href="support">contact us</a>.</li>
-              <li>- Completely removed support resources. For support resources <a href="support">contact us</a>.</li>
-              <li>- Removed images from <a href="theteam">the team</a>.</li>
-              <p><strong>Release Note: This version is experimental, please <a href="support">report</a> all bugs and unsual website behaviours.</strong></p>
-            </ul>
-          </div>
 
-          <div class="changelogEntry" onclick="toggleChangelog(this)">
-            <div class="versionTitle">
-              Version 2.0.6 - <span class="releaseDate"><i>Wednesday, 3 April 2024</i></span>
+            <div class="changelogEntry" onclick="toggleChangelog(this)">
+              <div class="versionTitle">
+                Version 2.0.7_Experimental -
+                <span class="releaseDate"><i>Thursday, 4 April 2024</i></span>
+              </div>
+              <ul class="changeList">
+                <li>
+                  > Changed announcement code to only show new announcements
+                  once closed.
+                </li>
+                <li>
+                  > Fixed mobile bugs on the <a href="hiring">hiring page</a>.
+                </li>
+                <li>
+                  - Completely removed login, signup and logout pages, to signup
+                  directly <a href="support">contact us</a>.
+                </li>
+                <li>
+                  - Completely removed support resources. For support resources
+                  <a href="support">contact us</a>.
+                </li>
+                <li>- Removed images from <a href="theteam">the team</a>.</li>
+                <p>
+                  <strong
+                    >Release Note: This version is experimental, please
+                    <a href="support">report</a> all bugs and unsual website
+                    behaviours.</strong
+                  >
+                </p>
+              </ul>
             </div>
-            <ul class="changeList">
-              <li>> Changed announcement from static to a sticky notice.</li>
-              <li>+ Added <a href="https://ftnick.github.io/Synthex/hiring">hiring and job openings page</a>.</li>
-            </ul>
-          </div>
 
-          <div class="changelogEntry" onclick="toggleChangelog(this)">
-            <div class="versionTitle">
-              Version 2.0.5 - <span class="releaseDate"><i>Friday, 29 March 2024</i></span>
+            <div class="changelogEntry" onclick="toggleChangelog(this)">
+              <div class="versionTitle">
+                Version 2.0.6 -
+                <span class="releaseDate"><i>Wednesday, 3 April 2024</i></span>
+              </div>
+              <ul class="changeList">
+                <li>> Changed announcement from static to a sticky notice.</li>
+                <li>
+                  + Added
+                  <a href="https://ftnick.github.io/Synthex/hiring"
+                    >hiring and job openings page</a
+                  >.
+                </li>
+              </ul>
             </div>
-            <ul class="changeList">
-              <li>> Fixed bug where the error 404 page wouldn't send you to the support page when requested.</li>
-            </ul>
-          </div>
 
-          <div class="changelogEntry" onclick="toggleChangelog(this)">
-            <div class="versionTitle">
-              Version 2.0.4 - <span class="releaseDate"><i>Friday, 8 March 2024</i></span>
+            <div class="changelogEntry" onclick="toggleChangelog(this)">
+              <div class="versionTitle">
+                Version 2.0.5 -
+                <span class="releaseDate"><i>Friday, 29 March 2024</i></span>
+              </div>
+              <ul class="changeList">
+                <li>
+                  > Fixed bug where the error 404 page wouldn't send you to the
+                  support page when requested.
+                </li>
+              </ul>
             </div>
-            <ul class="changeList">
-              <li>> Replaced default github 404 with new custom 404.</li>
-              <li>+ Added sitemap.</li>
-              <li>+ Added <a href="theteam#SpecialThanks">Special Thanks</a> section to <a href="theteam">theteam</a> page.</li>
-              <li>> Fixed image bug on the <a href="theteam">theteam</a> page, and improved mobile support.</li>
-            </ul>
-          </div>
 
-          <div class="changelogEntry" onclick="toggleChangelog(this)">
-            <div class="versionTitle">
-              Version 2.0.3 - <span class="releaseDate"><i>Thursday, 7 March 2024</i></span>
+            <div class="changelogEntry" onclick="toggleChangelog(this)">
+              <div class="versionTitle">
+                Version 2.0.4 -
+                <span class="releaseDate"><i>Friday, 8 March 2024</i></span>
+              </div>
+              <ul class="changeList">
+                <li>> Replaced default github 404 with new custom 404.</li>
+                <li>+ Added sitemap.</li>
+                <li>
+                  + Added
+                  <a href="theteam#SpecialThanks">Special Thanks</a> section to
+                  <a href="theteam">theteam</a> page.
+                </li>
+                <li>
+                  > Fixed image bug on the <a href="theteam">theteam</a> page,
+                  and improved mobile support.
+                </li>
+              </ul>
             </div>
-            <ul class="changeList">
-              <li>+ Changed tile folders to single letters for a more simple and clean url.</li>
-            </ul>
-          </div>
 
-          <div class="changelogEntry" onclick="toggleChangelog(this)">
-            <div class="versionTitle">
-              Version 2.0.2_Experimental - <span class="releaseDate"><i>Saturday, 2 March 2024</i></span>
+            <div class="changelogEntry" onclick="toggleChangelog(this)">
+              <div class="versionTitle">
+                Version 2.0.3 -
+                <span class="releaseDate"><i>Thursday, 7 March 2024</i></span>
+              </div>
+              <ul class="changeList">
+                <li>
+                  + Changed tile folders to single letters for a more simple and
+                  clean url.
+                </li>
+              </ul>
             </div>
-            <ul class="changeList">
-              <li>> Revamped asset page homes.</li>
-              <li>+ Fixed redirect bugs.</li>
-            </ul>
-          </div>
 
-          <div class="changelogEntry" onclick="toggleChangelog(this)">
-            <div class="versionTitle">
-              Version 2.0.1 - <span class="releaseDate"><i>Thursday, 29 February 2024</i></span>
+            <div class="changelogEntry" onclick="toggleChangelog(this)">
+              <div class="versionTitle">
+                Version 2.0.2_Experimental -
+                <span class="releaseDate"><i>Saturday, 2 March 2024</i></span>
+              </div>
+              <ul class="changeList">
+                <li>> Revamped asset page homes.</li>
+                <li>+ Fixed redirect bugs.</li>
+                <p>
+                  <strong
+                    >Release Note: This version is experimental, please
+                    <a href="support">report</a> all bugs and unsual website
+                    behaviours.</strong
+                  >
+                </p>
+              </ul>
             </div>
-            <ul class="changeList">
-              <li>> Revamped login pages, added automatic login.</li>
-              <li>- Removed Email From <a href="support">Support</a></li>
-              <li>+ Added <a href="upcomingprojects">Upcoming Projects Page</a></li>
-              <li>> Revamped Redirect System And Page</li>
-              <li>> Revamped Changelog</li>
-            </ul>
-          </div>
 
-          <i><p>Note: Any changelog entries below this are unformatted and are confusing. <br>
-            If you need help or have a question, please <a href="support">contact us</a>.
-          </p></i>
-
-          <div class="changelogEntry" onclick="toggleChangelog(this)">
-            <div class="versionTitle">
-              Version 2.0.0 - <span class="releaseDate"><i>Saturday, 17 February 2024</i></span>
+            <div class="changelogEntry" onclick="toggleChangelog(this)">
+              <div class="versionTitle">
+                Version 2.0.1 -
+                <span class="releaseDate"
+                  ><i>Thursday, 29 February 2024</i></span
+                >
+              </div>
+              <ul class="changeList">
+                <li>> Revamped login pages, added automatic login.</li>
+                <li>- Removed Email From <a href="support">Support</a></li>
+                <li>
+                  + Added <a href="upcomingprojects">Upcoming Projects Page</a>
+                </li>
+                <li>> Revamped Redirect System And Page</li>
+                <li>> Revamped Changelog</li>
+              </ul>
             </div>
-            <ul class="changeList">
-                <li>New Homepages for different grouped assets:
+
+            <div class="changelogEntry" onclick="toggleChangelog(this)">
+              <div class="versionTitle">
+                Version 2.0.0 -
+                <span class="releaseDate"
+                  ><i>Saturday, 17 February 2024</i></span
+                >
+              </div>
+              <ul class="changeList">
+                <li>
+                  New Homepages for different grouped assets:
                   <ul>
                     <li>Roblox Assets now have a dedicated homepage.</li>
-                    <li>Python Tools also have their own homepage for better accessibility.</li>
+                    <li>
+                      Python Tools also have their own homepage for better
+                      accessibility.
+                    </li>
                   </ul>
                 </li>
-              
-                <li>Introduced "Roblox Music Downloader" Python tool.
+
+                <li>
+                  Introduced "Roblox Music Downloader" Python tool.
                   <ul>
-                    <li>Users can download music from Roblox using the hydra.io API.</li>
+                    <li>
+                      Users can download music from Roblox using the hydra.io
+                      API.
+                    </li>
                     <li>Integrated with a user-friendly GUI application.</li>
                   </ul>
                 </li>
-              
-                <li>Added "Youtube Asset Downloader" Python tool.
+
+                <li>
+                  Added "Youtube Asset Downloader" Python tool.
                   <ul>
-                    <li>Allows users to download either audio or videos from YouTube with a specified URL.</li>
+                    <li>
+                      Allows users to download either audio or videos from
+                      YouTube with a specified URL.
+                    </li>
                   </ul>
                 </li>
-              
+
                 <li>Updated the website format for better organization.</li>
-              
-                <li>Enhanced user experience with a cleaner and more intuitive design.</li>
-              
-                <li>Important Update:
+
+                <li>
+                  Enhanced user experience with a cleaner and more intuitive
+                  design.
+                </li>
+
+                <li>
+                  Important Update:
                   <ul>
-                    <li>As of Saturday, 17 February 2024, all assets will be organized and sorted into their respective home pages accessible through the Asset Pages section.</li>
+                    <li>
+                      As of Saturday, 17 February 2024, all assets will be
+                      organized and sorted into their respective home pages
+                      accessible through the Asset Pages section.
+                    </li>
                   </ul>
                 </li>
-              
-                <li>Website Changes:
+
+                <li>
+                  Website Changes:
                   <ul>
                     <li>Reorganized links for easy navigation.</li>
-                    <li>Improved accessibility with separate homepages for different asset categories.</li>
+                    <li>
+                      Improved accessibility with separate homepages for
+                      different asset categories.
+                    </li>
                   </ul>
                 </li>
-              
-                <li>Bug Fixes:
-                  <ul>
-                    <li>Addressed minor bugs and improved overall website performance.</li>
-                  </ul>
-                </li>
-              
-                <li>Miscellaneous:
-                  <ul>
-                    <li>Updated external libraries and dependencies for better compatibility.</li>
-                    <li>Incorporated AOS library for smoother page animations.</li>
-                    <li>Continuously striving for better user experience and functionality.</li>
-                  </ul>
-                </li>
-              </ul>  
-          </div>
 
-          <div class="changelogEntry" onclick="toggleChangelog(this)">
-            <div class="versionTitle">
-                Version 1.0.3 - <span class="releaseDate"><i>Tuesday, 13 February 2024</i></span>
+                <li>
+                  Bug Fixes:
+                  <ul>
+                    <li>
+                      Addressed minor bugs and improved overall website
+                      performance.
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  Miscellaneous:
+                  <ul>
+                    <li>
+                      Updated external libraries and dependencies for better
+                      compatibility.
+                    </li>
+                    <li>
+                      Incorporated AOS library for smoother page animations.
+                    </li>
+                    <li>
+                      Continuously striving for better user experience and
+                      functionality.
+                    </li>
+                  </ul>
+                </li>
+              </ul>
             </div>
-            <ul class="changeList">
+
+            <div class="changelogEntry" onclick="toggleChangelog(this)">
+              <div class="versionTitle">
+                Version 1.0.3 -
+                <span class="releaseDate"
+                  ><i>Tuesday, 13 February 2024</i></span
+                >
+              </div>
+              <ul class="changeList">
                 <li>Added game5 + game6</li>
                 <li>Removed privacy policy from footer</li>
                 <li>Removed opensource footer link</li>
@@ -219,78 +360,145 @@
                 <li>Removed random icons on asset pages</li>
                 <li>Fixed clothing image bugs</li>
               </ul>
-          </div>
-
-          <div class="changelogEntry" onclick="toggleChangelog(this)">
-            <div class="versionTitle">
-                Version 1.0.2 - <span class="releaseDate"><i>Monday, 12 February 2024</i></span>
             </div>
-            <ul class="changeList">
-                <li>Updated the styling of the user interface for a more polished look.</li>
+
+            <div class="changelogEntry" onclick="toggleChangelog(this)">
+              <div class="versionTitle">
+                Version 1.0.2 -
+                <span class="releaseDate"><i>Monday, 12 February 2024</i></span>
+              </div>
+              <ul class="changeList">
+                <li>
+                  Updated the styling of the user interface for a more polished
+                  look.
+                </li>
                 <li>Improved responsive design for better mobile viewing.</li>
-                <li>Improved mobile experience, although very buggy, report bugs on our <a href="https://ftnick.github.io/Synthex-Roblox/support">support page</a></li>
+                <li>
+                  Improved mobile experience, although very buggy, report bugs
+                  on our
+                  <a href="https://ftnick.github.io/Synthex-Roblox/support"
+                    >support page</a
+                  >
+                </li>
                 <li>Added games; containment, Some Space and Rent-A-Memory</li>
-                <li>Marked "containment," "Some Space," and "Rent-A-Memory" games as discontinued.</li>
-                <li>Integrated Synthex XP Levels module, providing a free and dynamic XP leveling system for Roblox games.</li>
-                <li>Added two new clothing items: "stay" and "sorry," each with unique designs.</li>
-                <li>Added a maintenance script for handling server downtime gracefully.</li>
-                <li>Included a status page script for monitoring service status.</li>
+                <li>
+                  Marked "containment," "Some Space," and "Rent-A-Memory" games
+                  as discontinued.
+                </li>
+                <li>
+                  Integrated Synthex XP Levels module, providing a free and
+                  dynamic XP leveling system for Roblox games.
+                </li>
+                <li>
+                  Added two new clothing items: "stay" and "sorry," each with
+                  unique designs.
+                </li>
+                <li>
+                  Added a maintenance script for handling server downtime
+                  gracefully.
+                </li>
+                <li>
+                  Included a status page script for monitoring service status.
+                </li>
                 <li>Improved the footer layout for better readability.</li>
-                <li>Added update log, privacy policy, support and logout buttons to footer.</li>
+                <li>
+                  Added update log, privacy policy, support and logout buttons
+                  to footer.
+                </li>
                 <li>Addressed alignment issues in various sections.</li>
-                <li>Integrated a logout button for easy session termination.</li>
+                <li>
+                  Integrated a logout button for easy session termination.
+                </li>
               </ul>
-          </div>
-
-
-          <div class="changelogEntry" onclick="toggleChangelog(this)">
-            <div class="versionTitle">
-                Version 1.0.1 - <span class="releaseDate"><i>Saturday, 10 February 2024</i></span>
             </div>
-            <ul class="changeList">
+
+            <div class="changelogEntry" onclick="toggleChangelog(this)">
+              <div class="versionTitle">
+                Version 1.0.1 -
+                <span class="releaseDate"
+                  ><i>Saturday, 10 February 2024</i></span
+                >
+              </div>
+              <ul class="changeList">
                 <li>Fixed a few small auth bugs</li>
               </ul>
-          </div>
-
-          <div class="changelogEntry" onclick="toggleChangelog(this)">
-            <div class="versionTitle">
-                Version 1.0.0 - <span class="releaseDate"><i>Saturday, 10 February 2024</i></span>
             </div>
-            <ul class="changeList">
+
+            <div class="changelogEntry" onclick="toggleChangelog(this)">
+              <div class="versionTitle">
+                Version 1.0.0 -
+                <span class="releaseDate"
+                  ><i>Saturday, 10 February 2024</i></span
+                >
+              </div>
+              <ul class="changeList">
                 <li>Added changelog</li>
                 <li>Added Synthex XP Levels module</li>
                 <li>Introduced clothing modules: stay and sorry</li>
               </ul>
+            </div>
           </div>
-
         </div>
       </div>
+
+      <footer id="footer">
+        <div class="inner">
+          <ul class="copyright">
+            <li>&copy; Synthex. All rights reserved</li>
+            <div id="lastUpdated"></div>
+          </ul>
+        </div>
+      </footer>
     </div>
 
-    <footer id="footer">
-      <div class="inner">
-        <ul class="copyright">
-          <li>&copy; Synthex. All rights reserved</li>
-          <div id="lastUpdated"></div>
-        </ul>
-      </div>
-    </footer>
-  </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
 
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/browser.min.js"></script>
-  <script src="assets/js/breakpoints.min.js"></script>
-  <script src="assets/js/util.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script>
-    function toggleChangelog(entry) {
-      var changeList = entry.querySelector('.changeList');
-      changeList.classList.toggle('show');
-    }
+    <script>
+      function searchVersions() {
+        var input = document
+          .getElementById("versionSearch")
+          .value.toLowerCase();
+        var versionTitles = document.querySelectorAll(".versionTitle");
 
-    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
-    var lastUpdated = new Date(document.lastModified).toLocaleString('en-US', options);
-    document.getElementById('lastUpdated').innerText = 'Last updated: ' + lastUpdated;
-  </script>
-</body>
+        versionTitles.forEach(function (title) {
+          var fullVersion = title.innerText;
+          var version = fullVersion.split(" - ")[0].toLowerCase();
+          var entry = title.parentElement;
+
+          if (version.includes(input)) {
+            entry.style.display = ""; // Show the entry
+          } else {
+            entry.style.display = "none"; // Hide the entry
+          }
+        });
+      }
+    </script>
+
+    <script>
+      function toggleChangelog(entry) {
+        var changeList = entry.querySelector(".changeList");
+        changeList.classList.toggle("show");
+      }
+
+      var options = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+      };
+      var lastUpdated = new Date(document.lastModified).toLocaleString(
+        "en-US",
+        options
+      );
+      document.getElementById("lastUpdated").innerText =
+        "Last updated: " + lastUpdated;
+    </script>
+  </body>
 </html>
