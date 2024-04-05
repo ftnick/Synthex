@@ -1,5 +1,5 @@
 {
     "Announcement": true,
-    "AnnouncementTitle": "Notice",
-    "AnnouncementText": "Make sure to check out our <a href='https://ftnick.github.io/Synthex/changelog'>changelog<a/> for updates!"
+    "AnnouncementTitle": "Hard Warning",
+    "AnnouncementText": "SynthexPPI's response time is currently experiencing significant delays. Please be patience as we work to resolve the issue."
   }
