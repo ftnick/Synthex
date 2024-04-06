@@ -1,5 +1,5 @@
 {
-    "Announcement": true,
+    "Announcement": false,
     "AnnouncementTitle": "Hard Warning",
     "AnnouncementText": "SynthexPPI's response time is currently experiencing significant delays, please be patience as we work to resolve the issue."
   }
