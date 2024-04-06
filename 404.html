@@ -44,57 +44,7 @@
         <h1>Error 404 - Page Not Found</h1>
         <p>Oops! The page you're looking for could not be found.</p>
         <h3><a href="https://ftnick.github.io/Synthex/">Home page</a>.</h3>
-        <h3><a href="https://ftnick.github.io/Synthex/support">Support</a>.</h3>
-        <div id="fileList" style="display: none;"></div>
-        
+	<h3><a href="https://ftnick.github.io/Synthex/support">Support</a>.</h3>
     </div>
-
-    <script>
-        // Function to fetch GitHub repository contents
-        async function fetchRepoContents(repoUrl, folderPath) {
-            const apiUrl = `https://api.github.com/repos${repoUrl.replace('https://github.com', '')}/contents/${folderPath}`;
-            const response = await fetch(apiUrl);
-            if (response.ok) {
-                const data = await response.json();
-                return data;
-            } else {
-                throw new Error('Failed to fetch repository contents.');
-            }
-        }
-
-        // Function to display folder contents
-        async function displayFolderContents(repoUrl, folderPath) {
-            try {
-                const contents = await fetchRepoContents(repoUrl, folderPath);
-                const fileListDiv = document.getElementById('fileList');
-                fileListDiv.innerHTML = '<h2>We although found a folder which matches your url...</h2><br/><h3>Files in this folder:</h3>';
-                const ul = document.createElement('ul');
-                contents.forEach(item => {
-                    if (item.type === 'file') {
-                        const li = document.createElement('p');
-                        const a = document.createElement('a');
-                        a.textContent = item.name;
-                        a.href = item.html_url;
-                        li.appendChild(a);
-                        ul.appendChild(li);
-                    }
-                });
-                fileListDiv.appendChild(ul);
-                fileListDiv.style.display = 'block';
-            } catch (error) {
-                console.error(error);
-            }
-        }
-
-        // Check if the URL corresponds to a folder in the GitHub repository
-        const currentUrl = window.location.href;
-        const repoUrl = 'https://github.com/ftnick/Synthex';
-        const folderPath = currentUrl.replace('https://ftnick.github.io/Synthex/', '');
-
-        if (folderPath.endsWith('/') && folderPath !== '/') {
-            // It's a folder path
-            displayFolderContents(repoUrl, folderPath);
-        }
-    </script>
 </body>
 </html>
