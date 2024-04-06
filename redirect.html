@@ -1,92 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link
-      type="image/png"
-      sizes="96x96"
-      rel="icon"
-      href="images/Web/icons8-s-key-ios-17-96.png"
-    />
-    <link rel="stylesheet" href="assets/css/redirect.css" />
-    <title>Redirecting...</title>
-    <style>
-      body {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        margin: 0;
-        background-color: #ffffff;
-        font-family: "Arial", sans-serif;
-      }
-
-      #redirectContainer {
-        text-align: center;
-      }
-
-      .loader-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 20px;
-        margin-bottom: 20px;
-      }
-
-      .loader {
-        border: 4px solid #000000;
-        border-top: 4px solid #ffffff;
-        border-radius: 50%;
-        width: 10px;
-        height: 10px;
-        animation: spin 1s linear infinite;
-      }
-
-      .hide {
-        display: none;
-      }
-
-      @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
-
-      #status {
-        font-size: 18px;
-        color: #333;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="redirectContainer">
-      <p id="status">Redirecting...</p>
-      <div class="loader-container">
-        <div class="loader" id="loader"></div>
-      </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
+  <link rel="icon" type="image/png" sizes="96x96" href="images/Web/icons8-s-key-ios-17-96.png">
+  <link rel="stylesheet" href="assets/css/redirect.css">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #ffffff;
+      font-family: "Arial", sans-serif;
+    }
+    #redirectContainer {
+      text-align: center;
+    }
+    .loader-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    .loader {
+      border: 4px solid #000000;
+      border-top: 4px solid #ffffff;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      animation: spin 1s linear infinite;
+    }
+    .hide {
+      display: none;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    #status {
+      font-size: 18px;
+      color: #333;
+    }
+    #status a {
+      color: red;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="redirectContainer">
+    <p id="status">Redirecting...</p>
+    <div class="loader-container">
+      <div class="loader" id="loader"></div>
     </div>
+  </div>
 
-    <script>
-      const urlParams = new URLSearchParams(window.location.search);
-      const downloadLink = urlParams.get("downloadLink");
-      const Link = urlParams.get("Link");
-      const statusElement = document.getElementById("status");
-      const loaderElement = document.getElementById("loader")
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const downloadLink = urlParams.get("downloadLink");
+    const Link = urlParams.get("Link");
+    const statusElement = document.getElementById("status");
+    const loaderElement = document.getElementById("loader")
 
-      if (downloadLink) {
-        statusElement.innerHTML = `Redirecting to ${downloadLink} download`;
-        setTimeout(() => {
-          window.location.href = downloadLink;
-        }, 100);
-      } else if (Link) {
-        statusElement.innerHTML = `Redirecting to ${Link}`;
-        setTimeout(() => {
-          window.location.href = Link;
-        }, 100);
-      } else {
-        loaderElement.classList.add("hide")
-        statusElement.innerHTML =
-          '<span style="color: red;">Redirect link not provided, go <a href="https://ftnick.github.io/Synthex/">back home</a>.</span>';
-      }
-    </script>
-  </body>
+    if (downloadLink) {
+      statusElement.innerHTML = `Redirecting to ${downloadLink} download`;
+      setTimeout(() => {
+        window.location.href = downloadLink;
+      }, 100);
+    } else if (Link) {
+      statusElement.innerHTML = `Redirecting to ${Link}`;
+      setTimeout(() => {
+        window.location.href = Link;
+      }, 100);
+    } else {
+      loaderElement.classList.add("hide")
+      statusElement.innerHTML =
+        '<span>Redirect link not provided, go <a href="https://ftnick.github.io/Synthex/">back home</a>.</span>';
+    }
+  </script>
+</body>
 </html>
