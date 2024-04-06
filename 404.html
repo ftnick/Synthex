@@ -46,6 +46,7 @@
         <h3><a href="https://ftnick.github.io/Synthex/">Home page</a>.</h3>
         <h3><a href="https://ftnick.github.io/Synthex/support">Support</a>.</h3>
         <div id="fileList" style="display: none;"></div>
+        
     </div>
 
     <script>
@@ -66,11 +67,11 @@
             try {
                 const contents = await fetchRepoContents(repoUrl, folderPath);
                 const fileListDiv = document.getElementById('fileList');
-                fileListDiv.innerHTML = '<h3>Files in this folder:</h3>';
+                fileListDiv.innerHTML = '<h2>We although found a folder which matches your url...</h2><br/><h3>Files in this folder:</h3>';
                 const ul = document.createElement('ul');
                 contents.forEach(item => {
                     if (item.type === 'file') {
-                        const li = document.createElement('li');
+                        const li = document.createElement('p');
                         const a = document.createElement('a');
                         a.textContent = item.name;
                         a.href = item.html_url;
