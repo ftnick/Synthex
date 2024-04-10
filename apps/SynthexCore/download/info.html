@@ -270,35 +270,36 @@
     </script>
 
 <script>
-   function getFileSize() {
-            // URL of the file whose size needs to be fetched
-            const fileUrl = 'https://ftnick.github.io/Synthex/apps/SynthexCore/download/SynthexCoreInstaller.exe'; // Update this with the actual URL
+  function getFileSize() {
+       // URL of the file whose size needs to be fetched
+       const fileUrl = 'https://ftnick.github.io/Synthex/apps/SynthexCore/download/SynthexCoreInstaller.exe'; // Update this with the actual URL
 
-            // Fetch the file using AJAX
-            var xhr = new XMLHttpRequest();
-            xhr.open('HEAD', fileUrl, true);
+       // Fetch the file using AJAX
+       var xhr = new XMLHttpRequest();
+       xhr.open('HEAD', fileUrl, true);
 
-            // Set up event listener to handle response
-            xhr.onload = function () {
-                if (xhr.status === 200) {
-                    // Extract file size from Content-Length header
-                    const fileSizeInBytes = parseInt(xhr.getResponseHeader('Content-Length'), 10);
-                    
-                    // Convert bytes to kilobytes (1 KB = 1024 bytes)
-                    const fileSizeInKB = fileSizeInBytes / 1024;
+       // Set up event listener to handle response
+       xhr.onload = function () {
+           if (xhr.status === 200) {
+               // Extract file size from Content-Length header
+               const fileSizeInBytes = parseInt(xhr.getResponseHeader('Content-Length'), 10);
+               
+               // Convert bytes to megabytes (1 MB = 1024 * 1024 bytes)
+               const fileSizeInMB = fileSizeInBytes / (1024 * 1024);
 
-                    // Display file size
-                    document.getElementById('sizeValue').textContent = fileSizeInKB.toFixed(2) + ' KB';
-                } else {
-                    document.getElementById('sizeValue').textContent = 'Unknown';
-                }
-            };
+               // Display file size
+               document.getElementById('sizeValue').textContent = fileSizeInMB.toFixed(2) + ' MB';
+           } else {
+               document.getElementById('sizeValue').textContent = 'Unknown';
+           }
+       };
 
-            // Send the request
-            xhr.send();
-        }
+       // Send the request
+       xhr.send();
+   }
 
-        getFileSize();
+   getFileSize();
 </script>
+
   </body>
 </html>
