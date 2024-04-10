@@ -1,196 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Synthex Core Download</title>
-  <link rel="stylesheet" href="../../../assets/css/main.css">
-  <link type="image/png" sizes="96x96" rel="icon" href="images/Web/icons8-s-key-ios-17-96.png">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f3f3f3;
-      color: #333;
-    }
-    #wrapper {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    h1, h2 {
-      color: #444;
-    }
-    p {
-      margin: 10px 0;
-    }
-    a {
-      color: #007bff;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .changelogEntry {
-      margin-bottom: 20px;
-      cursor: pointer;
-    }
-    .versionTitle {
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-    .releaseDate {
-      font-style: italic;
-    }
-    .changeList {
-      list-style-type: square;
-      margin-left: 20px;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-    }
-    .changeList.show {
-      max-height: 1000px;
-    }
-  </style>
-</head>
-<body>
-  <div id="wrapper">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Synthex Core Download</title>
+    <link rel="stylesheet" href="../../../assets/css/main.css" />
+    <link
+      type="image/png"
+      sizes="96x96"
+      rel="icon"
+      href="images/Web/icons8-s-key-ios-17-96.png"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f3f3f3;
+        color: #333;
+      }
+      #wrapper {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      h1,
+      h2 {
+        color: #444;
+      }
+      p {
+        margin: 10px 0;
+      }
+      a {
+        color: #007bff;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .changelogEntry {
+        margin-bottom: 20px;
+        cursor: pointer;
+      }
+      .versionTitle {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      .releaseDate {
+        font-style: italic;
+      }
+      .changeList {
+        list-style-type: square;
+        margin-left: 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+      .changeList.show {
+        max-height: 1000px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <main>
+        <section>
+          <h2>Synthex Core</h2>
+          <p><strong>Version Information</strong></p>
+          <p id="version">
+            Current Version: <span id="versionNumber">Fetching Version...</span>
+          </p>
+          <p>Release Date: Wednesday, 10 April 20244</p>
+          <p>File Size: <span id="sizeValue">Fetching Size...</span></p>
+        </section>
+        <br />
+        <br />
+        <section>
+          <h2>Download</h2>
+          <p>
+            You can download the latest stable version of the application below:
+          </p>
+          <p><a href="SynthexCore.exe" download>Download Application</a></p>
+        </section>
+        <br />
+        <br />
+        <section>
+          <h2>Notices</h2>
+          <p>
+            Synthex is an unverified developer so certain anti-viruses may
+            prevent you from launching the application.
+          </p>
+          <p>
+            A login is required to access Synthex assets, to sign up visit
+            <a href="https://ftnick.github.io/Synthex/signup">our signup page</a
+            >.
+          </p>
+        </section>
+        <br />
+        <br />
+        <section>
+          <h2>Changelog</h2>
+          <p>
+            <strong
+              >Click on a version to view its corresponding changelog.</strong
+            >
+          </p>
 
-    <main>
-      <section>
-        <h2>Synthex Core</h2>
-        <p><strong>Version Information</strong></p>
-        <p>Current Version: 0.0.9</p>
-        <p>Release Date: Friday, 5 April 2024</p>
-        <p>File Size: Approximately 32 KB</p>
-      </section>
-      <br>
-      <br>
-      <section>
-        <h2>Download</h2>
-        <p>You can download the latest stable version of the application below:</p>
-        <p><a href="SynthexCore.exe" download>Download Application</a></p>
-      </section>
-      <br>
-      <br>
-      <section>
-        <h2>Notices</h2>
-        <p>Synthex is an unverified developer so certain anti-viruses may prevent you from launching the application.</p>
-        <p>A login is required to access Synthex assets, to sign up visit <a href="https://ftnick.github.io/Synthex/signup">our signup page</a>.</p>
-      </section>
-      <br>
-      <br>
-      <section>
-        <h2>Changelog</h2>
-        <p><strong>Click on a version to view its corresponding changelog.</strong></p>
-        
-        <div class="changelogEntry" onclick="toggleChangelog(this)">
-          <div class="versionTitle">
-            Version 0.0.9_Dev -
-            <span class="releaseDate"><i>Friday, 29 March 2024</i></span>
+          <div class="changelogEntry" onclick="toggleChangelog(this)">
+            <div class="versionTitle">
+              Version 0.0.11_Dev -
+              <span class="releaseDate"><i>Wednesday, 10 April 2024</i></span>
+            </div>
+            <ul class="changeList">
+              <li>Added new function: Snapchat Downloader</li>
+            </ul>
           </div>
-          <ul class="changeList">
-            <li>Added Base64 Decode? Report anything to <a href="https://ftnick.github.io/Synthex/support">our support page</a>.</li>
-          </ul>
-        </div>
-    
-        <div class="changelogEntry" onclick="toggleChangelog(this)">
-          <div class="versionTitle">
-            Version 0.0.8 -
-            <span class="releaseDate"><i>Friday, 29 March 2024</i></span>
-          </div>
-          <ul class="changeList">
-            <li>Added more functions.</li>
-            <li>More bug fixes.</li>
-          </ul>
-        </div>
-    
-        <div class="changelogEntry" onclick="toggleChangelog(this)">
-          <div class="versionTitle">
-            Version 0.0.7 -
-            <span class="releaseDate"><i>Friday, 29 March 2024</i></span>
-          </div>
-          <ul class="changeList">
-            <li>Changed data folder path to be in the application data instead of the desktop.</li>
-          </ul>
-        </div>
-    
-        <div class="changelogEntry" onclick="toggleChangelog(this)">
-          <div class="versionTitle">
-            Version 0.0.6 -
-            <span class="releaseDate"><i>Friday, 29 March 2024</i></span>
-          </div>
-          <ul class="changeList">
-            <li>Revamped sidebar.</li>
-            <li>Added download progressbar.</li>
-          </ul>
-        </div>
-    
-        <div class="changelogEntry" onclick="toggleChangelog(this)">
-          <div class="versionTitle">
-            Version 0.0.5 -
-            <span class="releaseDate"><i>Friday, 29 March 2024</i></span>
-          </div>
-          <ul class="changeList">
-            <li>Added debug tools.</li>
-            <li>More bug fixes.</li>
-            <li>Revamped some code.</li>
-          </ul>
-        </div>
-    
-        <div class="changelogEntry" onclick="toggleChangelog(this)">
-          <div class="versionTitle">
-            Version 0.0.4 -
-            <span class="releaseDate"><i>Friday, 29 March 2024</i></span>
-          </div>
-          <ul class="changeList">
-            <li>Added a data folder which contains a new auto-login file, the folder will be created in the desktop by default.</li>
-            <li>Bug fixes.</li>
-          </ul>
-        </div>
-    
-        <div class="changelogEntry" onclick="toggleChangelog(this)">
-          <div class="versionTitle">
-            Version 0.0.3 -
-            <span class="releaseDate"><i>Friday, 29 March 2024</i></span>
-          </div>
-          <ul class="changeList">
-            <li>Fixed login bug.</li>
-          </ul>
-        </div>
-    
-        <div class="changelogEntry" onclick="toggleChangelog(this)">
-          <div class="versionTitle">
-            Version 0.0.2 -
-            <span class="releaseDate"><i>Friday, 29 March 2024</i></span>
-          </div>
-          <ul class="changeList">
-            <li>Bug fixes.</li>
-          </ul>
-        </div>
-    
-        <div class="changelogEntry" onclick="toggleChangelog(this)">
-          <div class="versionTitle">
-            Version 0.0.1 -
-            <span class="releaseDate"><i>Friday, 29 March 2024</i></span>
-          </div>
-          <ul class="changeList">
-            <li>Started developement.</li>
-            <li>Added AI predication methods, coming soon.</li>
-          </ul>
-        </div>
-      </section>
-    </main>
-  </div>
 
-  <script>
-    function toggleChangelog(entry) {
-      var changeList = entry.querySelector(".changeList");
-      changeList.classList.toggle("show");
-    }
-  </script>
-</body>
+          <div class="changelogEntry" onclick="toggleChangelog(this)">
+            <div class="versionTitle">
+              Version 0.0.10 -
+              <span class="releaseDate"><i>Friday, 29 March 2024</i></span>
+            </div>
+            <ul class="changeList">
+              <li>Bug fixes.</li>
+            </ul>
+          </div>
+
+          <div class="changelogEntry" onclick="toggleChangelog(this)">
+            <div class="versionTitle">
+              Version 0.0.9_Dev -
+              <span class="releaseDate"><i>Friday, 29 March 2024</i></span>
+            </div>
+            <ul class="changeList">
+              <li>
+                Added Base64 Decode? Report anything to
+                <a href="https://ftnick.github.io/Synthex/support"
+                  >our support page</a
+                >.
+              </li>
+            </ul>
+          </div>
+
+          <div class="changelogEntry" onclick="toggleChangelog(this)">
+            <div class="versionTitle">
+              Version 0.0.8 -
+              <span class="releaseDate"><i>Friday, 29 March 2024</i></span>
+            </div>
+            <ul class="changeList">
+              <li>Added more functions.</li>
+              <li>More bug fixes.</li>
+            </ul>
+          </div>
+
+          <div class="changelogEntry" onclick="toggleChangelog(this)">
+            <div class="versionTitle">
+              Version 0.0.7 -
+              <span class="releaseDate"><i>Friday, 29 March 2024</i></span>
+            </div>
+            <ul class="changeList">
+              <li>
+                Changed data folder path to be in the application data instead
+                of the desktop.
+              </li>
+            </ul>
+          </div>
+
+          <div class="changelogEntry" onclick="toggleChangelog(this)">
+            <div class="versionTitle">
+              Version 0.0.6 -
+              <span class="releaseDate"><i>Friday, 29 March 2024</i></span>
+            </div>
+            <ul class="changeList">
+              <li>Revamped sidebar.</li>
+              <li>Added download progressbar.</li>
+            </ul>
+          </div>
+
+          <div class="changelogEntry" onclick="toggleChangelog(this)">
+            <div class="versionTitle">
+              Version 0.0.5 -
+              <span class="releaseDate"><i>Friday, 29 March 2024</i></span>
+            </div>
+            <ul class="changeList">
+              <li>Added debug tools.</li>
+              <li>More bug fixes.</li>
+              <li>Revamped some code.</li>
+            </ul>
+          </div>
+
+          <div class="changelogEntry" onclick="toggleChangelog(this)">
+            <div class="versionTitle">
+              Version 0.0.4 -
+              <span class="releaseDate"><i>Friday, 29 March 2024</i></span>
+            </div>
+            <ul class="changeList">
+              <li>
+                Added a data folder which contains a new auto-login file, the
+                folder will be created in the desktop by default.
+              </li>
+              <li>Bug fixes.</li>
+            </ul>
+          </div>
+
+          <div class="changelogEntry" onclick="toggleChangelog(this)">
+            <div class="versionTitle">
+              Version 0.0.3 -
+              <span class="releaseDate"><i>Friday, 29 March 2024</i></span>
+            </div>
+            <ul class="changeList">
+              <li>Fixed login bug.</li>
+            </ul>
+          </div>
+
+          <div class="changelogEntry" onclick="toggleChangelog(this)">
+            <div class="versionTitle">
+              Version 0.0.2 -
+              <span class="releaseDate"><i>Friday, 29 March 2024</i></span>
+            </div>
+            <ul class="changeList">
+              <li>Bug fixes.</li>
+            </ul>
+          </div>
+
+          <div class="changelogEntry" onclick="toggleChangelog(this)">
+            <div class="versionTitle">
+              Version 0.0.1 -
+              <span class="releaseDate"><i>Friday, 29 March 2024</i></span>
+            </div>
+            <ul class="changeList">
+              <li>Started developement.</li>
+              <li>Added AI predication methods, coming soon.</li>
+            </ul>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      function toggleChangelog(entry) {
+        var changeList = entry.querySelector(".changeList");
+        changeList.classList.toggle("show");
+      }
+    </script>
+
+    <script>
+      setTimeout(() => {
+        fetch("https://ftnick.github.io/Synthex/apps/SynthexCore/download/version.txt")
+          .then((response) => response.text())
+          .then((version) => {
+            document.getElementById("versionNumber").textContent =
+              version.trim();
+          })
+          .catch((error) => {
+            console.error("Error fetching version:", error);
+            document.getElementById("versionNumber").textContent =
+            error;
+          })
+      }, 500);
+    </script>
+
+<script>
+   function getFileSize() {
+            // URL of the file whose size needs to be fetched
+            const fileUrl = 'https://ftnick.github.io/Synthex/apps/SynthexCore/download/SynthexCore.exe'; // Update this with the actual URL
+
+            // Fetch the file using AJAX
+            var xhr = new XMLHttpRequest();
+            xhr.open('HEAD', fileUrl, true);
+
+            // Set up event listener to handle response
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    // Extract file size from Content-Length header
+                    const fileSizeInBytes = parseInt(xhr.getResponseHeader('Content-Length'), 10);
+                    
+                    // Convert bytes to kilobytes (1 KB = 1024 bytes)
+                    const fileSizeInKB = fileSizeInBytes / 1024;
+
+                    // Display file size
+                    document.getElementById('sizeValue').textContent = fileSizeInKB.toFixed(2) + ' KB';
+                } else {
+                    document.getElementById('sizeValue').textContent = 'Unknown';
+                }
+            };
+
+            // Send the request
+            xhr.send();
+        }
+
+        getFileSize();
+</script>
+  </body>
 </html>
