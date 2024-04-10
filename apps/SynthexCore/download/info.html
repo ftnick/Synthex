@@ -79,9 +79,9 @@
         <section>
           <h2>Download</h2>
           <p>
-            You can download the latest stable version of the application below:
+            You can download the latest stable version of the installer below:
           </p>
-          <p><a href="SynthexCore.exe" download>Download Application</a></p>
+          <p><a href="SynthexCoreInstaller.exe" download>Download Installer</a></p>
         </section>
         <br />
         <br />
@@ -108,6 +108,15 @@
           </p>
 
           <div class="changelogEntry" onclick="toggleChangelog(this)">
+            <div class="versionTitle">
+              Version 0.0.12_NOTVALIDAPPVERSION -
+              <span class="releaseDate"><i>Thursday, 11 April 2024</i></span>
+            </div>
+            <ul class="changeList">
+              <li>Added installer</li>
+            </ul>
+          </div>
+
             <div class="versionTitle">
               Version 0.0.11_Dev -
               <span class="releaseDate"><i>Wednesday, 10 April 2024</i></span>
@@ -263,7 +272,7 @@
 <script>
    function getFileSize() {
             // URL of the file whose size needs to be fetched
-            const fileUrl = 'https://ftnick.github.io/Synthex/apps/SynthexCore/download/SynthexCore.exe'; // Update this with the actual URL
+            const fileUrl = 'https://ftnick.github.io/Synthex/apps/SynthexCore/download/SynthexCoreInstaller.exe'; // Update this with the actual URL
 
             // Fetch the file using AJAX
             var xhr = new XMLHttpRequest();
