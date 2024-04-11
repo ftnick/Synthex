@@ -1,0 +1,21 @@
+svg {
+    width: 1em; /* Set width proportional to font size */
+    height: 1em; /* Set height proportional to font size */
+    vertical-align: middle; /* Align vertically with middle of text */
+    margin-right: 0.2em; /* Add some spacing between the image and text */
+  }
+  .svgMajor {
+    fill: #ff0000;
+  }
+  .svgPartial {
+    fill: #ff8b00;
+  }
+  .svgDegraded {
+    fill: #ffc400
+  }
+  .svgOperational {
+    fill: #2fcc66
+  }
+  .svgMaintenance {
+    fill: #3498db
+  }

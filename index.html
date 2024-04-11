@@ -28,6 +28,7 @@
     />
     <link rel="stylesheet" href="assets/css/index.css" />
     <link rel="stylesheet" href="assets/css/announcement.css" />
+    <link rel="stylesheet" href="assets/css/Status.css" />
 
     <noscript
       ><link rel="stylesheet" href="assets/css/noscript.css"
@@ -188,12 +189,24 @@
         <div class="inner">
           <ul class="copyright">
             <li>Synthex is owned and operated by Inverted Gaming Studios.</li>
-            <li><a href="support">Contact Us</a></li>
+            <br />
+            <br />
+            <a href="support">Contact Us</a><br />
+            <a href="changelog">View The Changelog</a> <br>
+            <a href="https://synthexdevelopment.statuspage.io/">View Our Status Page</a>
+            
             <br />
             <br />
             <div id="lastUpdated"></div>
-            <a href="changelog">View The Changelog</a> <br>
-            <a href="https://synthexdevelopment.statuspage.io/">View Our Status Page</a>
+            <p>
+              <svg id="svg" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10" cy="10" r="10" />
+              </svg>
+              <span id="txt" style="vertical-align: middle;">Service Outage Status Loading...</span>
+              <svg id="svg2" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10" cy="10" r="10" />
+              </svg>
+            </p>
           </ul>
         </div>
       </footer>
@@ -205,8 +218,26 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/Status.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scroll/16.1.3/smooth-scroll.min.js"></script>
+    <script type="text/javascript" src="https://cdn.statuspage.io/se-v2.js"></script>
     <script src="https://synthexdevelopment.statuspage.io/embed/script.js"></script>
+
+    <script>
+      function formatISODate(isoDateString) {
+        const date = new Date(isoDateString);
+      const options = { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric', 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        second: '2-digit', 
+        timeZoneName: 'short' 
+    };
+    return date.toLocaleString('en-US', options);
+}
+    </script>
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
