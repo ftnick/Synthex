@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Issues - Synthex</title>
+    <link
+      type="image/png"
+      sizes="96x96"
+      rel="icon"
+      href="images/Web/icon.png"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!-- Add any other necessary stylesheets or meta tags -->
+  </head>
+  <body class="is-preload">
+    <div id="wrapper">
+      <header id="header">
+        <div class="inner">
+          <a href="index" class="logo">
+            <h1><span class="title">Synthex</span></h1>
+          </a>
+        </div>
+
+        <nav>
+          <ul>
+            <li><a href="/Synthex">Back to home</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <div id="main">
+        <div class="inner">
+          <header>
+            <h2>GitHub Issues</h2>
+          </header>
+          <section>
+            <ul id="issues-list">
+              <!-- Issues will be dynamically added here -->
+            </ul>
+          </section>
+          <p>Cant find an ongoing issue? Check our <a href="https://synthexdevelopment.statuspage.io/">statuspage</a> then contact us regarding the issue.</p>
+        </div>
+      </div>
+
+      <footer id="footer">
+        <div class="inner">
+          <ul class="copyright">
+            <li>&copy; Synthex. All rights reserved</li>
+          </ul>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $.ajax({
+          url: "https://api.github.com/repos/ftnick/Synthex/issues",
+          success: function (data) {
+            // Iterate through issues and add them to the list
+            data.forEach(function (issue) {
+              var createdAt = new Date(issue.created_at);
+              var formattedCreatedAt =
+                createdAt.getDate() +
+                "/" +
+                (createdAt.getMonth() + 1) +
+                "/" +
+                createdAt.getFullYear() +
+                " | " +
+                createdAt.getHours() +
+                ":" +
+                createdAt.getMinutes() +
+                ":" +
+                createdAt.getSeconds();
+              var label = issue.labels[0].name;
+              var color = issue.labels[0].color;
+              var desc = issue.body;
+              var number = issue.number;
+              var id = issue.id;
+              var textColor = "#" + color;
+              $("#issues-list").append(
+                '<li style="color:' +
+                  textColor +
+                  ';"><a href="' +
+                  issue.html_url +
+                  '">' +
+                  "[" +
+                  number +
+                  "] " +
+                  issue.title +
+                  "</a> (" +
+                  label +
+                  ") - Created at: " +
+                  formattedCreatedAt +
+                  "<br/>" +
+                  desc +
+                  "</li>"
+              );
+            });
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
