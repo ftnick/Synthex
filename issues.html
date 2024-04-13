@@ -39,7 +39,11 @@
               <!-- Issues will be dynamically added here -->
             </ul>
           </section>
-          <p>Cant find an ongoing issue? Check our <a href="https://synthexdevelopment.statuspage.io/">statuspage</a> then contact us regarding the issue.</p>
+          <p>
+            Cant find an ongoing issue? Check our
+            <a href="https://synthexdevelopment.statuspage.io/">statuspage</a>
+            then contact us regarding the issue.
+          </p>
         </div>
       </div>
 
@@ -65,46 +69,53 @@
         $.ajax({
           url: "https://api.github.com/repos/ftnick/Synthex/issues",
           success: function (data) {
-            // Iterate through issues and add them to the list
-            data.forEach(function (issue) {
-              var createdAt = new Date(issue.created_at);
-              var formattedCreatedAt =
-                createdAt.getDate() +
-                "/" +
-                (createdAt.getMonth() + 1) +
-                "/" +
-                createdAt.getFullYear() +
-                " | " +
-                createdAt.getHours() +
-                ":" +
-                createdAt.getMinutes() +
-                ":" +
-                createdAt.getSeconds();
-              var label = issue.labels[0].name;
-              var color = issue.labels[0].color;
-              var desc = issue.body;
-              var number = issue.number;
-              var id = issue.id;
-              var textColor = "#" + color;
-              $("#issues-list").append(
-                '<li style="color:' +
-                  textColor +
-                  ';"><a href="' +
-                  issue.html_url +
-                  '">' +
-                  "[" +
-                  number +
-                  "] " +
-                  issue.title +
-                  "</a> (" +
-                  label +
-                  ") - Created at: " +
-                  formattedCreatedAt +
-                  "<br/>" +
-                  desc +
-                  "</li>"
-              );
-            });
+            if (data.length === 0) {
+              $("#issues-list").append("<p>No issues found.</p>");
+            } else {
+              data.forEach(function (issue) {
+                var createdAt = new Date(issue.created_at);
+                var formattedCreatedAt =
+                  createdAt.getDate() +
+                  "/" +
+                  (createdAt.getMonth() + 1) +
+                  "/" +
+                  createdAt.getFullYear() +
+                  " | " +
+                  createdAt.getHours() +
+                  ":" +
+                  createdAt.getMinutes() +
+                  ":" +
+                  createdAt.getSeconds();
+                var labelString = issue.labels
+                  .map(function (label) {
+                    return label.name;
+                  })
+                  .join(" | "); // Join labels with ' | '
+                var color = issue.labels[0].color;
+                var desc = issue.body;
+                var number = issue.number;
+                var id = issue.id;
+                var textColor = "#" + color;
+                $("#issues-list").append(
+                  '<li style="color:' +
+                    textColor +
+                    ';"><a href="' +
+                    issue.html_url +
+                    '">' +
+                    "[" +
+                    number +
+                    "] " +
+                    issue.title +
+                    "</a> (" +
+                    labelString +
+                    ") - Created at: " +
+                    formattedCreatedAt +
+                    "<br/>" +
+                    desc +
+                    "</li>"
+                );
+              });
+            }
           },
         });
       });
