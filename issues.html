@@ -11,7 +11,11 @@
       href="images/Web/icon.png"
     />
     <link rel="stylesheet" href="assets/css/main.css" />
-    <!-- Add any other necessary stylesheets or meta tags -->
+    <style>
+      .error {
+        color: red;
+      }
+    </style>
   </head>
   <body class="is-preload">
     <div id="wrapper">
@@ -96,7 +100,8 @@
                     })
                     .join(" | "); // Join labels with ' | '
                 }
-                var color = issue.labels.length === 0 ? "000000" : issue.labels[0].color;
+                var color =
+                  issue.labels.length === 0 ? "000000" : issue.labels[0].color;
                 var desc = issue.body;
                 var number = issue.number;
                 var id = issue.id;
@@ -121,6 +126,12 @@
                 );
               });
             }
+          },
+          error: function (xhr, status, error) {
+            console.error("Error fetching GitHub issues:", error);
+            $("#issues-list").append(
+              "<p class='error'>Error fetching GitHub issues.<br>This may be caused by a rate limit if you keep refreshing this page.<br>For additional help, please visit our <a href='https://ftnick.github.io/Synthex/support'>support page</a>.</p>"
+            );
           },
         });
       });
