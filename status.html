@@ -21,6 +21,10 @@
         <circle cx="10" cy="10" r="10" />
       </svg>
     </p>
+
+    <!-- Placeholder for job steps -->
+    <div id="jobSteps">Loading...</div>
+
     <script
       type="text/javascript"
       src="https://cdn.statuspage.io/se-v2.js"
@@ -54,5 +58,62 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/Status.js"></script>
+
+    <script>
+      // Function to fetch most recent job and update table with its steps
+      async function updateJobSteps() {
+        try {
+          const workflowResponse = await fetch(
+            "https://api.github.com/repos/ftnick/Synthex/actions/workflows"
+          );
+          const workflowData = await workflowResponse.json();
+
+          if (workflowData.total_count > 0) {
+            const firstWorkflow = workflowData.workflows[0];
+            const workflowId = firstWorkflow.id;
+
+            const jobsResponse = await fetch(
+              `https://api.github.com/repos/ftnick/Synthex/actions/runs/${workflowId}/jobs`
+            );
+            if (!jobsResponse.total_count > 0) {
+                throw new Error("Calm Error: jobsResponse return nil");
+            }
+            const jobsData = await jobsResponse.json();
+
+            const sortedJobs = jobsData.jobs.sort(
+              (a, b) => new Date(b.started_at) - new Date(a.started_at)
+            );
+            const mostRecentJob = sortedJobs[0];
+
+            const steps = mostRecentJob.steps
+              .map((step) => step.name)
+              .join(", ");
+            document.getElementById(
+              "jobSteps"
+            ).innerText = `Steps of the most recent job (${mostRecentJob.name}): ${steps}`;
+
+            return { mostRecentJob, steps };
+          } else {
+            throw new Error("No workflows found.");
+          }
+        } catch (error) {
+          console.error("Error:", error.message);
+          return null;
+        }
+      }
+
+      // Function to update job steps every 5 seconds
+      function updateJobStepsInterval() {
+        setInterval(async () => {
+          await updateJobSteps();
+        }, 5000); // 5000 milliseconds = 5 seconds
+      }
+
+      // Call the function to update job steps initially
+      updateJobSteps();
+
+      // Call the function to update job steps every 5 seconds
+      updateJobStepsInterval();
+    </script>
   </body>
 </html>
