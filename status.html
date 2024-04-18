@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Status Page</title>
+    <link rel="stylesheet" href="assets/css/index.css" />
+    <link rel="stylesheet" href="assets/css/Status.css" />
+  </head>
+  <body>
+    <div id="lastUpdated"></div>
+
+    <p>
+      <svg id="svg" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="10" />
+      </svg>
+      <span id="txt" style="vertical-align: middle"
+        >Service Outage Status Loading...</span
+      >
+      <svg id="svg2" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="10" />
+      </svg>
+    </p>
+    <script
+      type="text/javascript"
+      src="https://cdn.statuspage.io/se-v2.js"
+    ></script>
+    <script>
+      var options = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+      };
+
+      var lastUpdated = new Date(document.lastModified).toLocaleString(
+        "en-US",
+        options
+      );
+      document.getElementById("lastUpdated").innerText =
+        "Last updated: " + lastUpdated;
+
+      function formatISODate(dateString) {
+        var date = new Date(dateString);
+        return date.toLocaleString("en-US", options);
+      }
+    </script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/Status.js"></script>
+  </body>
+</html>
