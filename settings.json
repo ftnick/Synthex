@@ -1,5 +1,5 @@
 {
-    "Announcement": false,
-    "AnnouncementTitle": "Hard Warning",
-    "AnnouncementText": "SynthexPPI's response time is currently experiencing significant delays, please be patience as we work to resolve the issue."
-  }
+  "Announcement": true,
+  "AnnouncementTitle": "Revamp Notice",
+  "AnnouncementText": "Due to community input and feedback, the SynthexCore application will be revamped into version 2.0.0.\n\nYou can expect the following in the revamp:\n- New UI Styles (New navigation, Tabs, Setting.)\n- Better downtime communication (Including more notification options. You will also not be auto logged out if the program is outdated.)\n- New installer design (No more weird console apps, the installer will be completely changed to include more flexible options and customization.)\n- Full bug wipe and revamp for services (All services will either be revamped in accordance with the 'New UI Styles' or changed/removed.)\n\nMore to come as we continue to develop new features along the way.\n\nWant to file a bug report, need some help, or have a suggestion? Reach out to me on Discord at 'ftnick'\nOr visit our support page at:\nhttps://ftnick.github.io/Synthex/support\n\nSynthexCore Version 2.0.0\nLast Updated: 18th Of April\nActive Project Supervisor:\nNICK"
+}
