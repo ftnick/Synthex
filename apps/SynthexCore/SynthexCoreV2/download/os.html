@@ -51,12 +51,14 @@
         if (operatingSystem && downloadOptions && fromUrl) {
             var redirectUrl = determineRedirectUrl(operatingSystem, downloadOptions);
             if (redirectUrl.startsWith("https://")) {
-                setTimeout(function () {
-                    window.location.href = redirectUrl;
-                }, 1000);
+                window.location.href = redirectUrl;
             } else {
                 window.location.href = redirectUrl;  
             }
+
+            setTimeout(function () {
+                window.location.href = fromUrl;
+            }, 1000);
         } else {
             label.textContent = "Invalid request parameters. Please try again.";
         }
