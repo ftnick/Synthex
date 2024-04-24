@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Operating System Detection</title>
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f5f5f5;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+      }
+
+      .container {
+          text-align: center;
+      }
+  </style>
+  </head>
+  <body>
+    <div style="text-align: center">
+      <h1>We Couldn't Determine Your Operating System</h1>
+      <p>
+        Unfortunately, we're unable to detect your operating system and
+        architecture.
+      </p>
+      <p>Please contact support for further assistance.</p>
+      <button onclick="redirect()">Go Back</button>
+    </div>
+    <script>
+      function redirect() {
+      var urlParams = new URLSearchParams(window.location.search);
+      var redirectTo = urlParams.get('from');
+      if (redirectTo) {
+        window.location.href = redirectTo;
+      } else {
+        window.location.href = 'https://ftnick.github.io/Synthex/';
+      }
+    }
+  </script>
+    </script>
+  </body>
+</html>

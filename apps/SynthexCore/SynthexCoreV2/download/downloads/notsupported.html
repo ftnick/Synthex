@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operating System Not Supported</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Operating System Not Supported</h1>
+        <p>We're sorry, but your operating system is not supported for downloading the software.</p>
+        <p>Please contact support for further assistance.</p>
+        <button onclick="redirect()">Go Back</button>
+    </div>
+    <script>
+        function redirect() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var redirectTo = urlParams.get('from');
+        if (redirectTo) {
+          window.location.href = redirectTo;
+        } else {
+          window.location.href = 'https://ftnick.github.io/Synthex/apps/SynthexCore/SynthexCoreV2/download/info';
+        }
+      }
+    </script>
+</body>
+</html>

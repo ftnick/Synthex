@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+</head>
+<body>
+    <p id="status"></p>
+    <script>
+        var urlParams = new URLSearchParams(window.location.search);
+
+        var operatingSystem = urlParams.get('os');
+        var downloadOptions = urlParams.get('download');
+        var fromUrl = urlParams.get('from');
+
+        var label = document.getElementById('status');
+
+        function determineRedirectUrl(os, options) {
+            switch (os) {
+                case "windows":
+                    return determineWindowsRedirect(options);
+                case "macos":
+                case "linux":
+                    return "downloads/notsupported";
+                default:
+                    return "Invalid request parameters. Please try again.";
+            }
+        }
+
+        function determineWindowsRedirect(options) {
+            var message;
+            var redirectUrl;
+
+            message = "Redirecting to Windows " + options + " download...";
+            if (options.includes("64")) {
+                redirectUrl = options.includes("Latest") ?
+                    "downloads/windows64/SynthexCoreV2.zip" :
+                    "downloads/notsupported";
+            } else {
+                return "downloads/notsupported"
+                //redirectUrl = options.includes("Latest") ?
+                //    "https://example.com/download/synthex-core-32bit-latest" :
+                //    "https://example.com/download/synthex-core-32bit-dev";
+            }
+
+            label.textContent = message;
+            return redirectUrl;
+        }
+
+        if (operatingSystem && downloadOptions && fromUrl) {
+            var redirectUrl = determineRedirectUrl(operatingSystem, downloadOptions);
+            if (redirectUrl.startsWith("https://")) {
+                setTimeout(function () {
+                    window.location.href = redirectUrl;
+                }, 1000);
+            } else {
+                window.location.href = redirectUrl;  
+            }
+        } else {
+            label.textContent = "Invalid request parameters. Please try again.";
+        }
+    </script>
+</body>
+</html>
