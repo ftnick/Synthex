@@ -47,14 +47,10 @@
 
         if (operatingSystem && downloadOptions && fromUrl) {
             var redirectUrl = determineRedirectUrl(operatingSystem, downloadOptions);
-            if (redirectUrl.startsWith("https://")) {
-                // Append fromUrl as a query parameter to the redirectUrl
-                redirectUrl += "?from=" + encodeURIComponent(fromUrl);
-                window.location.href = redirectUrl;
-            } else {
-                // If not a valid redirectUrl, show an error message
-                label.textContent = "Invalid redirect URL. Please try again.";
-            }
+            window.location.href = redirectUrl
+            setTimeout(function() {
+                window.location.href = encodeURIComponent(fromUrl);
+            }, 100);
         } else {
             label.textContent = "Invalid request parameters. Please try again.";
         }
