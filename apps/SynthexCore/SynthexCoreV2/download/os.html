@@ -49,7 +49,7 @@
             var redirectUrl = determineRedirectUrl(operatingSystem, downloadOptions);
             window.location.href = redirectUrl
             setTimeout(function() {
-                window.location.href = encodeURIComponent(fromUrl);
+                window.location.href = fromUrl;
             }, 100);
         } else {
             label.textContent = "Invalid request parameters. Please try again.";
