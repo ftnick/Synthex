@@ -24,7 +24,7 @@
                 case "linux":
                     return "downloads/notsupported";
                 default:
-                    return "Invalid request parameters. Please try again.";
+                    return "downloads/unknown";
             }
         }
 
@@ -38,10 +38,7 @@
                     "downloads/windows64/SynthexCoreV2.zip" :
                     "downloads/notsupported";
             } else {
-                return "downloads/notsupported"
-                //redirectUrl = options.includes("Latest") ?
-                //    "https://example.com/download/synthex-core-32bit-latest" :
-                //    "https://example.com/download/synthex-core-32bit-dev";
+                redirectUrl = "downloads/notsupported";
             }
 
             label.textContent = message;
@@ -51,14 +48,13 @@
         if (operatingSystem && downloadOptions && fromUrl) {
             var redirectUrl = determineRedirectUrl(operatingSystem, downloadOptions);
             if (redirectUrl.startsWith("https://")) {
+                // Append fromUrl as a query parameter to the redirectUrl
+                redirectUrl += "?from=" + encodeURIComponent(fromUrl);
                 window.location.href = redirectUrl;
             } else {
-                window.location.href = redirectUrl;  
+                // If not a valid redirectUrl, show an error message
+                label.textContent = "Invalid redirect URL. Please try again.";
             }
-
-            setTimeout(function () {
-                window.location.href = fromUrl;
-            }, 1000);
         } else {
             label.textContent = "Invalid request parameters. Please try again.";
         }
