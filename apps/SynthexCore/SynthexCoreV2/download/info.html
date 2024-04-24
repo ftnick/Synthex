@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Synthex Core Download</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+  <link rel="icon" type="image/png" sizes="96x96" href="images/Web/icons8-s-key-ios-17-96.png">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f3f3f3;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2 {
+      color: #333;
+    }
+    p {
+      margin: 10px 0;
+    }
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .changelog-entry {
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+    .version-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .release-date {
+      font-style: italic;
+    }
+    .change-list {
+      list-style-type: square;
+      margin-left: 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .change-list.show {
+      max-height: 1000px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <nav>
+        <ul>
+          <a href="https://ftnick.github.io/Synthex/">Back to Home</a>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <h1>Synthex Core Version 2</h1>
+        <p><strong>Version Information</strong></p>
+        <p id="version">
+          Current Version: <span id="version-number">Fetching Version...</span>
+        </p>
+        <p>Release Date: Sunday, 14 April 2024</p>
+        <p>File Size: <span id="size-value">Fetching Size...</span></p>
+      </section>
+      <br>
+      <section>
+        <h2>Download</h2>
+        <p>You can download the latest stable version of the installer below:</p>
+        <p><a href="SynthexCoreInstaller.exe" download>Download Installer</a></p>
+      </section>
+      <br>
+      <section>
+        <h2>Notices</h2>
+        <p>Synthex is an unverified developer so certain antivirus programs may prevent you from launching the application.</p>
+        <p>A login is required to access this Synthex asset. To sign up, visit <a href="https://ftnick.github.io/Synthex/signup">our signup page</a>.</p>
+      </section>
+      <br>
+      <section>
+        <h2>Changelog</h2>
+        <p><strong>Click on a version to view its corresponding changelog.</strong></p>
+        <!--<div class="changelog-entry" onclick="toggleChangelog(this)">
+          <div class="version-title">
+            Version 0.0.17_QuickFix -
+            <span class="release-date"><i>Sunday, 14 April 2024</i></span>
+          </div>
+        </div>-->
+
+        <!-- More changelog entries go here -->
+      </section>
+    </main>
+  </div>
+
+  <script>
+    function toggleChangelog(entry) {
+      var changeList = entry.querySelector(".change-list");
+      changeList.classList.toggle("show");
+    }
+  </script>
+
+  <script>
+    setTimeout(() => {
+      fetch("https://ftnick.github.io/Synthex/apps/SynthexCore/SynthexCoreV2/download/version.txt")
+        .then(response => response.text())
+        .then(version => {
+          document.getElementById("version-number").textContent = version.trim();
+        })
+        .catch(error => {
+          console.error("Error fetching version:", error);
+          document.getElementById("version-number").textContent = error;
+        })
+    }, 500);
+  </script>
+
+  <script>
+    function getFileSize() {
+      const fileUrl = 'https://ftnick.github.io/Synthex/apps/SynthexCore/SynthexCoreV2/download/SynthexCoreV2.zip';
+      var xhr = new XMLHttpRequest();
+      xhr.open('HEAD', fileUrl, true);
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          const fileSizeInBytes = parseInt(xhr.getResponseHeader('Content-Length'), 10);
+          const fileSizeInMB = fileSizeInBytes / (1024 * 1024);
+          document.getElementById('size-value').textContent = fileSizeInMB.toFixed(2) + ' MB';
+        } else {
+          document.getElementById('size-value').textContent = 'Unknown';
+        }
+      };
+      xhr.send();
+    }
+    getFileSize();
+  </script>
+</body>
+</html>
