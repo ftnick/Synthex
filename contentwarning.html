@@ -1,66 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Content Warning</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f0f0f0;
-      text-align: center;
-    }
-    .container {
-      max-width: 600px;
-      margin: 50px auto;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    h1 {
-      color: #333;
-    }
-    p {
-      color: #666;
-      margin-bottom: 20px;
-    }
-    button {
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Content Warning</h1>
-    <p>The page you are trying to access contains content that may be sensitive or disturbing to some viewers.</p>
-    <p>If you wish to proceed, click the button below:</p>
-    <button onclick="redirect()">Proceed</button>
-  </div>
-
-  <script>
-    function redirect() {
-      // Get the URL parameter for redirection
-      var urlParams = new URLSearchParams(window.location.search);
-      var redirectTo = urlParams.get('r');
-      if (redirectTo) {
-        window.location.href = redirectTo;
-      } else {
-        window.location.href = 'https://ftnick.github.io/Synthex/';
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Warning</title>
+    <style>
+      body {
+        background-color: #f9f9f9;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
       }
-    }
-  </script>
-</body>
+      .container {
+        text-align: center; /* Center align text */
+        position: relative;
+        padding: 20px; /* Add some padding */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      h1 {
+        font-size: 36px;
+        margin-bottom: 10px;
+        margin-top: 0;
+      }
+      p {
+        font-size: 16px;
+        margin-top: 0;
+        margin-bottom: 15px;
+      }
+      a {
+        color: #ff00dd;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .error-image {
+        width: 170px;
+        height: auto;
+        border-radius: 50%;
+        margin-bottom: 0px;
+      }
+      button {
+        background-color: #ff00dd;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        margin-top: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: #90007d;
+      }
+      .button-force-disable {
+        background-color: #90007d;
+      }
+
+      .jp-header, .jp-body, .jp-link {
+            font-family: "Noto Sans JP", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+        }
+        .jp-header {
+            font-weight: 700;
+            font-size: 40px; /* Adjust font size */
+        }
+        .jp-body {
+            font-weight: 500;
+            font-size: 18px; /* Adjust font size */
+            margin-bottom: 10px;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="images/emotes/contentwarning.png" alt="" class="error-image" />
+      <h1 class="jp-header">Content Warning</h1>
+      <p class="jp-body">
+        The page you are trying to access contains content that may be sensitive
+        or disturbing to some viewers.
+      </p>
+      <p class="jp-body">If you wish to proceed, click the button below:</p>
+      <button onclick="redirect()">Proceed</button>
+    </div>
+
+    <script>
+      var button = document.querySelector("button");
+      button.disabled = true;
+      button.classList.add('button-force-disable')
+      button.textContent = "Please wait 5 seconds...";
+      setTimeout(function () {
+        button.disabled = false;
+        button.classList.remove('button-force-disable')
+        button.textContent = "Proceed"
+      }, 5000); // 5 seconds
+    </script>
+
+    <script>
+      function redirect() {
+        var button = document.querySelector("button");
+        if (!button.disabled === true) {
+          // Get the URL parameter for redirection
+          var urlParams = new URLSearchParams(window.location.search);
+          var redirectTo = urlParams.get("r");
+          if (redirectTo) {
+            window.location.href = redirectTo;
+          } else {
+            alert("No redirect url was provided.")
+            window.location.href = "https://ftnick.github.io/Synthex/";
+          }
+        }
+      }
+    </script>
+  </body>
 </html>

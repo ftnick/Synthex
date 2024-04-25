@@ -1,46 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head> 
-    <meta charset="UTF-8" />
-    <link
-      type="image/png"
-      sizes="96x96"
-      rel="icon"
-      href="images/Web/icon.png"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Placeholder</title>
-    <style>
-      body {
-        font-family: "Arial", sans-serif;
-        text-align: center;
-        margin: 50px;
-      }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Placeholder</title>
+  <link rel="icon" type="image/png" sizes="96x96" href="images/Web/icon.png">
+  <style>
+    body {
+      font-family: "Noto Sans JP", sans-serif;
+      font-optical-sizing: auto;
+      font-style: normal;
+      text-align: center;
+      margin: 50px;
+      color: #333;
+    }
 
-      h1 {
-        color: #333;
-      }
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-top: 5px;
+      margin-bottom: 0;
+    }
 
-      p {
-        color: #666;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Placeholder</h1>
-    <p>Sorry this page doesn't exist yet, come back later</p>
-    <p>Return to <a id="URL" href="/Synthex">Synthex Home</a></p>
+    p {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #666;
+    }
 
-    <script>
-      const urlParams = new URLSearchParams(window.location.search);
-      var redirectLink = urlParams.get("from");
-      if (!redirectLink) {
-        redirectLink = "https://ftnick.github.io/Synthex/"
-      }
-      var Change = document.getElementById("URL")
-      Change.href = redirectLink
-      console.log(Change.textContent)
-      Change.textContent = redirectLink
-    </script>
-  </body>
+    .emote-image {
+      width: 200px;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 0px;
+    }
+
+    .jp-link {
+      display: inline-block;
+      font-size: 18px;
+      font-weight: 500;
+      color: #f3a26c;
+      text-decoration: none;
+    }
+
+    .jp-link:hover {
+      color: #ee532f;
+    }
+  </style>
+</head>
+<body>
+  <img src="images/emotes/placeholder.png" alt="" class="emote-image">
+  <h1>Placeholder</h1>
+  <p>Sorry, this page doesn't exist yet. Please come back later.</p>
+  <p>Return to <a class="jp-link" href="/Synthex">Synthex Home</a></p>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    var redirectLink = urlParams.get("from") || "https://ftnick.github.io/Synthex/";
+    var Change = document.querySelector(".jp-link");
+    Change.href = redirectLink;
+    Change.textContent = "Synthex Home";
+  </script>
+</body>
 </html>

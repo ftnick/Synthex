@@ -21,7 +21,9 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css"
     />
     <style>
-      /* Additional CSS for styling */
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+      }
       #main {
         text-align: center;
       }
@@ -78,6 +80,13 @@
         transform: translateY(0);
       }
 
+      .emote-image {
+      width: 200px;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 0px;
+    }
+
       /* Media queries for responsiveness */
       @media screen and (min-width: 768px) {
         .team-member {
@@ -97,8 +106,10 @@
       <header id="header">
         <div class="inner">
           <div id="main">
-            <h1><span class="title">Synthex</span></h1>
-            <p><strong>Current Synthex Team</strong></p>
+            <img src="images/emotes/team.png" alt="" class="emote-image">
+            <h1><span class="title">Synthex Development</span></h1>
+            <p><strong>Current Synthex Team Of 2024</strong></p>
+            <p>Interested in a job? Check out our <a href="hiring">hiring page</a>.</p>
           </div>
         </div>
         <nav>
@@ -129,12 +140,22 @@
 
           <section class="team-section fade-in">
             <div class="title-section">
-              <h3>HR Developers</h3>
+              <h3>Website Developers</h3>
             </div>
             <div class="team-members-row">
               <div class="team-member">
                 <p><strong>Mason</strong></p>
                 <p>Supervising Developer</p>
+
+              </div>
+              <div class="team-member">
+                <p><strong>Jake</strong></p>
+                <p>Developer</p>
+                
+              </div>
+              <div class="team-member">
+                <p><strong>ChatGPT</strong></p>
+                <p>Developer 💀</p>
 
               </div>
             </div>
@@ -143,27 +164,20 @@
           <!-- Developers Section -->
           <section class="team-section fade-in">
             <div class="title-section">
-              <h3>Developers</h3>
+              <h3>Game Developers</h3>
             </div>
             <div class="team-members-row">
               <div class="team-member">
                 <p><strong>Harry</strong></p>
-                <p>Junior Developer</p>
-              </div>
-
-              <div class="team-member">
-                <p><strong>Jake</strong></p>
-                <p>Junior Developer</p>
-                
+                <p>Developer</p>
               </div>
 
             </div>
           </section>
 
-
           <section id="SpecialThanks" class="team-section fade-in">
             <div class="title-section">
-              <h3>Special Thanks</h3>
+              <h3>Special Thanks To</h3>
             </div>
             <div class="team-members-row">
               <div class="team-member">
@@ -171,12 +185,24 @@
                 <p>Roblox Game Audio Designer</p>
               </div>
               <div class="team-member">
+                <p><strong><a href="https://github.com/theoriginalayaka">Ayaka</a></strong></p>
+                <p><a href="https://st.ayaka.one/">Project Sekai Stickers</a></p>
+              </div>
+              <div class="team-member">
                 <p><strong>Iris C.</strong></p>
                 <p>Javascript Helper</p>
               </div>
               <div class="team-member">
+                <p><strong><a href="https://fonts.google.com/?preview.text=Synthex%20Development">Google Fonts</a></strong></p>
+                <p>Providing Free-To-Use Fonts</p>
+              </div>
+              <div class="team-member">
                 <p><strong>Noah D.</strong></p>
                 <p>Contributor</p>
+              </div>
+              <div class="team-member">
+                <p><strong>Our Community</strong></p>
+                <p>love yall</p>
               </div>
               <div class="team-member">
                 <p><strong>Kathy</strong></p>

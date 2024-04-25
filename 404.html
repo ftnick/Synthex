@@ -12,12 +12,14 @@
       rel="icon"
       href="images/Web/icon.png"
     />
-    <link rel="stylesheet" href="https://ftnick.github.io/Synthex/assets/css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
     <title>Error 404 - Page Not Found</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: "Noto Sans JP", sans-serif;
+            background-color: #fff;
             color: #333;
             margin: 0;
             padding: 0;
@@ -27,30 +29,67 @@
             height: 100vh;
         }
         .container {
-            text-align: center;
+            text-align: center; /* Center align text */
+            position: relative;
+            padding: 20px; /* Add some padding */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         h1 {
             font-size: 48px;
             margin-bottom: 10px;
+            margin-top: 0;
         }
         p {
             font-size: 18px;
+            margin-top: 0;
+            margin-bottom: 0;
         }
         a {
-            color: #007bff;
+            color: #ff00dd;
+            margin-top: 0;
+            margin-bottom: 0;
             text-decoration: none;
         }
         a:hover {
             text-decoration: underline;
         }
+        .error-image {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+        }
+        .jp-header, .jp-body, .jp-link {
+            font-family: "Noto Sans JP", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+        }
+        .jp-header {
+            font-weight: 400;
+            font-size: 32px; /* Adjust font size */
+        }
+        .jp-body {
+            font-weight: 500;
+            font-size: 18px; /* Adjust font size */
+            margin-bottom: 10px;
+        }
+        .jp-link {
+            font-weight: 500;
+            display: inline-block;
+            margin: 10px;
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Error 404 - Page Not Found</h1>
-        <p>Oops! The page you're looking for could not be found.</p>
-        <h3><a href="https://ftnick.github.io/Synthex/">Home page</a>.</h3>
-	<h3><a href="https://ftnick.github.io/Synthex/support">Support</a>.</h3>
+        <img src="images/emotes/404.png" alt="" class="error-image">
+        <h1 class="jp-header">Error 404 - Page Not Found</h1>
+        <p class="jp-body">Oops! The page you're looking for could not be found.</p>
+        <h3 class="jp-link"><a href="https://ftnick.github.io/Synthex/">Home page</a>.</h3>
+        <h3 class="jp-link"><a href="https://ftnick.github.io/Synthex/support">Support</a>.</h3>
     </div>
 </body>
 </html>
