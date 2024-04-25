@@ -106,24 +106,41 @@
                 var number = issue.number;
                 var id = issue.id;
                 var textColor = "#" + color;
-                $("#issues-list").append(
-                  '<li style="color:' +
-                    textColor +
-                    ';"><a href="' +
-                    issue.html_url +
-                    '">' +
-                    "[" +
-                    number +
-                    "] " +
-                    issue.title +
-                    "</a> (" +
-                    labelString +
-                    ") - Created at: " +
-                    formattedCreatedAt +
-                    "<br/>" +
-                    desc +
-                    "</li>"
-                );
+    
+                // Retrieve latest comment for the issue
+                $.ajax({
+                  url: issue.comments_url,
+                  success: function (comments) {
+                    var latestComment = comments.length > 0 ? comments[comments.length - 1].body : "";
+    
+                    $("#issues-list").append(
+                      '<li style="color:' +
+                        textColor +
+                        ';"><a href="' +
+                        issue.html_url +
+                        '">' +
+                        "[" +
+                        number +
+                        "] " +
+                        issue.title +
+                        "</a> (" +
+                        labelString +
+                        ") - Created at: " +
+                        formattedCreatedAt +
+                        "<br/>" +
+                        desc +
+                        "<br/><strong>Latest comment:</strong> " +
+                        latestComment +
+                        "</li>"
+                    );
+                  },
+                  error: function (xhr, status, error) {
+                    console.error(
+                      "Error fetching latest comment for issue:",
+                      error
+                    );
+                  },
+                });
               });
             }
           },
@@ -135,6 +152,6 @@
           },
         });
       });
-    </script>
+    </script>        
   </body>
 </html>
