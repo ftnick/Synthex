@@ -45,10 +45,31 @@
       ><link rel="stylesheet" href="assets/css/noscript.css"
     /></noscript>
     <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.js"></script>
+
+    <style>
+      /* Style for the popup image */
+      #popupImage {
+        position: fixed;
+        bottom: 0px; /* Adjust as needed */
+        right: 0px; /* Adjust as needed */
+        z-index: 9999; /* Ensure it's above other content */
+        transition: opacity 0.5s;
+      }
+
+      #popupImage img {
+        width: 200px; /* Adjust image width */
+        height: auto; /* Maintain aspect ratio */
+        cursor: pointer; /* Show pointer cursor */
+      }
+    </style>
   </head>
   <body class="is-preload">
     <!-- Wrapper -->
     <div id="wrapper">
+      <div id="popupImage" style="display: none;">
+        <img src="images/hey.png" alt="Popup Image" id="popupImg" />
+      </div>
+
       <!-- Header -->
       <header id="header">
         <div class="inner">
@@ -241,6 +262,32 @@
         });
       });
     </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Check if the user has visited the page before
+    var visitedBefore = localStorage.getItem("visitedBefore");
+
+    // If not visited before, show the popup image
+    if (!visitedBefore) {
+      var popupImage = document.getElementById("popupImage");
+      popupImage.style.display = "block";
+
+      // Set visitedBefore flag in localStorage to true
+      localStorage.setItem("visitedBefore", true);
+    }
+
+    // Add click event listener to the popup image
+    var popupImg = document.getElementById("popupImg");
+    popupImg.addEventListener("click", function () {
+      // Fade out the popup image
+      popupImage.style.opacity = 0;
+      setTimeout(function () {
+        popupImage.style.display = "none";
+      }, 500); // Adjust fade-out duration as needed
+    });
+  });
+</script>
 
     <script>
       // Fetching settings from JSON file
