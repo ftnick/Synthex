@@ -82,7 +82,7 @@ body {
   }
 
   #header {
-    background: url("../../images/background.jpeg") center/cover no-repeat; /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+    background: url("../../images/background2.jpeg") center/cover no-repeat; /* Replace 'path/to/your/image.jpg' with the actual path to your image */
     height: 400px; /* Set a suitable height for the header */
     position: relative;
   }
