@@ -113,6 +113,8 @@
                   success: function (comments) {
                     var latestComment = comments.length > 0 ? comments[comments.length - 1].body : "";
     
+                    var latestCommentSection = latestComment ? "<br/><strong>Latest comment:</strong> " + latestComment : "";
+    
                     $("#issues-list").append(
                       '<li style="color:' +
                         textColor +
@@ -129,9 +131,8 @@
                         formattedCreatedAt +
                         "<br/>" +
                         desc +
-                        "<br/><strong>Latest comment:</strong> " +
-                        latestComment +
-                        "</li>"
+                        latestCommentSection +
+                        "</li></br>"
                     );
                   },
                   error: function (xhr, status, error) {
@@ -152,6 +153,7 @@
           },
         });
       });
-    </script>        
+    </script>
+         
   </body>
 </html>
