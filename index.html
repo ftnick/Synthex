@@ -262,6 +262,22 @@
       });
     </script>
 
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      var Debug = urlParams.get("debug") || false;
+      if (Debug === "true") {
+        alert("Debug mode enabled");
+        try {
+            localStorage.clear();
+          caches.keys().then(function (names) {
+            for (let name of names) caches.delete(name);
+          });
+        } catch {
+          alert("Error clearing data.");
+        }
+      }
+    </script>
+
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     // Check if the user has visited the page before
