@@ -1,5 +1,5 @@
 {
-  "Announcement": true,
+  "Announcement": false,
   "AnnouncementTitle": "SynthexCore Version 2.0.0 Revamp",
   "AnnouncementText": "For more info: <a href='https://ftnick.github.io/Synthex/apps/SynthexCore/announcement'>Important Announcement Regarding SynthexCore Version 2.0.0 Revamp</a>"
 }
