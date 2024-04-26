@@ -7,7 +7,7 @@
     <style>
       body {
           font-family: Arial, sans-serif;
-          background-color: #f5f5f5;
+          background-color: #fff;
           margin: 0;
           padding: 0;
           display: flex;
@@ -19,16 +19,56 @@
       .container {
           text-align: center;
       }
+
+      .error-image {
+        width: 150px;
+        height: auto;
+        margin-top: 10px;
+        border-radius: 50%;
+        margin-bottom: 0;
+      }
+
+      .jp-header, .jp-body, .jp-link {
+            font-family: "Noto Sans JP", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+        }
+        .jp-header {
+            margin-top: 0;
+            font-weight: 700;
+            font-size: 40px; /* Adjust font size */
+        }
+        .jp-body {
+            font-weight: 500;
+            font-size: 18px; /* Adjust font size */
+            margin-bottom: 10px;
+        }
+
+        button {
+        background-color: #3955d5;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        margin-top: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: #1229ac;
+      }
   </style>
   </head>
   <body>
     <div style="text-align: center">
-      <h1>We Couldn't Determine Your Operating System</h1>
-      <p>
+      <img src="../../../../../images/emotes/invalid.png" alt="" class="emote-image" />
+      <h1 class="jp-header">We Couldn't Determine Your Operating System</h1>
+      <p class="jp-body">
         Unfortunately, we're unable to detect your operating system and
         architecture.
       </p>
-      <p>Please contact support for further assistance.</p>
+      <p class="jp-body">Please contact support for further assistance.</p>
       <button onclick="redirect()">Go Back</button>
     </div>
     <script>
