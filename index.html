@@ -262,17 +262,6 @@
       });
     </script>
 
-    <script>
-      const urlParams = new URLSearchParams(window.location.search);
-      var debug = urlParams.get("debug") || false;
-      if (debug == "true") {
-        localStorage.clear();
-          caches.keys().then(function (names) {
-            for (let name of names) caches.delete(name);
-          });
-      }
-    </script>
-
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     // Check if the user has visited the page before
