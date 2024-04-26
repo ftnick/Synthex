@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clear Local Storage</title>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        try {
+            localStorage.clear();
+          caches.keys().then(function (names) {
+            for (let name of names) caches.delete(name);
+          });
+        } catch {
+          document.getElementById("status").textContent =
+            "Error clearing data.";
+        } finally {
+          document.getElementById("status").textContent =
+            "Data cleared successfully. Redirecting Back To Home.";
+            setTimeout(function () {
+                window.location.href = "https://ftnick.github.io/Synthex/"
+            }, 1000); // 5 seconds
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <p id="status">Clearing Data...</p>
+  </body>
+</html>
