@@ -100,16 +100,18 @@
       btn.disabled = true;
       btn.textContent = "Please wait..."
       btn.classList.add("button-force-disable");
-      try {
+      setTimeout(function () {
+        try {
           download()
         } catch {
           console.log("err");
         }
+    }, 2000);
       setTimeout(function () {
         btn.disabled = false;
         btn.textContent = "Manual Download"
         btn.classList.remove("button-force-disable");
-      }, 1000);
+      }, 5000);
 
       function download() {
         var urlParams = new URLSearchParams(window.location.search);
