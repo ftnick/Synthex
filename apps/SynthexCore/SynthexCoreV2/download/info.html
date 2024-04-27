@@ -201,14 +201,14 @@
 
         if (platform.includes("win")) {
           if (is64BitOS()) {
-            return "os?os=windows&download=Latest64&from=https://ftnick.github.io/Synthex/apps/SynthexCore/SynthexCoreV2/download/info";
+            return "os.html?os=windows&download=Latest64&from=https://ftnick.github.io/Synthex/apps/SynthexCore/SynthexCoreV2/download/info";
           } else {
-            return "os?os=windows&download=Latest32&from=https://ftnick.github.io/Synthex/apps/SynthexCore/SynthexCoreV2/download/info";
+            return "os.html?os=windows&download=Latest32&from=https://ftnick.github.io/Synthex/apps/SynthexCore/SynthexCoreV2/download/info";
           }
         } else if (platform.includes("mac")) {
-          return "os?os=macos&download=Latest&from=https://ftnick.github.io/Synthex/apps/SynthexCore/SynthexCoreV2/download/info";
+          return "os.html?os=macos&download=Latest&from=https://ftnick.github.io/Synthex/apps/SynthexCore/SynthexCoreV2/download/info";
         } else if (platform.includes("linux")) {
-          return "os?os=linux&download=Latest&from=https://ftnick.github.io/Synthex/apps/SynthexCore/SynthexCoreV2/download/info";
+          return "os.html?os=linux&download=Latest&from=https://ftnick.github.io/Synthex/apps/SynthexCore/SynthexCoreV2/download/info";
         } else {
           return "downloads/unknown?from=https://ftnick.github.io/Synthex/apps/SynthexCore/SynthexCoreV2/download/info";
         }
@@ -222,17 +222,17 @@
         if (platform.includes("win")) {
           if (is64BitOS()) {
             window.location.href =
-              "os?os=windows&download=Latest64&from=https://ftnick.github.io/Synthex/apps/SynthexCore/SynthexCoreV2/download/info";
+              "os.html?os=windows&download=Latest64&from=https://ftnick.github.io/Synthex/apps/SynthexCore/SynthexCoreV2/download/info";
           } else {
             window.location.href =
-              "os?os=windows&download=Latest32&from=https://ftnick.github.io/Synthex/apps/SynthexCore/SynthexCoreV2/download/info";
+              "os.html?os=windows&download=Latest32&from=https://ftnick.github.io/Synthex/apps/SynthexCore/SynthexCoreV2/download/info";
           }
         } else if (platform.includes("mac")) {
           window.location.href =
-            "os?os=macos&download=Latest&from=https://ftnick.github.io/Synthex/apps/SynthexCore/SynthexCoreV2/download/info";
+            "os.html?os=macos&download=Latest&from=https://ftnick.github.io/Synthex/apps/SynthexCore/SynthexCoreV2/download/info";
         } else if (platform.includes("linux")) {
           window.location.href =
-            "os?os=linux&download=Latest&from=https://ftnick.github.io/Synthex/apps/SynthexCore/SynthexCoreV2/download/info";
+            "os.html?os=linux&download=Latest&from=https://ftnick.github.io/Synthex/apps/SynthexCore/SynthexCoreV2/download/info";
         } else {
           window.location.href =
             "downloads/unknown?from=https://ftnick.github.io/Synthex/apps/SynthexCore/SynthexCoreV2/download/info";
@@ -240,7 +240,7 @@
       }
 
       var Button = document.getElementById("checkButton")
-      Button.href = GetOS()
+      Button.title = GetOS()
 
       document
         .getElementById("checkButton")
