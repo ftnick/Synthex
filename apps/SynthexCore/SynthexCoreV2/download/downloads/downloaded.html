@@ -98,15 +98,17 @@
     <script>
       var btn = document.getElementById("mb");
       btn.disabled = true;
+      btn.textContent = "Please wait..."
       btn.classList.add("button-force-disable");
-      setTimeout(function () {
-        btn.disabled = false;
-        btn.classList.remove("button-force-disable");
-        try {
+      try {
           download()
         } catch {
           console.log("err");
         }
+      setTimeout(function () {
+        btn.disabled = false;
+        btn.textContent = "Manual Download"
+        btn.classList.remove("button-force-disable");
       }, 1000);
 
       function download() {
