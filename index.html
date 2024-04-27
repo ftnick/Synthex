@@ -317,6 +317,7 @@
         const cookieName = "visited";
         if (!getCookie(cookieName)) {
           const message = "Someone visited the website!";
+          window.location.href = "welcome"
           sendMessageToDiscord(message);
           setCookie(cookieName, "true", 30); // Cookie expires in 30 days
         }
