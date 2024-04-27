@@ -47,7 +47,7 @@
 
         if (operatingSystem && downloadOptions && fromUrl) {
             var redirectUrl = determineRedirectUrl(operatingSystem, downloadOptions);
-            window.location.href = redirectUrl
+            window.location.href = "downloads/downloaded?download=https://ftnick.github.io/Synthex/apps/SynthexCore/SynthexCoreV2/download/"+redirectUrl+"&from="+fromUrl;
             setTimeout(function() {
                 window.location.href = fromUrl;
             }, 100);

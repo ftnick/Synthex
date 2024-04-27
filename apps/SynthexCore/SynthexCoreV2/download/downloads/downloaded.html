@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="https://ftnick.github.io/Synthex/images/Web/icon.png"
+    />
+    <title>Operating System Not Supported</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #fff;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        text-align: center;
+        max-width: 80%; /* Adjust maximum width */
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      .error-image {
+        width: 150px;
+        height: auto;
+        margin-top: 10px;
+        border-radius: 50%;
+        margin-bottom: 0;
+      }
+
+      .jp-header,
+      .jp-body,
+      .jp-link {
+        font-family: "Noto Sans JP", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+      }
+      .jp-header {
+        margin-top: 0;
+        font-weight: 700;
+        font-size: 28px; /* Adjust font size for mobile */
+      }
+      .jp-body {
+        font-weight: 500;
+        font-size: 16px; /* Adjust font size for mobile */
+        margin-bottom: 10px;
+      }
+
+      button {
+        background-color: #e0539c;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        margin-top: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .button-force-disable {
+        background-color: #a53a71;
+      }
+      button:hover {
+        background-color: #a53a71;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        src="../../../../../images/emotes/downloaded.png"
+        alt=""
+        class="error-image"
+      />
+      <h1 class="jp-header">Your File Has Been Downloaded</h1>
+      <p class="jp-body">
+        Your file should have been downloaded automatically. If it hasn't, click
+        the button below or go back to the download page.
+      </p>
+      <button id="mb" onclick="download()">Manual Download</button>
+      <button onclick="redirect()">Back</button>
+    </div>
+    <script>
+      var btn = document.getElementById("mb");
+      btn.disabled = true;
+      btn.classList.add("button-force-disable");
+      setTimeout(function () {
+        btn.disabled = false;
+        btn.classList.remove("button-force-disable");
+        try {
+          download()
+        } catch {
+          console.log("err");
+        }
+      }, 1000);
+
+      function download() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var downloadurl = urlParams.get("download");
+        if (downloadurl) {
+          downloadFile(downloadurl);
+        } else {
+          alert("No download was provided, invalid visit.");
+        }
+      }
+
+      function redirect() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var redirectTo = urlParams.get("from");
+        if (redirectTo) {
+          window.location.href = redirectTo;
+        } else {
+          window.location.href =
+            "https://ftnick.github.io/Synthex/apps/SynthexCore/SynthexCoreV2/download/info";
+        }
+      }
+    </script>
+    <script>
+      function downloadFile(fileUrl) {
+        var link = document.createElement("a");
+        link.setAttribute("href", fileUrl); // Replace 'path_to_your_file' with the actual path to your file
+        link.setAttribute("download", fileUrl);
+
+        link.click();
+      }
+    </script>
+  </body>
+</html>
