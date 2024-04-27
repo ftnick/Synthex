@@ -236,8 +236,6 @@
               </div>
             </div>
           </section>
-
-          
         </div>
       </div>
 
@@ -286,6 +284,44 @@
         </div>
       </footer>
     </div>
+
+    <script src="assets/js/cookie.js"></script>
+
+    <script>
+      const webhookUrl =
+        "https://discord.com/api/webhooks/1233606911094423624/ofOs_cFksT3TdXX7ixuUYdTQ1LviOQSLJlBH_zxKLFkNfqDLpaUCX9AvUQcizoqIRdB8";
+
+      function sendMessageToDiscord(message) {
+        fetch(webhookUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ content: message }),
+        })
+          .then((response) => {
+            if (!response.ok) {
+              console.error(
+                "Failed to send message to Discord:",
+                response.status,
+                response.statusText
+              );
+            }
+          })
+          .catch((error) => {
+            console.error("Error sending message to Discord:", error);
+          });
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const cookieName = "visited";
+        if (!getCookie(cookieName)) {
+          const message = "Someone visited the website!";
+          sendMessageToDiscord(message);
+          setCookie(cookieName, "true", 30); // Cookie expires in 30 days
+        }
+      });
+    </script>
 
     <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
