@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Synthex Development</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="96x96" href="https://ftnick.github.io/Synthex/images/Web/icon.png">
+  
+  <style>
+    body {
+      font-family: "Noto Sans JP", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    /* Styles for video background */
+    #video-background {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+    }
+    /* Styles for main content */
+    .content {
+      text-align: center;
+      padding: 50px 0;
+      color: #000000;
+    }
+    .content h1 {
+      font-size: 3em;
+      margin: 0;
+    }
+    .counter {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    .counter h2 {
+      font-size: 1.5em;
+      margin: 0;
+    }
+    /* Styles for note */
+    .note {
+      font-size: 0.8em;
+      color: rgba(0, 0, 0, 0.474);
+    }
+    /* Additional info */
+    .info {
+      font-size: 1.2em;
+      margin-top: 50px;
+    }
+
+    button {
+      background-color: rgb(43, 43, 43);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: black;
+    }
+
+    /* Styles for announcements */
+    .announcements {
+      margin-top: 30px;
+    }
+    .announcement {
+      background-color: #f0f0f0;
+      border-radius: 5px;
+      padding: 15px;
+      margin-bottom: 10px;
+    }
+    .announcement h3 {
+      margin-top: 0;
+    }
+    .announcement p {
+      margin: 0;
+      color: rgba(0, 0, 0, 0.7);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="main">
+      <div class="content">
+        <div class="container">
+          <br><br><br>
+          <div class="content2">
+            <h1>Synthex-Injector</h1>
+          </div>
+          <div class="counter" id="countdown">
+            <h2>Launching in <span class="days timenumbers">00</span> days <span class="hours timenumbers">00</span>h <span class="minutes timenumbers">00</span>m <span class="seconds timenumbers yellow-text">00</span>s</h2>
+            <div class="row">
+              <div class="col-sm-6 col-sm-offset-3">
+                <p class="note">Warning: Date may be changed without notice. Please check announcements on </p>
+              </div>
+            </div>
+            <button onclick="window.location.href='https://ftnick.github.io/Synthex/'">Back To Home</button>
+          </div>
+          <br><br><br>
+          <div class="announcements">
+            <h2>Announcements</h2>
+            <div id="announcement-list">
+              <!-- Announcements will be dynamically added here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="../../assets/js/comingsoon.js"></script>
+  <script>
+    // Function to calculate time difference
+    function timeSince(date) {
+      const seconds = Math.floor((new Date() - date) / 1000);
+
+      let interval = Math.floor(seconds / 31536000);
+
+      if (interval > 1) {
+        return interval + " years ago";
+      }
+      interval = Math.floor(seconds / 2592000);
+      if (interval > 1) {
+        return interval + " months ago";
+      }
+      interval = Math.floor(seconds / 86400);
+      if (interval > 1) {
+        return interval + " days ago";
+      }
+      interval = Math.floor(seconds / 3600);
+      if (interval > 1) {
+        return interval + " hours ago";
+      }
+      interval = Math.floor(seconds / 60);
+      if (interval > 1) {
+        return interval + " minutes ago";
+      }
+      return Math.floor(seconds) + " seconds ago";
+    }
+
+    // Function to create announcement element
+    function createAnnouncementElement(header, date) {
+      const announcement = document.createElement("div");
+      announcement.classList.add("announcement");
+
+      const headerElement = document.createElement("h3");
+      headerElement.textContent = header;
+      announcement.appendChild(headerElement);
+
+      const dateElement = document.createElement("p");
+      dateElement.textContent = timeSince(date);
+      announcement.appendChild(dateElement);
+
+      return announcement;
+    }
+
+    // Example announcements
+    const announcementsData = [
+      { header: "Development Is At Stage 2/6 Now!!!", date: new Date("2024-05-01T09:11:34.029Z") },
+    ];
+
+    // Add announcements to the announcement list
+    const announcementList = document.getElementById("announcement-list");
+    announcementsData.forEach(data => {
+      const announcement = createAnnouncementElement(data.header, data.date);
+      announcementList.appendChild(announcement);
+    });
+  </script>
+</body>
+</html>
