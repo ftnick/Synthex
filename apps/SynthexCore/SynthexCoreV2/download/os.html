@@ -49,7 +49,13 @@
             var redirectUrl = determineRedirectUrl(operatingSystem, downloadOptions);
             label.textContent = "Sending you to your download..."
             setTimeout(function () {
-                window.location.href = "downloads/downloaded?download=https://ftnick.github.io/Synthex/apps/SynthexCore/SynthexCoreV2/download/"+redirectUrl+"&from="+fromUrl;
+                if (redirectUrl === "downloads/notsupported") {
+                    window.location.href = "downloads/notsupported"
+                } else if (redirectUrl === "downloads/unknown") {
+                    window.location.href = "downloads/unknown"
+                } else {
+                    window.location.href = "downloads/downloaded?download=https://ftnick.github.io/Synthex/apps/SynthexCore/SynthexCoreV2/download/"+redirectUrl+"&from="+fromUrl;
+                }
             }, 1000);
         } else {
             label.textContent = "Invalid request parameters. Please try again.";
