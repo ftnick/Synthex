@@ -221,11 +221,17 @@
             <div class="projects-container">
               <div class="project" data-aos="fade-up">
                 <h3>Synthex-Injector</h3>
-                <p><strong>Description:</strong> A roblox script injector, made using C#.</p>
+                <p>
+                  <strong>Description:</strong> A roblox script injector, made
+                  using C#.
+                </p>
                 <p>
                   <strong>Development Start Date:</strong> Friday, 26 April 2024
                 </p>
-                <p><strong>Release Date:</strong> <a href="apps/Synthex-Injector/comingsoon">View Countdown</a></p>
+                <p>
+                  <strong>Release Date:</strong>
+                  <a href="apps/Synthex-Injector/comingsoon">View Countdown</a>
+                </p>
               </div>
             </div>
           </section>
@@ -279,7 +285,7 @@
     </div>
 
     <script src="assets/js/cookie.js"></script>
-    
+
     <script>
       const webhookUrl =
         "https://discord.com/api/webhooks/1233606911094423624/ofOs_cFksT3TdXX7ixuUYdTQ1LviOQSLJlBH_zxKLFkNfqDLpaUCX9AvUQcizoqIRdB8";
@@ -329,6 +335,18 @@
       src="https://cdn.statuspage.io/se-v2.js"
     ></script>
     <script src="https://synthexdevelopment.statuspage.io/embed/script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        Notification.requestPermission().then((permission) => {
+          if (permission === "granted") {
+            new Notification("TestTitle");
+          } else {
+            console.log("Notifications Disabled");
+          }
+        });
+      });
+    </script>
 
     <script>
       function formatISODate(isoDateString) {
