@@ -337,18 +337,6 @@
     <script src="https://synthexdevelopment.statuspage.io/embed/script.js"></script>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        Notification.requestPermission().then((permission) => {
-          if (permission === "granted") {
-            new Notification("TestTitle");
-          } else {
-            console.log("Notifications Disabled");
-          }
-        });
-      });
-    </script>
-
-    <script>
       function formatISODate(isoDateString) {
         const date = new Date(isoDateString);
         const options = {
