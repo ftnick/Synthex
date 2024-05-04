@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="https://ftnick.github.io/Synthex/images/Web/icon.png"
+    />
+    <title>Mobile Denied</title>
+    <style>
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        background-color: #fff;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        text-align: center; /* Center align text */
+        padding: 20px; /* Add some padding */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      h1 {
+        font-size: 36px; /* Adjust font size for mobile */
+        margin-bottom: 10px;
+        margin-top: 0;
+      }
+      p {
+        font-size: 16px; /* Adjust font size for mobile */
+        margin-top: 0;
+        margin-bottom: 10px; /* Adjust margin for mobile */
+      }
+      a {
+        color: #ff00dd;
+        margin-top: 0;
+        margin-bottom: 0;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .error-image {
+        width: 157px; /* Adjust image size for mobile */
+        height: auto;
+        border-radius: 10px;
+      }
+      .jp-header,
+      .jp-body,
+      .jp-link {
+        font-family: "Noto Sans JP", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+      }
+      .jp-header {
+        font-weight: 400;
+        font-size: 27px; /* Adjust font size for mobile */
+      }
+      .jp-body {
+        font-weight: 500;
+        font-size: 17px; /* Adjust font size for mobile */
+        margin-bottom: 5px; /* Adjust margin for mobile */
+      }
+      .jp-link {
+        font-weight: 500;
+        display: inline-block;
+        margin: 5px; /* Adjust margin for mobile */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        src="https://ftnick.github.io/Synthex/images/emotes/huh.png"
+        alt=""
+        class="error-image"
+      />
+      <h1 class="jp-header">Mobile Denied</h1>
+      <p class="jp-body">
+        We've detected that you're accessing this site from a mobile device.<br>Unfortunately, due to compatibility issues, downloading files is currently restricted.<br>We apologize for any inconvenience this may cause.
+      </p>
+      <h3 class="jp-link">
+        <a id="1" href="">Continue</a>
+      </h3>
+      <h3 class="jp-link">
+        <a id="2" href="https://ftnick.github.io/Synthex/">Go Back</a>
+      </h3>
+      <h3 class="jp-link">
+        <a id="3" href="https://ftnick.github.io/Synthex/support"
+          >Report A Problem</a
+        >
+      </h3>
+    </div>
+    <script>
+      const Continue = document.getElementById("1");
+      const GoBack = document.getElementById("2");
+      const ReportAProblem = document.getElementById("3");
+      const urlParams = new URLSearchParams(window.location.search);
+      var FromUri = urlParams.get("from") || false;
+      if (FromUri) {
+        Continue.href = decodeURI(FromUri);
+      } else {
+        Continue.href = "https://ftnick.github.io/Synthex/apphome";
+      }
+    </script>
+  </body>
+</html>
