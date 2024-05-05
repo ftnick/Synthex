@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Synthex Core Download</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="images/Web/icons8-s-key-ios-17-96.png"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f3f3f3;
+        color: #333;
+      }
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      h1,
+      h2 {
+        color: #333;
+      }
+      p {
+        margin: 10px 0;
+      }
+      a {
+        color: #007bff;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .changelog-entry {
+        margin-bottom: 20px;
+        cursor: pointer;
+      }
+      .version-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      .release-date {
+        font-style: italic;
+      }
+      .change-list {
+        list-style-type: square;
+        margin-left: 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+      .change-list.show {
+        max-height: 1000px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav>
+          <ul>
+            <a href="https://ftnick.github.io/Synthex/">Back to Home</a>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <section>
+          <h1>Synthex SelfBot</h1>
+          <p>Release Date: Sunday, 5 May 2024</p>
+          <p>File Size: <span id="size-value">Fetching Size...</span></p>
+        </section>
+        <br />
+        <section>
+          <h2>Download</h2>
+          <p>
+            You can download the zip file below:
+          </p>
+          <p>
+            <strong
+              >PLEASE NOTE: The download will be
+              a zip file containing all the necessary files to launch
+              Synthex SelfBot. Extract the files into a folder and then run the main.exe
+              file to start the application.
+            </strong>
+            <br>
+          </p>
+          <p><a id="checkButton" href="#">Download Installer</a></p>
+          <p>
+          <strong
+              >ALSO NOTE: For the self-bot to work, please put your discord token into the token.env file in 'assets/env/token.env'.<br>To get your discord token, follow <a href="https://www.youtube.com/watch?v=LnBnm_tZlyU">this tutorial</a>.
+            </strong>
+          </p>
+        </section>
+        <br />
+        <section>
+          <h2>Notices</h2>
+          <p>
+            Synthex is an unverified developer so certain antivirus programs may
+            prevent you from launching the application.
+          </p>
+          <p>
+            This application is OSOR (OpenSource On Request)
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      function getFileSize() {
+        const fileUrl =
+          "https://upnow-prod.ff45e40d1a1c8f7e7de4e976d0c9e555.r2.cloudflarestorage.com/7QZ5uX8NXugye5XBCYCzG0gWCyZ2/ff56ba32-046b-4e39-81b2-62176b18f9d5?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=cdd12e35bbd220303957dc5603a4cc8e%2F20240505%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20240505T020141Z&X-Amz-Expires=43200&X-Amz-Signature=c36e501d8a325fc9224a3cc9f5285c51b073c91fc37595f3abeba1ab42c95929&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3D%22main.zip%22";
+        var xhr = new XMLHttpRequest();
+        xhr.open("HEAD", fileUrl, true);
+        xhr.onload = function () {
+          if (xhr.status === 200) {
+            const fileSizeInBytes = parseInt(
+              xhr.getResponseHeader("Content-Length"),
+              10
+            );
+            const fileSizeInMB = fileSizeInBytes / (1024 * 1024);
+            document.getElementById("size-value").textContent =
+              fileSizeInMB.toFixed(2) + " MB";
+          } else {
+            document.getElementById("size-value").textContent = "Unknown";
+          }
+        };
+        xhr.send();
+      }
+      getFileSize();
+    </script>
+
+    <script>
+      function is64BitOS() {
+        if (
+          navigator.userAgent.indexOf("WOW64") != -1 ||
+          navigator.userAgent.indexOf("Win64") != -1
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
+      function GetOS() {
+        var platform = navigator.platform.toLowerCase();
+
+        if (platform.includes("win")) {
+          if (is64BitOS()) {
+            return "os.html?os=windows&download=Latest64&from=https://ftnick.github.io/Synthex/apps/apps/Synthex-SelfBot/info";
+          } else {
+            return "os.html?os=windows&download=Latest32&from=https://ftnick.github.io/Synthex/apps/apps/Synthex-SelfBot/info";
+          }
+        } else if (platform.includes("mac")) {
+          return "os.html?os=macos&download=Latest&from=https://ftnick.github.io/Synthex/apps/apps/Synthex-SelfBot/info";
+        } else if (platform.includes("linux")) {
+          return "os.html?os=linux&download=Latest&from=https://ftnick.github.io/Synthex/apps/apps/Synthex-SelfBot/info";
+        } else {
+          return "downloads/unknown?from=https://ftnick.github.io/Synthex/apps/apps/Synthex-SelfBot/info";
+        }
+
+        return null
+      }
+
+      function ToOS() {
+        var platform = navigator.platform.toLowerCase();
+
+        if (platform.includes("win")) {
+          if (is64BitOS()) {
+            window.location.href =
+              "os.html?os=windows&download=Latest64&from=https://ftnick.github.io/Synthex/apps/apps/Synthex-SelfBot/info";
+          } else {
+            window.location.href =
+              "os.html?os=windows&download=Latest32&from=https://ftnick.github.io/Synthex/apps/apps/Synthex-SelfBot/info";
+          }
+        } else if (platform.includes("mac")) {
+          window.location.href =
+            "os.html?os=macos&download=Latest&from=https://ftnick.github.io/Synthex/apps/apps/Synthex-SelfBot/info";
+        } else if (platform.includes("linux")) {
+          window.location.href =
+            "os.html?os=linux&download=Latest&from=https://ftnick.github.io/Synthex/apps/apps/Synthex-SelfBot/info";
+        } else {
+          window.location.href =
+            "downloads/unknown?from=https://ftnick.github.io/Synthex/apps/apps/Synthex-SelfBot/info";
+        }
+      }
+
+      var Button = document.getElementById("checkButton")
+      Button.title = GetOS()
+
+      document
+        .getElementById("checkButton")
+        .addEventListener("click", function () {
+          ToOS();
+        });
+    </script>
+  </body>
+</html>
