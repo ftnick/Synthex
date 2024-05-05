@@ -117,7 +117,7 @@
         var urlParams = new URLSearchParams(window.location.search);
         var downloadurl = urlParams.get("download");
         if (downloadurl) {
-          downloadFile(downloadurl);
+          downloadFile(decodeURI(downloadurl));
         } else {
           alert("No download was provided, invalid visit.");
         }

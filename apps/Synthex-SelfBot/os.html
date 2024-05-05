@@ -35,7 +35,7 @@
             message = "Redirecting to Windows " + options + " download...";
             if (options.includes("64")) {
                 redirectUrl = options.includes("Latest") ?
-                    "https://upnow-prod.ff45e40d1a1c8f7e7de4e976d0c9e555.r2.cloudflarestorage.com/7QZ5uX8NXugye5XBCYCzG0gWCyZ2/ff56ba32-046b-4e39-81b2-62176b18f9d5?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=cdd12e35bbd220303957dc5603a4cc8e%2F20240505%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20240505T020141Z&X-Amz-Expires=43200&X-Amz-Signature=c36e501d8a325fc9224a3cc9f5285c51b073c91fc37595f3abeba1ab42c95929&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3D%22main.zip%22" :
+                    "https://upnow-prod.ff45e40d1a1c8f7e7de4e976d0c9e555.r2.cloudflarestorage.com/7QZ5uX8NXugye5XBCYCzG0gWCyZ2/ff56ba32-046b-4e39-81b2-62176b18f9d5?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=cdd12e35bbd220303957dc5603a4cc8e%2F20240505%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20240505T020141Z&X-Amz-Expires=43200&X-Amz-Signature=c36e501d8a325fc9224a3cc9f5285c51b073c91fc37595f3abeba1ab42c95929&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3D%22main.zip%22":
                     "downloads/notsupported";
             } else {
                 redirectUrl = "downloads/notsupported";
@@ -55,7 +55,7 @@
                     window.location.href = "downloads/unknown"
                 } else {
                     if (redirectUrl.startsWith("http")) {
-                        window.location.href = "downloads/downloaded?download="+redirectUrl+"&from="+fromUrl;
+                        window.location.href = "downloads/downloaded?download="+encodeURI(redirectUrl)+"&from="+fromUrl;
                     } else {
                         window.location.href = "downloads/downloaded?download=https://ftnick.github.io/Synthex/apps/Synthex-SelfBot/"+redirectUrl+"&from="+fromUrl;
                     }
