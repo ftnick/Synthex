@@ -54,7 +54,11 @@
                 } else if (redirectUrl === "downloads/unknown") {
                     window.location.href = "downloads/unknown"
                 } else {
-                    window.location.href = "downloads/downloaded?download=https://ftnick.github.io/Synthex/apps/Synthex-SelfBot/"+redirectUrl+"&from="+fromUrl;
+                    if (redirectUrl.startsWith("http")) {
+                        window.location.href = "downloads/downloaded?download="+redirectUrl+"&from="+fromUrl;
+                    } else {
+                        window.location.href = "downloads/downloaded?download=https://ftnick.github.io/Synthex/apps/Synthex-SelfBot/"+redirectUrl+"&from="+fromUrl;
+                    }
                 }
             }, 1000);
         } else {
