@@ -1,486 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Synthex - Home</title>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, user-scalable=no"
-    />
-    <meta
-      name="description"
-      content="Synthex is dedicated to delivering a wide range of utilities and assets including games, modules/scripts, programs, open-source code and more."
-    />
-    <meta
-      name="keywords"
-      content="Synthex, games, modules, scripts, programs, open-source, development"
-    />
-    <meta name="author" content="Synthex Development" />
-    <meta name="robots" content="index, follow" />
-
-    <meta property="og:title" content="Synthex - Home" />
-    <meta
-      property="og:description"
-      content="Synthex is dedicated to delivering a wide range of utilities and assets including games, modules/scripts, programs, open-source code and more."
-    />
-    <meta
-      property="og:image"
-      content="https://ftnick.github.io/Synthex/images/Web/icon.png"
-    />
-    <meta property="og:url" content="https://ftnick.github.io/Synthex/" />
-    <meta name="twitter:card" content="summary_large_image" />
-
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link
-      type="image/png"
-      sizes="96x96"
-      rel="icon"
-      href="images/Web/icon.png"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css"
-    />
-    <link rel="stylesheet" href="assets/css/index.css" />
-    <link rel="stylesheet" href="assets/css/announcement.css" />
-    <link rel="stylesheet" href="assets/css/Status.css" />
-
-    <noscript
-      ><link rel="stylesheet" href="assets/css/noscript.css"
-    /></noscript>
-    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.js"></script>
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discontinued</title>
     <style>
-      .title {
-        color: #fff;
-      }
-      /* Style for the popup image */
-      #popupImage {
-        position: fixed;
-        bottom: 0px; /* Adjust as needed */
-        right: 0px; /* Adjust as needed */
-        z-index: 9999; /* Ensure it's above other content */
-        transition: opacity 0.5s;
-      }
-
-      #popupImage img {
-        width: 200px; /* Adjust image width */
-        height: auto; /* Maintain aspect ratio */
-        cursor: pointer; /* Show pointer cursor */
-      }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+        #container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
     </style>
-  </head>
-  <body class="is-preload">
-    <!-- Wrapper -->
-    <div id="wrapper">
-      <div id="popupImage" style="display: none">
-        <img src="images/emotes/hey.png" alt="Popup Image" id="popupImg" />
-      </div>
-
-      <!-- Header -->
-      <header id="header">
-        <div class="inner">
-          <!-- Logo -->
-          <a class="logo">
-            <h1><span class="title">Welcome to Synthex</span></h1>
-          </a>
-        </div>
-      </header>
-
-      <!-- Main Content -->
-      <div id="main">
-        <div class="inner">
-          <div id="announcementContainer"></div>
-
-          <br />
-
-          <!-- About Us Section -->
-          <section data-aos="fade-up">
-            <header>
-              <h2><strong>About Us:</strong></h2>
-            </header>
-            <p class="subtitle">
-              We are dedicated to delivering a wide range of utilities and
-              assets including games, modules/scripts, programs, open-source
-              code and more.
-              <br />
-              <strong>
-                <a href="theteam" class="hvr-float-shadow">Meet Our Team!</a>
-              </strong>
-            </p>
-          </section>
-
-          <br />
-
-          <!-- Job Openings Section -->
-          <section data-aos="fade-up">
-            <header>
-              <h2><strong>Join Our Team:</strong></h2>
-            </header>
-            <p class="subtitle">
-              Are you passionate about development or possess exceptional
-              skills? We invite you to join our dynamic team!
-              <br />
-              <strong>
-                <a href="hiring" class="hvr-float-shadow"
-                  >Explore Job Openings</a
-                >
-              </strong>
-            </p>
-            <p class="subtitle">
-              Interested in working with us but don't see an open position that
-              fits your skills? Feel free to reach out and introduce yourself!
-              <br />
-              <strong>
-                <a href="support" class="hvr-float-shadow">Contact Us</a>
-              </strong>
-            </p>
-          </section>
-
-          <br />
-
-          <!-- Services Section -->
-          <section data-aos="fade-up">
-            <header>
-              <h2><strong>Our Services:</strong></h2>
-            </header>
-            <ul>
-              <li>
-                <strong>Development:</strong> Custom software development, web
-                development, mobile app development, game development, etc.
-              </li>
-            </ul>
-          </section>
-
-          <br />
-
-          <!-- Assets Section -->
-          <section data-aos="fade-up">
-            <header id="AssetPages">
-              <h2><strong>Assets:</strong></h2>
-            </header>
-            <p class="subtitle">
-              Please note that some assets may be corrupted or no longer
-              functional. If you encounter any issues,
-              <a href="support">contact us</a>.
-            </p>
-            <ul>
-              <p>
-                <strong
-                  ><a href="robloxhome" class="hvr-float-shadow"
-                    >Roblox Assets</a
-                  ></strong
-                >
-                <br />
-                <i
-                  >Roblox assets are a collection of resources hosted on the
-                  Roblox platform.</i
-                >
-              </p>
-              <br />
-              <p>
-                <strong
-                  ><a href="apphome" class="hvr-float-shadow"
-                    >Synthex Applications</a
-                  ></strong
-                >
-                <br />
-                <i
-                  >Synthex Applications is a collection of apps made for Synthex
-                  use. <br />
-                  <b
-                    >Note: This section has member locked assets, to sign up
-                    <a href="support">contact us</a>.</b
-                  ></i
-                >
-              </p>
-              <br />
-            </ul>
-          </section>
-
-          <br />
-
-          <!-- Upcoming Projects Section -->
-          <section id="upcomingprojects" data-aos="fade-up">
-            <header>
-              <h2><strong>Upcoming Projects:</strong></h2>
-            </header>
-            <p class="subtitle">
-              Stay tuned for our exciting upcoming projects. We are constantly
-              working on new and innovative ideas to enhance your experience.
-            </p>
-
-            <div class="projects-container">
-              <div class="project" data-aos="fade-up">
-                <h3>Synthex-Injector</h3>
-                <p>
-                  <strong>Description:</strong> A roblox script injector, made
-                  using C#.
-                </p>
-                <p>
-                  <strong>Development Start Date:</strong> Friday, 26 April 2024
-                </p>
-                <p>
-                  <strong>Release Date:</strong>
-                  <a href="apps/Synthex-Injector/comingsoon">View Countdown</a>
-                </p>
-              </div>
-            </div>
-          </section>
-        </div>
-      </div>
-
-      <br />
-
-      <!-- Footer -->
-      <footer id="footer" class="animate__animated animate__fadeInUp">
-        <div class="inner">
-          <ul class="copyright">
-            <li>Synthex is owned and operated by Inverted Gaming Studios.</li>
-            <br />
-            <br />
-            <a href="support">Contact Us</a
-            ><br />
-            <a href="changelog">View The Changelog</a>
-            <br />
-            <a href="issues">View Current Issues</a>
-            <br />
-            <a href="https://synthexdevelopment.hyperping.app/"
-              >View Our Status Page</a
-            >
-
-            <br />
-            <br />
-            <div id="lastUpdated"></div>
-            <p>
-              <svg
-                id="svg"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="10" cy="10" r="10" />
-              </svg>
-              <span id="txt" style="vertical-align: middle"
-                >Service Outage Status Loading...</span
-              >
-              <svg
-                id="svg2"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="10" cy="10" r="10" />
-              </svg>
-            </p>
-          </ul>
-        </div>
-      </footer>
+</head>
+<body>
+    <div id="container">
+        <h1>Discontinued</h1>
+        <p>We regret to inform you that our team has been disbanded and the Synthex directive has been terminated.<br><br>All assets will still be available for download, but development and support will be halted indefinitely.</p>
+        <a href="home.html" class="button">Go to Home</a>
     </div>
-
-    <script src="assets/js/cookie.js"></script>
-
-    <script>
-      const webhookUrl =
-        "https://discord.com/api/webhooks/1233606911094423624/ofOs_cFksT3TdXX7ixuUYdTQ1LviOQSLJlBH_zxKLFkNfqDLpaUCX9AvUQcizoqIRdB8";
-
-      function sendMessageToDiscord(message) {
-        fetch(webhookUrl, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ content: message }),
-        })
-          .then((response) => {
-            if (!response.ok) {
-              console.error(
-                "Failed to send message to Discord:",
-                response.status,
-                response.statusText
-              );
-            }
-          })
-          .catch((error) => {
-            console.error("Error sending message to Discord:", error);
-          });
-      }
-
-      document.addEventListener("DOMContentLoaded", function () {
-        const cookieName = "visited";
-        if (!getCookie(cookieName)) {
-          const message = "Someone visited the website!";
-          sendMessageToDiscord(message);
-          setCookie(cookieName, "true", 30); // Cookie expires in 30 days
-        }
-      });
-    </script>
-
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/Status.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scroll/16.1.3/smooth-scroll.min.js"></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.statuspage.io/se-v2.js"
-    ></script>
-    <script src="https://synthexdevelopment.statuspage.io/embed/script.js"></script>
-
-    <script>
-      function formatISODate(isoDateString) {
-        const date = new Date(isoDateString);
-        const options = {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-          timeZoneName: "short",
-        };
-        return date.toLocaleString("en-US", options);
-      }
-    </script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var scroll = new SmoothScroll('a[href*="#"]', {
-          speed: 800,
-          offset: 300,
-        });
-      });
-    </script>
-
-    <script>
-      const urlParams = new URLSearchParams(window.location.search);
-      var Debug = urlParams.get("debug") || false;
-      if (Debug === "true") {
-        alert("Debug mode enabled");
-        try {
-          localStorage.clear();
-          caches.keys().then(function (names) {
-            for (let name of names) caches.delete(name);
-          });
-        } catch {
-          alert("Error clearing data.");
-        }
-      }
-    </script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Check if the user has visited the page before
-        var visitedBefore = localStorage.getItem("visitedBefore");
-
-        // If not visited before, show the popup image
-        if (!visitedBefore) {
-          var popupImage = document.getElementById("popupImage");
-          popupImage.style.display = "block";
-
-          // Set visitedBefore flag in localStorage to true
-          localStorage.setItem("visitedBefore", true);
-        }
-
-        // Add click event listener to the popup image
-        var popupImg = document.getElementById("popupImg");
-        popupImg.addEventListener("click", function () {
-          // Fade out the popup image
-          popupImage.style.opacity = 0;
-          setTimeout(function () {
-            popupImage.style.display = "none";
-          }, 500); // Adjust fade-out duration as needed
-        });
-      });
-    </script>
-
-    <script>
-      // Fetching settings from JSON file
-      fetch(
-        "https://raw.githubusercontent.com/ftnick/Synthex/main/settings.json"
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          // Checking if Announcement is true in settings
-          if (data.Announcement === true) {
-            if (
-              localStorage.getItem("AlreadyAnnounced") == data.AnnouncementText
-            ) {
-              // If the key "AlreadyAnnounced" exists in localStorage, skip
-              console.log("Announcement already shown...");
-            } else {
-              // Creating announcement element
-              const announcementContainer = document.createElement("div");
-              announcementContainer.classList.add("announcement-container");
-
-              const announcementDiv = document.createElement("div");
-              announcementDiv.classList.add("announcement");
-
-              // Creating announcement heading
-              const heading = document.createElement("h2");
-              heading.innerHTML = data.AnnouncementTitle;
-              announcementDiv.appendChild(heading);
-
-              // Creating announcement paragraph
-              const paragraph = document.createElement("p");
-              paragraph.innerHTML = data.AnnouncementText;
-              announcementDiv.appendChild(paragraph);
-
-              // Creating close button
-              const closeButton = document.createElement("button");
-              closeButton.textContent = "Close";
-              closeButton.addEventListener("click", () => {
-                announcementContainer.remove();
-              });
-              announcementDiv.appendChild(closeButton);
-
-              // Appending announcement to container
-              announcementContainer.appendChild(announcementDiv);
-              document.body.appendChild(announcementContainer);
-
-              localStorage.setItem("AlreadyAnnounced", data.AnnouncementText);
-            }
-          }
-        })
-        .catch((error) => console.error("Error fetching settings:", error));
-    </script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-
-    <script>
-      function toggleChangelog(entry) {
-        var changeList = entry.querySelector(".changeList");
-        changeList.classList.toggle("show");
-      }
-
-      var options = {
-        weekday: "long",
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-        hour12: true,
-      };
-      var lastUpdated = new Date(document.lastModified).toLocaleString(
-        "en-US",
-        options
-      );
-      document.getElementById("lastUpdated").innerText =
-        "Last updated: " + lastUpdated;
-    </script>
-
-    <script>
-      AOS.init();
-    </script>
-  </body>
+    <p style="font-size: 12px;">Have questions? <strong>(NOT SUPPORT)</strong> Feel free to DM me.<br><a href="https://discord.com/users/701632642822701057">@ftnick</a></p>
+</body>
 </html>
